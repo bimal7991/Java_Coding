@@ -1,0 +1,124 @@
+package codechef;
+import java.util.*;
+import java.io.*; 
+public class MSNG {
+	public static void main(String[] args)  throws IOException {
+		//Scanner sc=new Scanner(System.in);
+		BufferedReader br = new BufferedReader(new
+		        InputStreamReader(System.in)); 
+		int T=Integer.parseInt(br.readLine()); 
+		for(int t=0;t<T;t++)
+		{
+			int n=Integer.parseInt(br.readLine()); 
+			int arr[]=new int[n];
+			String str[]=new String[n];
+		
+			for(int i=0;i<n;i++)
+			{
+				String s=br.readLine(); 
+				String s1[]=s.split(" ");
+				arr[i]=Integer.parseInt(s1[0]);
+				str[i]=s1[1];
+			}
+			int m=0,maxlen=0,maxind=0;
+			for(int i=0;i<n;i++)
+			{
+				if(arr[i]!=-1)
+				{
+				  m=Integer.parseInt(str[i],arr[i]);  
+				  break;
+				}
+				else
+				{
+					if(str[i].length()>maxlen)
+					{
+						maxlen=str[i].length();
+						maxind=i;
+					}
+				}
+				
+					
+			}
+			
+			if(m==0)
+			{
+				int base=getBase(str[maxind]);
+				System.out.println(base);
+				m=Integer.parseInt(str[maxind],base+1);
+			}
+		//	System.out.println(m);
+			int flag=0;
+			for(int i=0;i<n;i++)
+				
+			{
+				
+				int max=getBase(str[i]);
+//				flag=0;int max=0;
+//				String s3=str[i];
+//				for(int j=0;j<s3.length();j++)
+//				{
+//				   if(s3.charAt(j)>'A' && s3.charAt(j)<'Z')
+//				   {
+//					   max=15;
+//					   break;
+//				   }
+//					if(Integer.parseInt(s3.substring(j,j+1))>max )
+//						max=Integer.parseInt(s3.substring(j,j+1));
+//				}
+				
+				flag=0;
+				
+				for(int j=max+1;j<=35;j++)
+				{
+					if(arr[i]==-1)
+					{
+						int k=Integer.parseInt(str[i],j);
+						if(k==m)	
+						{
+						 flag=1;
+						 //System.out.println(flag);
+						 break;
+						}
+					}
+					else
+					{
+						flag=1;
+					}
+				}
+				
+				if(flag==0)
+					break;
+			}
+			if(flag==0)
+				System.out.println(-1);
+			else
+				System.out.println(m);
+			
+		}
+	}
+
+	private static int getBase(String string) {
+		// TODO Auto-generated method stub
+		int flag=0;int max=0;
+		//String s3=str[i];
+		for(int j=0;j<string.length();j++)
+		{
+		   if(string.charAt(j)>='A' && string.charAt(j)<='Z')
+		   {
+			   int base=10+string.charAt(j)-'A';
+			   if(base>max)
+				   max=base;
+			 
+		   }
+		   else if(Integer.parseInt(string.substring(j,j+1))>max )
+				max=Integer.parseInt(string.substring(j,j+1));
+		   else
+		   {}
+	}
+		
+		return max;
+	}
+	
+	
+
+}

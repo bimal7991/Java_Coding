@@ -1,0 +1,60 @@
+package codechef;
+import java.util.*;
+public class Rotation_vowel {
+	public static void main(String[] args) {
+		Scanner sc=new Scanner(System.in);
+		String s=sc.nextLine();
+	    printRotatedString(s); 
+	}
+	static void printRotatedString(String str) 
+    { 
+        int len = str.length(); 
+        int count=0;
+        for(int i=0;i<len;i++)
+        {
+           if(str.charAt(i)=='a' || str.charAt(i)=='e' || str.charAt(i)=='i' || str.charAt(i)=='o' ||str.charAt(i)=='u')
+        	   count++;
+        }
+       
+        // Generate all rotations one by one and print 
+        StringBuffer sb;  
+          int ans=0;
+        for (int i = 0; i < len; i++) 
+        { 
+            sb = new StringBuffer(); 
+              
+            int j = i;  // Current index in str 
+            int k = 0;  // Current index in temp 
+       
+            // Copying the second part from the point 
+            // of rotation. 
+            for (int k2 = j; k2 < str.length(); k2++) { 
+                sb.insert(k, str.charAt(j)); 
+                k++; 
+                j++; 
+            } 
+       
+            // Copying the first part from the point 
+            // of rotation. 
+            j = 0; 
+            while (j < i) 
+            { 
+                sb.insert(k, str.charAt(j)); 
+                j++; 
+                k++; 
+            } 
+       
+            int m=0;
+           for(int p=0;p<len/2;p++)
+           {
+        	   if(sb.charAt(i)=='a' || sb.charAt(i)=='e' || sb.charAt(i)=='i' || sb.charAt(i)=='o' ||sb.charAt(i)=='u')
+            	 m++; 
+           }
+           if(m>count/2)
+        	   ans++;
+        	   
+        } 
+        System.out.println(ans);
+    } 
+
+}

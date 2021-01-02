@@ -1,0 +1,20 @@
+package codechef;
+import java.util.*;
+public class TILE {
+	
+	int arr[]=new int[3];
+	long I[][]=new long[3][3];
+	long T[][]=new long[3][3];
+	
+	public static void main(String[] args) {
+		Scanner sc=new Scanner(System.in );
+		int t=sc.nextInt();
+		while(t-->0)
+		{
+			long n=sc.nextLong();
+			System.out.println(getFib(n));
+			
+		}
+	}
+
+}

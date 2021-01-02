@@ -1,0 +1,198 @@
+package codechef;
+
+import java.util.ArrayList;
+import java.util.Scanner;
+import java.util.Stack;
+
+public class Chegg {
+   public static void main(String[] args) {
+	   
+        int r1,c1,r2,c2;
+        
+        Scanner sc=new Scanner(System.in);
+        
+        System.out.println("Enter the row and column of first matrix");
+        r1=sc.nextInt();
+        c1=sc.nextInt();
+        
+        System.out.println("Enter the row and column of second matrix");
+        r2=sc.nextInt();
+        c2=sc.nextInt();
+        
+        int mat1[][]=new int[r1][c1], mat2[] []=new int[r2][c2];
+        
+        System.out.println("Enter the elements of first matrix");
+        
+        for(int i=0;i<r1;i++)
+        	for(int j=0;j<c1;j++)
+        		mat1[i][j]=sc.nextInt();
+        
+        
+        System.out.println("Enter the elements of second matrix");
+        
+        for(int i=0;i<r2;i++)
+        	for(int j=0;j<c2;j++)
+        		mat2[i][j]=sc.nextInt();
+        
+        
+                 
+	   
+  }
+}
+
+//#include<stdio.h>
+//
+//
+//int main(){
+//    
+//       int matrix1[256][256],matrix2[256][256],product[256][256];
+//       int *p1,*p2,*prod,m,n,p,q,d,e,f;
+//       p1=matrix1;
+//       p2=matrix2;
+//       prod=product;
+//      
+//       printf("\nEnter the size (no of rows and columns) for 1st matrix :\n");
+//       scanf("%d%d",&m,&n);
+//       printf("\nEnter the size (no of rows and columns) for 2nd matrix :\n");
+//       scanf("%d%d",&p,&q);
+//       if(n==p)
+//      {
+//       printf("\n Enter the 1st matrix elements : \n");
+//       for(d=1;d<=m;++d)
+//       for(e=1;e<=n;++e)
+//       scanf("%d",p1+d*20+e);
+//       printf("\n Enter the 2nd matrix elements : \n\n");
+//       for(d=1;d<=p;++d)
+//       for(e=1;e<=q;++e)
+//       scanf("%d",p2+d*20+e);
+//       printf("\nThe given 1st Matrix is . . . \n\n");
+//       for(d=1;d<=m;++d){
+//       for(e=1;e<=n;++e)
+//       printf("\t %d", *(p2+d*20+e));
+//       printf("\n\n");
+//       }
+//       printf("\nThe given 2nd Matrix is . . . \n\n");
+//       for(d=1;d<=p;++d){
+//       for(e=1;e<=q;++e)
+//       printf("\t %d", *(p1+d*20+e));
+//       printf("\n\n");
+//       }
+//       for(d=1;d<=m;++d)
+//       for(e=1;e<=q;++e)
+//       *(prod+d*20+e) = 0;
+//       for(d=1;d<=m;++d)
+//       for(e=1;e<=q;++e)
+//       for(f=1;f<=n;++f)
+//       *(prod+d*20+e) += *(p1+d*20+f) * *(p2+f*20+e);
+//       printf("\n\nThe Product of two matrices using Pointer is . . . \n\n");
+//       for(d=1;d<=m;++d){
+//       for(e=1;e<=q;++e)
+//       printf("\t %d", *(prod+d*20+e));
+//       printf("\n\n");
+//       }
+//       }
+//       else
+//       printf("\nThe Matrix sizes are not compatible for multiplication !!");
+//       getch();
+//       return 0;
+//       }
+
+//#include<stdio.h>
+//
+//int main()
+//{
+//    int a[256][256],b[256][256],result[256][256],m,n,p,q,i,j,k;
+//    
+//    //get the nuumber of rows/columns of first matrix
+//    printf("Enter rows and columns of first matrix:");
+//    scanf("%d%d",&m,&n);
+//    
+//    //get the nuumber of rows/columns of second matrix
+//    printf("Enter rows and columns of second matrix:");
+//    scanf("%d%d",&p,&q);
+//    
+//    //check if rows of A qual to columns of B
+//    if(n==p)
+//    {
+//        printf("\nEnter first matrix:\n");
+//        
+//       
+//        for(i=0;i<m;++i)
+//        {
+//            for(j=0;j<n;++j)
+//            {
+//                scanf("%d",&a[i][j]);
+//            }
+//        }
+//        
+//        printf("\nEnter second matrix:\n");
+//        
+//       
+//        for(i=0;i<p;++i)
+//        {
+//            for(j=0;j<q;++j)
+//            {
+//                scanf("%d",&b[i][j]);
+//                
+//            }
+//        }
+//        
+//        printf("\nThe multiplied matrix result is:\n");
+//        
+//        //multiply the matrix and save it in result[][] array & print it
+//        for(i=0;i<m;++i)
+//        {
+//            for(j=0;j<q;++j)
+//            {
+//                 result[i][j]=0;
+//                for(k=0;k<n;++k)
+//                    result[i][j]=result[i][j]+(a[i][k]*b[k][j]);
+//                        printf("%d ",result[i][j]);
+//                       
+//            }
+//            
+//            printf("\n");
+//        }
+//    }
+//    else
+//    {
+//        printf("\n Matrix multiplication can't be done for these rows/columns");
+//    }
+// 
+//    return 0;
+//}
+
+//import numpy as np 
+//
+//R1 = int(input("Enter the number of rows of the first matrix:")) 
+//C1 = int(input("Enter the number of columns of the first matrix:")) 
+//
+//
+//print("Enter the first matrix entries in a single line (separated by space): ") 
+//
+//# User input of entries in a 
+//# single line separated by space 
+//entries1 = list(map(int, input().split())) 
+//
+//# For printing the matrix 
+//matrix1 = np.array(entries1).reshape(R1, C1) 
+//R2 = int(input("Enter the number of rows of the first matrix:")) 
+//C2 = int(input("Enter the number of columns of the first matrix:")) 
+//
+//
+//print("Enter the entries of second matrix in a single line (separated by space): ") 
+//
+//# User input of entries in a 
+//# single line separated by space 
+//entries2 = list(map(int, input().split())) 
+//
+//# For printing the matrix 
+//matrix2 = np.array(entries2).reshape(R2, C2) 
+//
+//
+//res=np.dot(matrix1,matrix2) 
+//
+//
+//print(res) 
+
+

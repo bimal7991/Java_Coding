@@ -1,0 +1,88 @@
+package codechef;
+import java.math.BigInteger;
+import java.util.*;
+class SQRDSUB2 {
+	public static void main(String[] args) {
+		Scanner sc=new Scanner(System.in);
+		int T=sc.nextInt();
+		while(T-->0)
+		{
+			int N=sc.nextInt();
+			long arr[]=new long[N];
+			for(int i=0;i<N;i++)
+				arr[i]=sc.nextLong();
+
+			for(int i=0;i<N;i++)
+			{
+				if(arr[i]<0)
+					arr[i]=-arr[i];
+
+			}
+			ArrayList<Integer> hash=new ArrayList<Integer>();
+			for(int i=0;i<N;i++)
+			{
+				if(arr[i]%2==0 || arr[i]==0 || arr[i]%4==0)
+					hash.add(i);
+			}
+			//System.out.println(hash);
+			BigInteger A;
+			A=BigInteger.valueOf(N);
+			A=A.multiply(BigInteger.valueOf(N+1));
+			A=A.divide(BigInteger.valueOf(2));
+			//System.out.println(A);
+			int k=0;long count=0;
+			int len=hash.size();
+			for(int i=0;i<N;i++)
+			{
+				if(k<len)	
+				{
+					if(hash.get(k)>i)
+					{
+						if(arr[hash.get(k)]%2==0 && arr[hash.get(k)]%4!=0 && arr[hash.get(k)]!=0)
+						{
+
+							if((k+1)<len && arr[hash.get(k+1)]%2==0)
+							{
+								count=count+(hash.get(k+1)-hash.get(k));
+							}
+							else if((k+1)==len)
+							{
+								count=count+(N-hash.get(k));
+							}
+						}
+					}
+
+					else 
+					{
+						if(arr[hash.get(k)]%2==0 && arr[hash.get(k)]%4!=0 && arr[hash.get(k)]!=0)
+						{
+
+							if((k+1)<len && arr[hash.get(k+1)]%2==0)
+							{
+								count=count+(hash.get(k+1)-hash.get(k));
+							}
+							else if((k+1)==len)
+							{
+								count=count+(N-hash.get(k));
+							}
+						}
+						k++;
+
+					}
+
+
+				}
+				else
+					break;
+				//System.out.println(count);
+			}
+			//System.out.println(count);
+			BigInteger res=A.subtract(BigInteger.valueOf(count));
+			System.out.println(res);
+
+
+
+		}
+	}
+}
+

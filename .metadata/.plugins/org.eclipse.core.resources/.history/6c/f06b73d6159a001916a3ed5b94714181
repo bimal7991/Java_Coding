@@ -1,0 +1,31 @@
+package codechef;
+
+import java.util.Scanner;
+
+public class Price {
+	public static void main(String[] args) {
+		int t,n,i,j,sum;
+		Scanner sc=new Scanner(System.in);
+		t=sc.nextInt();
+		for(i=0;i<t;i++)
+		{
+			n=sc.nextInt();
+			j=1;
+			 sum=1;
+			while(sum<=n)
+			{
+				sum=sum+j;
+				j++;
+				
+			}
+			System.out.println(j);
+			
+		}
+		
+	}
+	
+
+	
+	
+
+}

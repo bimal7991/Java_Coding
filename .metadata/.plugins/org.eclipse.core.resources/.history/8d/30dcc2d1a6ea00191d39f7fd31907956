@@ -1,0 +1,47 @@
+package codechef;
+import java.util.*; 
+public class NARM {
+    public static void main(String[] args) {
+		Scanner sc=new Scanner(System.in);
+		int T=sc.nextInt();
+		for(int t=0;t<T;t++)
+		{
+			int n=sc.nextInt();
+			long k=sc.nextLong();
+			int arr[]=new int[n];
+			for(int i=0;i<n;i++)
+			{
+				arr[i]=sc.nextInt();
+				
+			}
+			k=k%(3*n);
+
+			
+			for(int i=0;i<k;i++)
+			{
+				int fi=i%n;
+				int ls=n-i%n-1;
+				arr[fi]=arr[fi]^arr[ls];
+				
+			}
+			if(k!=0)
+			for(int i=0;i<n;i++)
+				System.out.print(arr[i]+" ");
+			else
+			{
+				int mid=n/2;
+				for(int i=0;i<n;i++)
+				{
+					if(i!=mid)
+					System.out.print(arr[i]+" ");
+					else
+						System.out.print(0+" ");
+				}
+			}
+			
+			System.out.println();
+			
+		}
+		
+	}
+}

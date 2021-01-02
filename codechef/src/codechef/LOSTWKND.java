@@ -1,0 +1,37 @@
+package codechef;
+import java.util.*;
+public class LOSTWKND {
+    public static void main(String[] args) {
+		Scanner sc=new Scanner(System.in);
+		int T=sc.nextInt();
+		while(T-->0)
+		{
+			int arr[]=new int[5];
+			for(int i=0;i<5;i++)
+				arr[i]=sc.nextInt();
+			int d=sc.nextInt();
+			
+			long sum=0;
+			for(int i=0;i<5;i++)
+			{
+				sum=sum+arr[i]*d;
+			}
+			long actsum=5*24;
+			 //System.out.println(sum);
+			
+			if(sum<=actsum)
+				System.out.println("N0");
+			
+			else
+				System.out.println("Yes");
+			
+				
+		}
+				
+				
+				
+	}
+    
+    
+    
+}

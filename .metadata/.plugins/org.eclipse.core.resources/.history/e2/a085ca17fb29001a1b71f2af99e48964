@@ -1,0 +1,80 @@
+package codechef;
+import java.util.*;
+public class Algorithm {
+	public static void main(String[] args) {
+		Scanner sc=new Scanner (System.in);
+		int t=sc.nextInt();
+		for(int T=0;T<t;T++)
+		{
+			String s=sc.next();
+			int count=0;
+			int nlen=0;
+			if(s.length()==1)
+				nlen=2;
+			for(int i=0;i<s.length()-1;i++)
+			{
+				if(s.charAt(i)==s.charAt(i+1))
+				{
+					count++;
+					if(i==s.length()-2)
+					{
+						if(count+1>=10)
+							   nlen=nlen+2+1;
+							  else if (count+1>=100)
+								  nlen=nlen+3+1;
+							  else
+							     nlen=nlen+1+1;
+					}
+					
+				}
+				else
+				{
+					if(i==s.length()-2)
+					{
+						
+							     nlen=nlen+1+1;
+					}
+					
+					
+					
+				  if(count+1>=10)
+				   nlen=nlen+2+1;
+				  else if (count+1>=100)
+					  nlen=nlen+3+1;
+				  else
+				     nlen=nlen+1+1;
+				  
+				  
+				  
+				  count=0;
+				}
+			}
+			System.out.println(nlen+" "+s.length());
+			if(nlen<s.length())
+				System.out.println("YES");
+			else
+				System.out.println("NO");
+		}
+	}
+	public static void printRLE(String str) 
+    { 
+        int n = str.length(); 
+        StringBuilder s=null;
+        for (int i = 0; i < n; i++) { 
+  
+            // Count occurrences of current character 
+            int count = 1; 
+            while (i < n - 1 &&  
+                   str.charAt(i) == str.charAt(i + 1)) { 
+                count++; 
+                i++; 
+            } 
+  
+            // Print character and its count 
+           s.append(str.charAt(i)); 
+           s.append(str.charAt(count));
+             
+        } 
+    } 
+
+}

@@ -1,0 +1,189 @@
+package codechef;
+import java.util.*;
+
+
+//JAVA program to print all 
+//paths from a source to 
+//destination. 
+
+
+//A directed graph using 
+//adjacency list representation 
+public class Graph { 
+	static int max=999999;
+
+	// No. of vertices in graph 
+	private int v; 
+	
+	// adjacency list 
+	private ArrayList<Integer>[] adjList; 
+	
+	//Constructor 
+	public Graph(int vertices){ 
+		
+		//initialise vertex count 
+		this.v = vertices; 
+		
+		// initialise adjacency list 
+		initAdjList(); 
+	} 
+	
+	// utility method to initialise 
+	// adjacency list 
+	@SuppressWarnings("unchecked") 
+	private void initAdjList() 
+	{ 
+		adjList = new ArrayList[v]; 
+		
+		for(int i = 0; i < v; i++) 
+		{ 
+			adjList[i] = new ArrayList<>(); 
+		} 
+	} 
+	
+	// add edge from u to v 
+	public void addEdge(int u, int v) 
+	{ 
+		// Add v to u's list. 
+		adjList[u].add(v); 
+	} 
+	
+	// Prints all paths from 
+	// 's' to 'd' 
+	public void printAllPaths(int s, int d,int arr[]) 
+	{ 
+		boolean[] isVisited = new boolean[v]; 
+		ArrayList<Integer> pathList = new ArrayList<>(); 
+		
+		//add source to path[] 
+		pathList.add(s); 
+		
+		//Call recursive utility 
+		printAllPathsUtil(s, d, isVisited, pathList,arr); 
+	} 
+
+	// A recursive function to print 
+	// all paths from 'u' to 'd'. 
+	// isVisited[] keeps track of 
+	// vertices in current path. 
+	// localPathList<> stores actual 
+	// vertices in the current path 
+	private void printAllPathsUtil(Integer u, Integer d, 
+									boolean[] isVisited, 
+							List<Integer> localPathList,int arr[]) { 
+		
+		// Mark the current node 
+		isVisited[u] = true; 
+		
+		if (u.equals(d)) 
+		{ 
+			  //System.out.println(localPathList); 
+			  int a[]=new int[localPathList.size()];
+			  for(int i=0;i<localPathList.size()-1;i++)
+			  {
+				  int diff=Math.abs(arr[localPathList.get(i)]-arr[localPathList.get(i+1)]);
+				  a[i]=diff;
+				   
+			  }
+			  Arrays.sort(a);
+			  if(a[localPathList.size()-1]<max)
+				  max=a[localPathList.size()-1];
+			// if match found then no need to traverse more till depth 
+			isVisited[u]= false; 
+			return ; 
+		} 
+		
+		// Recur for all the vertices 
+		// adjacent to current vertex 
+		for (Integer i : adjList[u]) 
+		{ 
+			if (!isVisited[i]) 
+			{ 
+				// store current node 
+				// in path[] 
+				localPathList.add(i); 
+				printAllPathsUtil(i, d, isVisited, localPathList,arr); 
+				
+				// remove current node 
+				// in path[] 
+				localPathList.remove(i); 
+			} 
+		} 
+		
+		// Mark the current node 
+		isVisited[u] = false; 
+	} 
+
+	// Driver program 
+	public static void main(String[] args) 
+	{ 
+		// Create a sample graph 
+		Scanner sc=new Scanner(System.in);
+		int n=sc.nextInt(),m=sc.nextInt();
+		int arr1[][]=new int[n][m];
+		int arr[]=new int[n*m+1];
+		int ind=1;
+		for(int i=0;i<n;i++)
+		{
+			for(int j=0;j<m;j++)
+			{
+				arr1[i][j]=sc.nextInt();
+				arr[ind++]=arr1[i][j];
+			}
+		}
+		/*
+		 * for(int i=1;i<=n*m;i++) System.out.print(arr[i]+" ");
+		 */
+		
+		
+		
+		int node=1;
+		Graph g = new Graph(n*m+1); 
+		for(int i=1;i<=n;i++)
+		{
+			for(int j=1;j<m;j++)
+			{
+				g.addEdge(node,node+1); 
+				g.addEdge(node+1, node);
+				node++;
+			}
+			node++;
+		     
+		}
+		node=1;
+		for(int i=1;i<n;i++)
+		{
+			for(int j=1;j<=4;j++)
+			{
+				g.addEdge(node, node+m);
+				g.addEdge(node+m, node);
+				node++;
+			}
+		
+		     
+		}
+		
+		
+		
+		
+	
+		// arbitrary source 
+		int s = 1; 
+	
+		// arbitrary destination 
+		int d = n*m; 
+	
+		//System.out.println("Following are all different paths from "+s+" to "+d); 
+		g.printAllPaths(s, d,arr); 
+		System.out.println(max);
+
+	} 
+} 
+
+//This code is contributed by Himanshu Shekhar. 
+
+	
+	
+	
+
+

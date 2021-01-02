@@ -1,0 +1,15 @@
+package codechef;
+import java.util.*;
+public class TTUPLE {
+	public static void main(String[] args) {
+		Scanner sc=new Scanner(System.in);
+		int t=sc.nextInt();
+		while(t-->0)
+		{
+            int x1=sc.nextInt(),y1=sc.nextInt(),z1=sc.nextInt();
+            int x2=sc.nextInt(),y2=sc.nextInt(),z2=sc.nextInt();
+            int dff1=x2-x1,diff2=y2-y1,diff3=z2-z1;
+            
+		}
+	}
+}

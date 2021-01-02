@@ -1,0 +1,51 @@
+package codechef;
+import java.util.*;
+public class STRANGE {
+	public static void main(String[] args) {
+		Scanner sc=new Scanner(System.in);
+		int T=sc.nextInt();
+		while(T-->0)
+		{
+		  long X=sc.nextLong();
+		  long K=sc.nextLong();
+		  if(K==1)
+		  {   if(X>=2)
+			  System.out.println(1);
+		     else
+		     {
+		    	 System.out.println(0);
+		     }
+		  }
+		  else if(K==2)
+		  {
+			  if(X>=4 && (isPrime(X)))
+				  System.out.println(1);
+			  else
+				  System.out.println(0);
+		  }
+		  else
+		  {
+			  
+		  }
+		  
+		  
+		}
+	}
+	 static boolean isPrime(long n) 
+	   { 
+	       // Corner cases 
+	       if (n <= 1) return false; 
+	       if (n <= 3) return true; 
+	     
+	       // This is checked so that we can skip  
+	       // middle five numbers in below loop 
+	       if (n % 2 == 0 || n % 3 == 0) return false; 
+	     
+	       for (int i = 5; i * i <= n; i = i + 6) 
+	           if (n % i == 0 || n % (i + 2) == 0) 
+	           return false; 
+	     
+	       return true; 
+	   } 
+
+}

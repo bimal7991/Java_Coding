@@ -1,0 +1,36 @@
+package codechef;
+
+//Java program to answer queries for 
+//count of primes in given range. 
+import java.util.*; 
+
+	
+	// Java program to count squares between a and b 
+
+		
+	 
+
+	// Driver Code 
+	public class SIFTING { 
+		public static void main(String[] args) 
+		{ 
+			Scanner sc=new Scanner(System.in);
+			int a = 1, b = sc.nextInt(); 
+			 
+			System.out.println(countSquares(a, b)); 
+		} 
+		static int countSquares(int a, int b) 
+		{ 
+			int cnt = 0; // Initialize result 
+
+			// Traverse through all numbers 
+			for (int i = a; i <= b; i++) 
+
+				// Check if current number 'i' is perfect 
+				// square 
+				for (int j = 1; j * j <= i; j++) 
+					if (j * j == i) 
+						cnt++; 
+			return cnt; 
+		} 
+	} 

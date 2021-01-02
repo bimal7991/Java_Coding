@@ -1,0 +1,116 @@
+package codechef;
+import java.util.*;
+public class TRPLSRT {
+   public static void main(String[] args) {
+	Scanner sc=new Scanner(System.in);
+	int T=sc.nextInt();
+	while(T-->0)
+	{
+		int N=sc.nextInt(),K=sc.nextInt();
+		int arr[]=new int[N+1];
+		int hash[]=new int[N+1];
+		for(int i=1;i<=N;i++)
+		{
+			arr[i]=sc.nextInt();
+			hash[arr[i]]=i;
+		}
+		int operatedarray[]=arr.clone();
+		int index[]=new int[N+1];
+		int count=0;
+		ArrayList<Integer> xindex=new ArrayList<Integer>();
+		ArrayList<Integer> yindex=new ArrayList<Integer>();
+		ArrayList<Integer> zindex=new ArrayList<Integer>();
+		int flag=0;
+		for(int i=1;i<=N;i++)
+		{
+			if(i!=operatedarray[i])
+			{
+					
+				int z= hash[i] ;//findinex(i,operatedarray);
+				int y=0;
+				for(int j=i+1;j<=N;j++)
+				{
+					if(j!=operatedarray[j] && j!=z)
+					
+					{
+						//System.out.println(j+""+ operatedarray[j]);
+					  y=j;
+					  break;
+					}
+					
+				}
+				if(y==0)
+				{
+					
+					break;
+				}
+				//int y=findinex(z, operatedarray);
+				int x=i;
+				
+				hash[operatedarray[z]]=x;
+				hash[operatedarray[y]]=z;
+				hash[operatedarray[x]]=y;
+				
+				int temp=operatedarray[x];
+			
+				operatedarray[x]=operatedarray[z];
+				
+			    operatedarray[z]=operatedarray[y];
+			    
+			    operatedarray[y]=temp;
+			    
+			    count++;
+			    xindex.add(x);
+			    yindex.add(y);
+			    zindex.add(z);
+			    
+					/*
+					 * for(int j=1;j<=N;j++) System.out.print(operatedarray[j]+" ");
+					 * System.out.println();
+					 */
+				 
+				
+			}
+		}
+		for(int i=1;i<=N;i++)
+		{
+			//System.out.print(operatedarray[i]+" ");
+			if(i!=operatedarray[i])
+			{
+				flag=1;
+				break;
+			}
+		}
+		if(flag==1 || count>K)
+			System.out.println(-1);
+		else
+		{
+			System.out.println(count);
+			for(int i=0;i<count;i++)
+			{
+				System.out.println(xindex.get(i)+" "+yindex.get(i)+" "+zindex.get(i));
+			}
+		}
+		
+		
+		
+		
+	}
+	
+}
+
+private static int findinex(int k, int[] operatedarray) {
+	
+	int index=0;
+	for(int i=1;i<operatedarray.length;i++)
+	{
+		if(k==operatedarray[i])
+		{
+			index=i;
+			break;
+		}
+	}
+	// TODO Auto-generated method stub
+	return index;
+}
+}

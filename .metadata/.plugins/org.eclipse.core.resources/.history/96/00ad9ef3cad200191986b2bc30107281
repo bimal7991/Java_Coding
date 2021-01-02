@@ -1,0 +1,61 @@
+package codechef;
+import java.util.*;
+import java.math.*;
+public class Fib_seq {
+	public static void main(String[] args) {
+		Scanner sc=new Scanner(System.in);
+		int t=sc.nextInt();
+		for(int T=0;T<t;T++)
+		{
+			BigInteger b1, b2; 
+			String s2=sc.next();
+			b1=new BigInteger(s2);
+			b2=new BigInteger("60");
+			BigInteger m=b1.mod(b2);
+			Integer n=m.intValue();
+			
+			Integer value=decToBinary(n);
+			
+			
+		   // long a=0,b=1,c=0;
+		   
+			//System.out.println(fib[(int) (Math.pow(2, i-1)-1)]);
+			//System.out.println(fib(limit-1));
+			System.out.println(fib(n)%10);
+			
+		}
+		
+}
+	static int decToBinary(int n) 
+    { 
+        // array to store binary number 
+        int[] binaryNum = new int[32]; 
+  
+        // counter for binary array 
+        int i = 0; 
+        while (n > 0) { 
+            // storing remainder in binary array 
+            binaryNum[i] = n % 2; 
+            n = n / 2; 
+            i++; 
+        } 
+         binaryNum[i-1]=1;
+        // printing binary array in reverse order 
+        for (int j = i - 2; j >= 0; j--) 
+        {
+        	binaryNum[j]=0;
+        }
+        String s1=Arrays.toString(binaryNum);
+        int a= Integer.parseInt(s1, 2);
+        System.out.println(a);
+        return a;
+    } 
+	
+	
+	
+	static long fib(int limit) { 
+		double phi = (1 + Math.sqrt(5)) / 2; 
+		return (long) Math.round(Math.pow(phi, limit)  
+		                        / Math.sqrt(5)); 
+		} 
+}

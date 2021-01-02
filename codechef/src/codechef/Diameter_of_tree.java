@@ -1,0 +1,57 @@
+package codechef;
+import java.beans.Visibility;
+import java.util.*;
+public class Diameter_of_tree {
+  public static void main(String[] args) {
+	Scanner sc=new Scanner(System.in);
+	int T=sc.nextInt();
+	while(T-->0)
+	{
+		int n=sc.nextInt();
+		for(int i=1;i<=n;i++)
+		{
+			arr[i]=new ArrayList<Integer>();
+		}
+		for(int i=1;i<n;i++)
+		{
+			int u=sc.nextInt(),v=sc.nextInt();
+			arr[u].add(v);
+			arr[v].add(u);
+		}
+		
+		maxd=-1;
+		dfs(1,0);
+		Arrays.fill(vis, 0);
+		maxd=0;
+		int u=maxNode;
+		dfs(maxNode,0);
+		
+		System.out.println(maxd+" "+u+"->"+maxNode);
+		
+		
+		
+	}
+}
+  private static void dfs(int i, int j) {
+	// TODO Auto-generated method stub
+	  vis[i]=1;
+	  if(j>maxd)
+	  {
+		  maxd=j;
+		  maxNode=i;
+	  }
+	  
+	  for(int child:arr[i])
+	  {
+		  if(vis[child]==0)
+		  {
+			  dfs(child,j+1);
+		  }
+	  }
+	
+}
+static ArrayList<Integer> arr[]=new ArrayList[10001];
+  static int vis[]=new int[10001];
+  static int maxd;
+  static int maxNode;
+}

@@ -1,0 +1,66 @@
+package codechef;
+import java.util.*;
+public class ANSLEAK {
+   public static void main(String[] args) {
+	   Scanner sc=new Scanner(System.in);
+	   int T=sc.nextInt();
+	   while(T-->0)
+	   {
+		   int n=sc.nextInt(),m=sc.nextInt(),k=sc.nextInt();
+		   int arr[][]=new int[n][k];
+		   int ans[]=new int[n];
+		   int inc=1;
+//		   for(int i=0;i<n;i++)
+//		   {
+//			   ans[i]=inc;
+//			   inc++;
+//			   if(inc>m)
+//			   {
+//				   inc=1;
+//			   }
+//		   }
+//		  for(int i=0;i<n;i++)
+//			  System.out.print(ans[i]+" ");
+		   
+		   for(int i=0;i<n;i++)
+		   {
+			   for(int j=0;j<k;j++)
+			   {
+				   arr[i][j]=sc.nextInt();
+			   }
+		   }
+		   
+		   for(int i=0;i<n;i++)
+		   {
+			   int hash[]=new int[m+1];
+			   for(int j=0;j<k;j++)
+			   {
+				  hash[arr[i][j]]++;
+			   }
+//			   for(int j=1;j<=m;j++)
+//				   System.out.print(hash[j]+" ");
+//			   System.out.println();
+			   
+			   int max=1,ind=1;
+			   for(int j=1;j<=m;j++)
+			   {
+				   if(hash[j]>max)
+				   {
+					   max=hash[j];
+					   ind=j;
+				   }
+					   
+			   }
+			  // if(max>1)
+			    ans[i]=ind;
+			   
+		   }
+		   for(int i=0;i<n;i++)
+		   {
+			   System.out.print(ans[i]+" ");
+		   }
+		   System.out.println();
+	   }
+	
+ }
+}

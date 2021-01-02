@@ -1,0 +1,83 @@
+package codechef;
+import java.util.*;
+public class MATRIX_EXPENONTIATION {
+	
+	  static int arr[]=new int[3];
+	  static int I[][]=new int[3][3];
+	  static int T[][]=new int[3][3];
+	
+	public static void main(String[] args) {
+		Scanner sc=new Scanner(System.in);
+		int T=sc.nextInt();
+		while(T-->0)
+		{
+			int f1=sc.nextInt(),f2=sc.nextInt(),n=sc.nextInt();
+			n++;
+			arr[1]=f1;arr[2]=f2;
+			
+			System.out.println(getfib(n));
+			
+		}
+		
+		
+		
+	}
+
+	private static int getfib(int n) {
+		
+		if(n<=2)
+			return arr[n];
+		// TODO Auto-generated method stub
+		    I[1][1]=1;
+		    I[2][2]=1;
+		    I[1][2]=0;
+		    I[2][1]=0;
+		    T[1][1]=0;
+		    T[1][2]=1;
+		    T[2][1]=1;
+		    T[2][2]=1;
+		    		
+		   n=n-1; 
+		   while(n!=0)
+		   {
+			   if(n%2==1)
+			   {
+				   //I= I*T;
+				   mul(I,T,2);
+				   n--;
+				   
+			   }
+			   else
+			   {
+				   //T=T*T;
+				   mul(T,T,2);
+				   n=n/2;
+			   }
+		   }
+		   int Fn=arr[1]*I[1][1]+arr[2]*I[2][1];
+		
+		return Fn;
+	}
+
+	private static void mul(int[][] i2, int[][] t2, int dim) {
+		// TODO Auto-generated method stub
+		
+		int res[][]=new int [dim+1][dim+1];
+		  for(int i=1;i<=dim;i++)
+		  {
+			  for(int j=1;j<=dim;j++)
+			  {
+				   res[i][j]=0; 
+				  for(int k=1;k<=dim;k++)
+					  res[i][j]+= i2[i][k]*t2[k][j];  
+			  }
+		  }
+		  for(int i=1;i<=dim;i++)
+		  {
+			  for(int j=1;j<=dim;j++)
+			     i2[i][j]=res[i][j];
+		  }
+		
+		
+	}
+}

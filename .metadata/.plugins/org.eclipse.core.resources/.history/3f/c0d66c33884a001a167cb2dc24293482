@@ -1,0 +1,89 @@
+package codechef;
+import java.util.*;
+public class THEATRE {
+ public static void main(String[] args) {
+	Scanner sc=new Scanner(System.in);
+	int T=sc.nextInt();
+	while(T-->0)
+	{
+	int N=sc.nextInt();
+	int Arr[]=new int[13];
+	int Brr[]=new int[13];
+	int Crr[]=new int[13];
+	int Drr[]=new int[14];
+	for(int i=0;i<N;i++)
+	{
+		String s=sc.next();
+        String R=sc.next();
+        sc.nextLine();
+       int r=Integer.parseInt(R);
+		
+		if(s.equals("A"))
+		{
+			Arr[r]++;
+		}
+		else if(s.equals("B"))
+		{
+			Brr[r]++;
+		}
+		else if(s.equals("C"))
+		{
+			Crr[r]++;
+		}
+		else
+		{
+			Drr[r]++;
+		}
+		
+	}
+	int max=0;
+            int A_3[]=new int[4];
+            int A_6[]=new int[4];
+            int A_9[]=new int[4];
+            int A_12[]=new int[4];
+            for(int i=3;i<=12;i+=3)
+            {
+            	if(i==3)
+            	{
+            	A_3[0]=Arr[i];
+            	A_3[1]=Brr[i];
+            	A_3[2]=Crr[i];
+            	A_3[3]=Drr[i];
+            	}
+            	else if(i==6)
+            	{
+            		A_6[0]=Arr[i];
+                	A_6[1]=Brr[i];
+                	A_6[2]=Crr[i];
+                	A_6[3]=Drr[i];
+            	}
+            	else if(i==9)
+            	{
+            	A_9[0]=Arr[i];
+            	A_9[1]=Brr[i];
+            	A_9[2]=Crr[i];
+            	A_9[3]=Drr[i];
+            	}
+            	else
+            	{
+            		A_12[0]=Arr[i];
+                	A_12[1]=Brr[i];
+                	A_12[2]=Crr[i];
+                	A_12[3]=Drr[i];
+            	}
+            			
+            }
+            
+            
+            
+            
+            
+            	 
+	
+	
+	
+	
+	
+	}
+}
+}

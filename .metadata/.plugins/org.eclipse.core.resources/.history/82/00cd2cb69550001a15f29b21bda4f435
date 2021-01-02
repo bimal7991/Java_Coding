@@ -1,0 +1,123 @@
+package codechef;
+import java.util.*;
+public class LONGCOOK {
+  public static void main(String[] args) {
+	 Scanner sc=new Scanner(System.in);
+	 int arr[]=new int[2030];
+	 int intersect[]=new int[2030];
+	 for(int i=1;i<2030;i++)
+	 {
+		 if(checkYear(i))
+		 {
+			 if(method(i, 2, 1)==7)
+				 arr[i]=1;
+			 else
+				 arr[i]=0;
+			 
+		 }
+		 else
+		 {
+			 if(method(i,2,1)==7 || method(i, 2, 1)==1 )
+				 arr[i]=1;
+			 else
+				 arr[i]=0;
+		 }
+		 
+	 }
+	 int sum=0;
+	 for(int i=1;i<2030;i++)
+	 {
+		 sum=sum+arr[i];
+		 intersect[i]=sum;
+	 }
+	 
+	 
+	 int T=sc.nextInt();
+	 while(T-->0)
+	 {
+		 int m1=sc.nextInt(),y1=sc.nextInt(),m2=sc.nextInt(),y2=sc.nextInt();
+		 int count=0;
+		 int first=0,last=0;
+		 if(y1==y2)
+		 {
+			 if(m1<=2)
+			 {
+			 System.out.println(arr[y1]);
+			 }
+			 else 
+			 {
+				 System.out.println(0);
+			 } 
+			 continue;
+			 
+			 
+		 }
+		//int t=method(2020, 2, 15);
+		//System.out.println("T"+t);
+		 
+		 
+		 if(m1<=2)
+			 first=y1;
+		 else
+			 first=y1+1;
+		 
+		 if(m2>=2)
+			 last=y2;
+		 else
+			 last=y2-1;
+		
+		 System.out.println(last-first);
+		 
+		 
+	 }
+}
+  static int method(int year, int month, int day) 
+  { 
+      // to check the validity of day of month 
+      int[] darr = { 31, 28, 31, 30, 31, 30, 31, 31, 30, 31, 30, 31 }; 
+
+      // check validity of year and month 
+      if (year > 0 && (month > 0 && month <= 12)) { 
+
+          // check for a leap year and month of February 
+
+          if ((year % 4 == 0 || year % 400 == 0) &&  
+              month == 2 && (day > 0 && day <= 29)) { 
+
+              // month starts at zero, so we need to put ( month - 1 ). 
+              Calendar calendar = new GregorianCalendar(year, month - 1, day); 
+              return calendar.get(Calendar.DAY_OF_WEEK); 
+          } 
+          else { 
+
+              // check the range of day of month 
+              if (day > 0 && day <= darr[month - 1]) { 
+
+                  // month starts at zero, so we need to put ( month - 1 ). 
+                  Calendar calendar = new GregorianCalendar(year, month - 1, day); 
+                  return calendar.get(Calendar.DAY_OF_WEEK); 
+              } 
+              else
+                  return 0; 
+          } 
+      } 
+      else
+          return 0; 
+  } 
+  static boolean checkYear(int year) 
+  { 
+     
+      if (year % 400 == 0) 
+          return true; 
+    
+      
+      if (year % 100 == 0) 
+          return false; 
+    
+   
+      if (year % 4 == 0) 
+          return true; 
+      return false; 
+  } 
+  
+}

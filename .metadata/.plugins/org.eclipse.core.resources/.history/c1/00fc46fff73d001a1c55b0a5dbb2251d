@@ -1,0 +1,8 @@
+package spring.demo;
+
+public class Baseball {
+	public String getdaily() {
+		return "spend 30 minutes in baseball coach";
+	}
+
+}

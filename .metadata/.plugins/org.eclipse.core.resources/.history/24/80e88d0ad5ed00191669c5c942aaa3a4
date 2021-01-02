@@ -1,0 +1,64 @@
+package codechef;
+import java.util.*;
+public class MSNG1 {
+	public static void main(String[] args) {
+		Scanner sc=new Scanner(System.in);
+	
+		int T=sc.nextInt();   //Integer.parseInt(br.readLine()); 
+		for(int t=0;t<T;t++)
+		{
+			int n=sc.nextInt();   //Integer.parseInt(br.readLine()); 
+			int arr[]=new int[n];
+			String str[]=new String[n];
+			int value=0,index=-1,fail=0;
+			for(int i=0;i<n;i++)
+			{
+				String s=sc.next();//br.readLine(); 
+				String s2=sc.next();
+				arr[i]=Integer.parseInt(s);
+				str[i]=s2;
+				if(arr[i]==-1)
+				{
+					value=toDEC(arr[i],str[i]);
+					index=i;
+				}
+				
+			}
+			
+			
+	   }
+	}
+   static String  arr1[]=["0","1","2","3","4","5","6","7","8","9","A","B","C","D","E","F","G","H","I","J","K","L","M","N","O","P","Q","R","S","T","U","V","W","X","Y","Z"];
+	static int toDEC(int base, String str) {
+		// TODO Auto-generated method stub
+		 int len = str.length(); 
+		    int power = 1; // Initialize  
+		                   // power of base 
+		    int num = 0; // Initialize result 
+		    int i; 
+		  
+		    // Decimal equivalent is  
+		    // str[len-1]*1 + str[len-1] * 
+		    // base + str[len-1]*(base^2) + ... 
+		    for (i = len - 1; i >= 0; i--) 
+		    { 
+		        // A digit in input number  
+		        // must be less than  
+		        // number's base 
+		        if (val(str.charAt(i)) >= base) 
+		        { 
+		        System.out.println("Invalid Number"); 
+		        return -1; 
+		        } 
+		  
+		        num += val(str.charAt(i)) * power; 
+		        power = power * base; 
+		    } 
+		  
+		    return num; 
+		
+		return 0;
+	}
+}
+
+

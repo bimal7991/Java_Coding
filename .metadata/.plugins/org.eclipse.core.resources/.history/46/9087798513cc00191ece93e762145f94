@@ -1,0 +1,85 @@
+package codechef;
+import java.util.*;
+public class Trip {
+	public static void main(String[] args) {
+		
+		Scanner sc=new Scanner(System.in);
+		int t=sc.nextInt();
+		for(int i=0;i<t;i++)
+		{
+			int n=sc.nextInt(),k=sc.nextInt();
+			int arr[]=new int[n];
+			for(int j=0;j<n;j++)
+			{
+				arr[j]=sc.nextInt();	
+			}
+			int p=1;
+			if(k>=n)
+			{
+				System.out.println("YES");
+				for(int j=0;j<n;j++)
+				{
+					System.out.print(arr[j]+" ");
+				}
+				continue;
+			}
+			else	
+			for(int j=0;j<n-1;j++)
+			{
+				if(j==0)
+				{
+					if(arr[j]==-1)
+					for(p=1;p<=k;p++)
+					{
+						
+						  arr[j]=p;
+						if(arr[j+1]!=p)
+							break;
+					}
+                      
+				}
+				else
+				{
+					if(arr[j]==-1)
+					for(p=1;p<=k;p++)
+					{
+						arr[j]=p;
+						if(arr[j+1]!=p && arr[j-1]!=p)
+							break;
+					}
+					
+				}
+				
+				
+				
+				
+				}
+			if(arr[n-1]==-1)
+				arr[n-1]=k;
+			int flag=0;
+			for(int j=0;j<n-1;j++)
+				if(arr[j]==arr[j+1])
+				{
+					flag=1;
+				}
+			   if(flag==1)
+				   System.out.println("NO");
+			   else
+			   {
+				   System.out.println("YES");
+				   for(int j=0;j<n;j++)
+					{
+						System.out.print(arr[j]+" ");
+					}
+			   }
+				
+			}
+			
+			
+		}
+		
+		
+	}
+	
+
+

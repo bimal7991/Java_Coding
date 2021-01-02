@@ -1,0 +1,58 @@
+package codechef;
+import java.util.*;
+public class JAIN {
+     public static void main(String[] args) {
+		Scanner sc=new Scanner(System.in);
+		int t=sc.nextInt();
+		while(t-->0) {
+			int n=sc.nextInt();
+			int arr[]=new int[32];
+			
+			for(int i=0;i<n;i++) {
+				String s=sc.next();
+				//sc.next();
+				int bit[]=new int[5];
+				for(int j=0;j<s.length();j++)
+				{
+					if(s.charAt(j)=='a')
+						bit[0]=1;
+					else if(s.charAt(j)=='e')
+						bit[1]=1;
+					else if(s.charAt(j)=='i')
+						bit[2]=1;
+					else if(s.charAt(j)=='o')
+						bit[3]=1;
+					else if(s.charAt(j)=='u')
+						bit[4]=1;
+				}
+				int sum=0;
+				for(int j=0;j<5;j++)
+				{
+					int des=1<<j;
+					//System.out.println(des);
+					sum=sum+bit[j]*des;
+					
+				}
+				//System.out.println(sum);
+				arr[sum]++;
+			}
+			int ans=0;
+			for(int i=1;i<32;i++)
+			{
+				for(int j=i+1;j<32;j++) {
+					if((i|j)==31)
+					{
+					  ans=ans+(arr[i]*arr[j]);	
+					} 
+					
+				}
+			}
+			ans=ans+arr[31]*(arr[31]-1)/2;
+			
+			System.out.println(ans);
+				
+			
+			
+		}
+	}
+}

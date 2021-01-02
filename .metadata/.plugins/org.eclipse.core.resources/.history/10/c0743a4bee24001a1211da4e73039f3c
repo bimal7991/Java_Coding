@@ -1,0 +1,67 @@
+import java.io.*;
+import java.util.*;
+import java.text.*;
+import java.math.*;
+import java.util.regex.*;
+
+public class TCS_Xplore {
+    public static void main(String args[] ) throws Exception {
+        /* Enter your code here. Read input from STDIN. Print output to STDOUT */
+       ArrayList<Book> list=new ArrayList<Book>();
+        Scanner sc=new Scanner(System.in);
+        String author,title,check;
+        int id;
+        double price;
+
+        for(int i=0;i<5;i++)
+        {
+               id=sc.nextInt();
+               sc.nextLine();
+               title=sc.nextLine();
+               author=sc.nextLine();
+               price=sc.nextDouble();
+               sc.nextLine();
+              list.add(new Book(id,title,author,price));
+        }
+     check=sc.nextLine();
+        for(Book b:list)
+        {
+           String ss[]=b.title.split(" ");
+           for(String s:ss)
+             {
+                 if(s.equalsIgnoreCase(check))
+                 System.out.println(b.getTag());
+             }
+        }
+    }
+}
+
+class Book
+{
+    //define the class as per details shared in the question
+     int tag;
+     String title;
+     String author;
+     double price;
+    public Book(int tag,String title,String author,double price)
+     {
+         this.tag=tag;
+         this.title=title;
+         this.price=price;
+         this.author=author;
+     }
+    
+    
+    public int  getTag()
+    {
+        return tag;
+    }
+    public double getPrice()
+    {
+        return price;
+    }
+    public String getTitle()
+    {
+        return title;
+    }
+}

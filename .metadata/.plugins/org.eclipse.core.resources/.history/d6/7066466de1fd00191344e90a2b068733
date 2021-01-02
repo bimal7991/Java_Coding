@@ -1,0 +1,28 @@
+package codechef;
+
+
+import java.math.*; 
+
+public class TestBig{ 
+  
+    public static void main(String[] args) 
+    { 
+  
+        // Creating a BigDecimal object 
+        BigDecimal a, squareRoot; 
+  
+        a = new BigDecimal("100000000000000000000"); 
+  
+        // Set precision to 10 
+        MathContext mc = new MathContext(1); 
+            
+  
+        // calculate square root of bigDecimal 
+        // using sqrt() method 
+        squareRoot = a.sqrt(mc); 
+  
+        // print result 
+        System.out.println("Square root value of " + a 
+                           + " is " + squareRoot); 
+    } 
+} 

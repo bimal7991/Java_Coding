@@ -1,0 +1,77 @@
+package codechef;
+import java.util.*;
+import java.util.stream.Collectors;
+//import com.google.common.primitives.Ints;
+public class MSV {
+  public static void main(String[] args) {
+	Scanner sc=new Scanner(System.in);
+	int T=sc.nextInt();
+	for(int t=0;t<T;t++)
+	{
+		int n=sc.nextInt();
+		int arr[]=new int[n];
+		int arr2[]=new int[1000000];
+		
+		for(int i=0;i<n;i++)
+		{
+		 arr[i]=sc.nextInt(); 
+		 arr2[arr[i]]=i;
+		}
+		int arr1[]=new int[1000000];
+		int max=0;
+		for(int j=0;j<n;j++)
+		{
+			for (int i=1; i<=Math.sqrt(arr[j]); i++) 
+	        { 
+	            if (arr[j]%i==0) 
+	            { 
+	                // If divisors are equal, print only one 
+	            	//int m=Arrays.stream(arr).boxed().collect(Collectors.toList()).indexOf(i);
+	            
+	                if (arr[j]/i == i && arr2[i]>j) 
+	                {
+	                  arr1[i]++;
+	                  if(arr1[i]>max)
+	                	  max=arr1[i];
+	                }
+	                else // Otherwise print both 
+	                {
+	                	if(arr2[i]>j)
+	                	{
+	                	arr1[i]++;
+	                	if(arr1[i]>max)
+		                	  max=arr1[i];
+	                	
+	                	}
+	                	if(arr2[arr[j]/i]>j)
+	                	{
+	                	arr1[arr[j]/i]++;
+	                	if(arr1[arr[j]/i]>max)
+		                	  max=arr1[arr[j]/i];
+	                	}
+	                }   //System.out.printf("%d %d ", i, n/i); 
+	            } 
+	        } 
+		
+		}
+		
+//		for(int i=n-1;i>max;i--)
+//		{
+//			int count=0;
+//			for(int j=i-1;j>=0;j--)
+//			{
+//				
+//				if(arr[j]%arr[i]==0 && arr[j]>=arr[i])
+//					count++;
+//			}
+//			if(count>max)
+//				max=count;
+//		   
+//		}
+		//for(int i=0;i<29;i++)
+		//System.out.print(arr1[i]+" ");
+		System.out.println(max);
+	}
+	
+}
+}

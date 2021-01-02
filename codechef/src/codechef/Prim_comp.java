@@ -1,0 +1,69 @@
+package codechef;
+import java.util.*;
+
+public class Prim_comp {
+public static void main(String[] args) {
+	    Scanner sc=new Scanner(System.in);
+        int n=sc.nextInt();
+        int arr[]=new int[n];
+        for(int i=0;i<n;i++)
+        {
+        	arr[i]=sc.nextInt();
+        	
+        }
+        ArrayList<Integer> prime = new ArrayList<Integer>(); 
+        ArrayList<Integer> comp = new ArrayList<Integer>(); 
+        for(int i=0;i<n;i++)
+        {
+        	if(primeNo(arr[i]))
+        	{
+        		
+        		prime.add(arr[i]);
+        		arr[i]=0;
+        		
+        	}
+        	else
+        		comp.add(arr[i]);
+        	
+        }
+        
+        Collections.sort(prime);
+        Collections.sort(comp, Collections.reverseOrder());
+        System.out.println(prime);
+       System.out.println(comp);
+        int result[]=new int[n];
+        int p=0;
+        int c=0;
+        for(int i=0;i<n;i++)
+        {
+        	if(arr[i]==0)
+        	{
+        		result[i]=prime.get(p++);
+        	}
+        	else
+        	{
+        		result[i]=comp.get(c++);
+        	}
+        }
+        for(int i=0;i<n;i++)
+        {
+        	System.out.println(result[i]);
+        }
+        
+}
+
+private static boolean primeNo(int n) {
+	// TODO Auto-generated method stub
+	  if (n == 1) {  
+          return true;  
+      }  
+      for (int i = 2; i <=Math.sqrt(n); i++) {  
+          if (n % i == 0) {  
+              return false;  
+          }  
+      }  
+      return true;  
+	
+	
+}
+}

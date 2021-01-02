@@ -1,0 +1,43 @@
+package codechef;
+import java.util.*;
+	
+public class FUNRUN {
+  public static void main(String[] args) {
+	Scanner sc=new Scanner(System.in);
+	int T=sc.nextInt();
+	while(T-->0)
+	{
+		long A=sc.nextLong();
+		long B=sc.nextLong();
+		int len=Long.toBinaryString(B).length();
+	    long max=0;
+	    int op=0;
+	    for(int i=1;i<len;i++)
+	    {
+	       long b=rightRotate(B, i);
+	       long val=A^b;
+	       if(val>max)
+	       {
+	    	   max=val;
+	    	   op=i;
+	       }
+	       
+	    }
+		
+		System.out.println(op+" "+max);
+	    
+	}
+	
+	
+	
+}
+  static final int INT_BITS = 32;
+  static long rightRotate(long n, int d) { 
+      
+	    /* In n>>d, first d bits are 0.  
+	       To put last 3 bits of at 
+	       first, do bitwise or of n>>d  
+	       with n <<(INT_BITS - d) */
+	    return (n >> d) | (n << (INT_BITS - d)); 
+	} 
+}

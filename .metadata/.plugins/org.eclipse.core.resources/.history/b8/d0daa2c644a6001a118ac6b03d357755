@@ -1,0 +1,91 @@
+package codechef;
+import java.util.*;
+import java.lang.*;
+import java.io.*;
+
+ class Edge
+{
+	int u,v,w;
+	public Edge(int u,int v,int w)
+	{
+		this.u=u;
+		this.v=v;
+		this.w=w;
+	}
+	
+
+}
+
+ public class KRUSHKAL_ALGO {
+	
+   public static void main(String[] args) {
+	
+
+  Scanner sc=new Scanner(System.in);
+  int n=sc.nextInt(),m=sc.nextInt();
+  ArrayList<Graph> arr=new ArrayList<Graph>();
+  for(int i=1;i<=m;i++)
+  {
+	  int u=sc.nextInt();
+	  int v=sc.nextInt();
+	  int w=sc.nextInt();
+	  arr.add(new Graph(u,v,w));
+  }
+  Collections.sort(arr,new SortByW());
+  
+  int sum=0;
+  for(int i=0;i<m;i++)
+  {
+	  int a=find(arr.get(i).u);
+	  int b=find(arr.get(i).v);
+	  if(a!=b)
+	  {
+		  union(a,b);
+		  sum=sum+arr.get(i).w;
+	  }
+  }
+  
+  
+ }
+   
+static int parent[]=new int[100001];   
+static int rank[]=new int[100001];
+
+private static void union(int a, int b) {
+	// TODO Auto-generated method stub
+	  if(rank[a]>rank[b])
+	  {
+		  rank[a]+=rank[b];
+		  parent[b]=a;
+	  }
+	  else
+	  {
+		  rank[b]+=rank[a];
+		  parent[a]=b;
+	  }
+	  
+	
+}
+
+private static int find(int a) {
+	// TODO Auto-generated method stub
+	if(parent[a]<0)
+		return a;
+	else
+		return parent[a]=find(parent[a]);
+}
+   
+}
+
+class SortByW implements Comparator<Graph>
+{
+	public int compare(Graph a,Graph b)
+	{
+		return a.w-b.w;
+	}
+}
+
+
+
+
+

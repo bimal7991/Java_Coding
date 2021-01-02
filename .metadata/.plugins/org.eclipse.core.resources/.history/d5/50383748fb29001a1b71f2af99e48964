@@ -1,0 +1,37 @@
+package codechef;
+import java.util.*;
+public class Algorithm {
+	public static void main(String[] args) {
+		Scanner sc=new Scanner (System.in);
+		int t=sc.nextInt();
+		for(int T=0;T<t;T++)
+		{
+			String s=sc.next();
+			int len=calc(s);
+			
+		}
+	}
+	public static int calc(String str) 
+    { 
+        int n = str.length(); 
+        StringBuilder s=null;
+        for (int i = 0; i < n; i++) { 
+  
+            // Count occurrences of current character 
+            int count = 1; 
+            while (i < n - 1 &&  
+                   str.charAt(i) == str.charAt(i + 1)) { 
+                count++; 
+                i++; 
+            } 
+  
+            // Print character and its count 
+           s.append(str.charAt(i)); 
+           s.append(str.charAt(count));
+             
+        } 
+        System.out.println(s);
+        return s.length();
+    } 
+
+}

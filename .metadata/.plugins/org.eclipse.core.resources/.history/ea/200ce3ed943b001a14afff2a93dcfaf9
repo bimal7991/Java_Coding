@@ -1,0 +1,27 @@
+package codechef;
+import java.math.*;
+import java.util.*;
+public class RGAND {
+   public static void main(String[] args) {
+         Scanner sc=new Scanner(System.in);
+         int t=sc.nextInt();
+         for(int i=0;i<t;i++)
+         {
+        	 String a=sc.next();
+        	 String b=sc.next();
+        	 BigInteger L=new BigInteger(a);
+        	 BigInteger R=new BigInteger(b);
+        	 
+         }
+ }
+   static int countBits(BigInteger number) 
+   {  
+         
+       // log function in base 2  
+       // take only integer part 
+       return (int)BigIntegerMath 
+				.log2(number, 
+						RoundingMode.HALF_EVEN)); 
+   } 
+    
+}

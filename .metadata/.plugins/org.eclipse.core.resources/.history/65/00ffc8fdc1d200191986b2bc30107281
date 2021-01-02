@@ -1,0 +1,31 @@
+package codechef;
+import java.util.*;
+public class Fib_seq {
+	public static void main(String[] args) {
+		
+		Scanner sc=new Scanner(System.in);
+		int t=sc.nextInt();
+		for(int T=0;T<t;T++)
+		{
+			long n=sc.nextInt();
+			n=n%60;
+		   // long a=0,b=1,c=0;
+		    int k=1;
+			while(Math.pow(2, k)<=n)
+			{
+				k++;
+			}
+			long limit= (long) (Math.pow(2, k-1)-1);
+			//System.out.println(fib[(int) (Math.pow(2, i-1)-1)]);
+			//System.out.println(fib(limit-1));
+			System.out.println(fib(limit)%10);
+			
+		}
+		
+}
+	static long fib(long limit) { 
+		double phi = (1 + Math.sqrt(5)) / 2; 
+		return (long) Math.round(Math.pow(phi, limit-1)  
+		                        / Math.sqrt(5)); 
+		} 
+}

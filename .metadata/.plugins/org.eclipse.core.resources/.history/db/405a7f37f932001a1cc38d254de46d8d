@@ -1,0 +1,65 @@
+package codechef;
+import java.util.*;
+public class English {
+ public static void main(String[] args) {
+	Scanner sc=new Scanner(System.in);
+	int T=sc.nextInt();
+	for(int t=0;t<T;t++)
+	{
+		int N=sc.nextInt();
+		String arr[]=new String[N];
+		for(int i=0;i<N;i++)
+		{
+			arr[i]=sc.next();
+		}
+		int calc[]=new int[N];
+		long sum=0;
+		for(int i=0;i<N;i++)
+		{
+			long min=Long.MAX_VALUE;
+			
+			int ind=0;
+			for(int j=i+1;j<N;j++)
+			{
+			
+				
+				if(arr[i].charAt(0)==arr[j].charAt(0) && calc[j]==0)
+				{
+					int len1=arr[i].length();
+					int len2=arr[j].length();
+					
+					int prefix=1;
+					int suffix=0;
+					for(int k=1;k<Math.min(len1, len2);k++)
+					{
+						if(arr[i].charAt(k)==arr[j].charAt(k))
+							prefix++;
+						else
+							break;
+					}
+					for(int k=len1-1,l=len2-1;k>=0 && l>=0;k--,l--)
+					{
+						if(arr[i].charAt(k)==arr[i].charAt(l))
+							suffix++;
+						else
+							break;
+					}
+					if((long)Math.min((long)prefix*prefix, (long)suffix*suffix)<min)
+					{
+						min=(long)Math.min((long)prefix*prefix,(long) suffix*suffix);
+						ind=j;
+					}
+					System.out.println(min);
+				}
+				
+			}
+			calc[ind]=1;
+			sum=sum+min;
+			
+		}
+		System.out.println(sum);
+		
+		
+	}
+}
+}

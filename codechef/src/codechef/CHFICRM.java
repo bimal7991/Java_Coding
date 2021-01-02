@@ -1,0 +1,58 @@
+package codechef;
+import java.util.*;
+public class CHFICRM {
+  public static void main(String[] args) {
+	Scanner sc=new Scanner(System.in);
+	int T=sc.nextInt();
+	while(T-->0)
+	{
+		int n=sc.nextInt();
+		int change[]=new int[16];
+		int arr[]=new int[n];
+		for(int i=0;i<n;i++)
+		{
+			arr[i]=sc.nextInt();
+		}
+		
+		//change[arr[0]]++;
+		
+		int ans=0;
+		for(int i=0;i<n;i++)
+		{
+			int val=arr[i];
+			
+			
+			
+			if(val>5)
+			{
+				int flag=0;
+				int diff=val-5;
+				if(change[diff]>=1)
+				{
+					change[diff]--;
+					flag=1;
+				}
+				else if(change[diff/2]>=2)
+				{
+					
+					change[diff/2]-=2;
+					flag=1;
+				}
+				
+				if(flag==0)
+				{
+					ans=1;
+					break;
+				}
+					
+			}
+			change[val]++;
+			
+		}
+		System.out.println(ans==0?"YES":"NO");
+		
+		
+		
+	}
+}
+}

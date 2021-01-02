@@ -1,0 +1,38 @@
+package codechef;
+import java.util.*;
+public class THEATRE {
+ public static void main(String[] args) {
+	Scanner sc=new Scanner(System.in);
+	int T=sc.nextInt();
+	int N=sc.nextInt();
+	int Arr[]=new int[13];
+	int Brr[]=new int[13];
+	int Crr[]=new int[13];
+	int Drr[]=new int[14];
+	for(int i=0;i<N;i++)
+	{
+		String s=sc.next();
+		int r=sc.nextInt();
+		sc.next();
+		if(s.equals("A"))
+		{
+			Arr[r]++;
+		}
+		else if(s.equals("B"))
+		{
+			Brr[r]++;
+		}
+		else if(s.equals("C"))
+		{
+			Crr[r]++;
+		}
+		else
+		{
+			Drr[r]++;
+		}
+		
+	}
+	
+	
+}
+}

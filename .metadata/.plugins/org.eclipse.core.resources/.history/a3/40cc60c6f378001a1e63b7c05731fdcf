@@ -1,0 +1,81 @@
+package codechef;
+import java.util.*;
+public class SQRDSUB {
+	public static void main(String[] args) {
+		Scanner sc=new Scanner(System.in);
+		int T=sc.nextInt();
+		while(T-->0)
+		{
+			int N=sc.nextInt();
+			int arr[]=new int[N];
+			for(int i=0;i<N;i++)
+				arr[i]=sc.nextInt();
+			
+			long count=0;
+			for(int i=0;i<N;i++)
+			{
+				if(arr[i]<0)
+					arr[i]=-arr[i];
+					
+			}
+			
+			
+//			for(int i=0;i<N;i++)
+//			{
+//				if(arr[i]%2==1)
+//					count++;
+//			}
+			//System.out.println(count);
+			for(int i=0;i<N;i++)
+			{
+				//long mult=1;
+				int index2=N,flag04=0,flag2=0,index04=N;
+				for(int j=i;j<N;j++)
+				{
+					if(arr[j]==0 || arr[j]%4==0)
+					{
+						flag04=1;
+					    index04=j;	
+						break;
+					}
+					else if(arr[j]%2==0)
+					{
+					  flag2=1;
+					  index2=j;
+					  break;
+					}
+					
+					
+				}
+				
+				if(flag2==1)
+				{
+					
+					count=count+(index2-i);
+					int ind2=N,flag3=0;
+					for(int j=index2+1;j<N;j++)
+					{
+						if(arr[j]%2==0)
+						{
+							flag3=1;
+							ind2=j;
+							break;
+						}
+							
+					}
+					count=count+(N-ind2);
+					
+				}
+				else 
+				{
+				count=count+(N-i);
+				}
+				//System.out.println(count);
+				
+			}
+			System.out.println(count);
+			
+		}
+	}
+
+}

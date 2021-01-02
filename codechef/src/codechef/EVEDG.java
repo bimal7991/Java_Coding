@@ -1,0 +1,80 @@
+package codechef;
+import java.util.*;
+public class EVEDG {
+public static void main(String[] args) {
+     Scanner sc=new Scanner(System.in);
+     int t=sc.nextInt();
+     for(int T=0;T<t;T++)
+     {
+    	 int n=sc.nextInt(),m=sc.nextInt();
+    	 int arr[]=new int[n+1];
+    	 int arr1[]=new int[m];
+    	 int arr2[]=new int[m];
+    	 int ans[]=new int[n+1];
+    	 Arrays.fill(ans, 1);
+    	 for(int i=0;i<m;i++)
+    	 {
+    		 arr1[i]=sc.nextInt();
+    		 arr2[i]=sc.nextInt();
+    		 arr[arr1[i]]++;
+    		 arr[arr2[i]]++;
+    	 }
+    	 int sum=0;
+    	 sum=m;
+    	 int sum1=m;
+    	 for(int i=1;i<=n;i++)
+		 {
+			 if(arr[i]==0)
+			 {
+				 ans[i]=2;
+			 }
+		 }
+    	 if(m%2==0)
+    	 {
+    		 for(int i=1;i<=n;i++)
+    		 {
+    			 if(arr[i]==0)
+    			 {
+    				 ans[i]=2;
+    			 }
+    		 }
+    			
+    		 System.out.println(2);
+    		 for(int i=1;i<=n;i++)
+    		 System.out.print(ans[i]+" ");
+    	 }
+    	 else
+    	 {
+    		 for(int i=1;i<=n;i++)
+    		 {
+    			
+    			 if(arr[i]!=0)
+    			 {
+    				 
+    				 for(int j=0;j<m;j++)
+    				 {
+    					 if(arr1[j]==i)
+    						 sum=sum-1;
+    					 if(arr2[j]==i)
+    						 sum=sum-1;
+    				 }
+    				 if(sum%2==0)
+    				 {
+    					 ans[i]=2;
+    					 break;
+    				 }
+    				 else
+    					 sum=sum1;
+    			 }
+    			 
+    		 }
+    		 System.out.println(2);
+    		 for(int i=1;i<=n;i++)
+    		 System.out.print(ans[i]+" ");
+    		 
+    	 }
+    	 
+    	 
+     }
+}
+}

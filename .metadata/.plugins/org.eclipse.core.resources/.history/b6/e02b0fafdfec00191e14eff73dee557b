@@ -1,0 +1,87 @@
+package codechef;
+import java.util.*;
+import java.io.*; 
+public class MSNG {
+	public static void main(String[] args)  throws IOException {
+		//Scanner sc=new Scanner(System.in);
+		BufferedReader br = new BufferedReader(new
+		        InputStreamReader(System.in)); 
+		int T=Integer.parseInt(br.readLine()); 
+		for(int t=0;t<T;t++)
+		{
+			int n=Integer.parseInt(br.readLine()); 
+			int arr[]=new int[n];
+			String str[]=new String[n];
+		
+			for(int i=0;i<n;i++)
+			{
+				String s=br.readLine(); 
+				String s1[]=s.split(" ");
+				arr[i]=Integer.parseInt(s1[0]);
+				str[i]=s1[1];
+			}
+			int m=0,maxlen=0,maxind=0;
+			for(int i=0;i<n;i++)
+			{
+				if(arr[i]!=-1)
+				{
+				  m=Integer.parseInt(str[i],arr[i]);  
+				}
+				else
+				{
+					if(str[i].length()>maxlen)
+					{
+						maxlen=str[i].length();
+						maxind=i;
+					}
+				}
+				
+					
+			}
+			System.out.println(m);
+			if(m==0)
+				m=Integer.parseInt(str[maxind],2);
+			int flag=0;
+			for(int i=0;i<n;i++)
+			{
+				flag=0;int max=0;
+				String s3=str[i];
+				for(int j=0;j<s3.length();j++)
+				{
+				
+					if(Integer.parseInt(s3.substring(j,j+1))>max )
+						max=Integer.parseInt(s3.substring(j,j+1));
+				}
+				
+				
+				
+				for(int j=max+1;j<=16;j++)
+				{
+					if(arr[i]==-1)
+					{
+						int k=Integer.parseInt(str[i],j);
+						if(k==m)	
+						{
+						 flag=1;
+						 System.out.println(flag);
+						 break;
+						}
+					}
+					else
+					{
+						flag=1;
+					}
+				}
+				
+				if(flag==0)
+					break;
+			}
+			if(flag==0)
+				System.out.println(-1);
+			else
+				System.out.println(m);
+			
+		}
+	}
+
+}

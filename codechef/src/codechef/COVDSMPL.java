@@ -1,0 +1,113 @@
+package codechef;
+import java.util.*;
+public class COVDSMPL {
+  public static void main(String[] args) {
+	Scanner sc=new Scanner(System.in);
+	int T=sc.nextInt();
+	while(T-->0)
+	{
+		int n=sc.nextInt(),p=sc.nextInt();
+		int arr[][]=new int[n+1][n+1];
+		int r1=1,r2=1,c1=1,c2=n;
+		int total=0;
+		int rem=0;
+		int row[]=new int[n+1]; 
+		int col[]=new int[n+1];
+		for(int i=1;i<=n;i++)
+		{
+			System.out.println(1+" "+i+" "+1+" "+i+" "+n);
+		    int x=sc.nextInt();
+		   row[i]=x;
+		}
+		for(int i=1;i<=n;i++)
+		{
+			System.out.println(1+" "+1+" "+i+" "+n+" "+i);
+		    int x=sc.nextInt();
+		   col[i]=x;
+		}
+		int sum[]=new int[n+1];
+		
+		
+		
+		
+		total=0;
+		int j=1;
+		
+		for(int i=1;i<=n;i++)
+		{
+			total=0;
+			for(j=1;j<=n;j++)
+			{
+				if(sum[j]==col[j])
+					continue;
+				System.out.println(1+" "+i+" "+1+" "+i+" "+j);	
+				
+				int x=sc.nextInt();
+				if(x>total)
+				{
+					arr[i][j]=1;
+					sum[j]++;
+				}
+				total=x;
+				
+				if(x==row[i])
+				{
+					break;
+				}
+					
+				
+				
+				
+					
+			}
+		}
+		System.out.println(2);
+		for(int i=1;i<=n;i++)
+		{
+			
+			for( j=1;j<=n;j++)
+			{
+				System.out.print(arr[i][j]+" ");
+			}
+			System.out.println();
+	   }
+		int x=sc.nextInt();
+		
+		
+		/*
+		for(int i=1;i<=n;i++)
+		{
+			System.out.println(1+" "+i+" "+c1+" "+r2+" "+c2);
+		    int x=sc.nextInt();
+		    if(i==1)
+		    	total=x;
+		    
+		    if(i>=2)
+		    {
+		    	row[i-1]=total-x-rem;
+		    	rem=rem+x;
+		    	
+		    }
+		    
+		}
+		rem=0;
+		int col[]=new int[n+1];
+		for(int i=2;i<=n;i++)
+		{
+			System.out.println(1+" "+r1+" "+i+" "+r2+" "+c2);
+		    int x=sc.nextInt();
+		  
+		    
+		    if(i>=2)
+		    {
+		    	col[i-1]=total-x-rem;
+		    	rem=rem+x;
+		    	
+		    }
+		    
+		}*/
+		
+		
+	}
+}
+}

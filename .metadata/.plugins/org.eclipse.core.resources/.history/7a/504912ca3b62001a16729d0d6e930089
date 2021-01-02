@@ -1,0 +1,61 @@
+package codechef;
+import java.util.*;
+public class LAZER1 {
+  public static void main(String[] args) {
+	  Scanner sc=new Scanner(System.in);
+	    int T=sc.nextInt();
+	    while(T-->0)
+	    {
+	    	int N=sc.nextInt(),Q=sc.nextInt();
+	    	int A[]=new int[N];
+	    	for(int i=0;i<N;i++)
+	    	{
+	    		A[i]=sc.nextInt();
+	    	}
+	    	int arr[]=new int[10000000];
+	    	for(int i=0;i<N-1;i++)
+	    	{
+	    		if(A[i]>A[i+1])
+	    		{
+	    			for(int j=A[i];j<A[i+1];j++)
+	    			{
+	    				arr[j]=arr[j]+1;
+	    			}
+	    		}
+	    		else
+	    		{
+	    			for(int j=A[i];j>A[i+1];j--)
+	    			{
+	    				arr[j]=arr[j]+1;
+	    			}
+	    		}
+	    	}	    	
+	    	
+	    	
+	    	for(int i=0;i<Q;i++)
+	    	{
+	    		int x1=sc.nextInt(),x2=sc.nextInt(),y=sc.nextInt();
+	    		int count=0;
+	    	   //new
+	    		    count=arr[y];
+	    		    if(count<(x2-x1))
+	    		    	System.out.println(count);
+	    		    else
+	    		    	System.out.println((x2-x1));
+	    		
+	    		
+	    		//new
+//	    		for(int j=x1-1;j<x2-1;j++)
+//	    		{
+//	    			if((A[j]<=y && A[j+1]>=y )|| (A[j]>=y && A[j+1]<=y))
+//	    			{
+//	    				count++;
+//	    			}
+//	    		}
+	    		//System.out.println(count);
+	    	}
+	    	
+	    	
+	    }
+  }
+}

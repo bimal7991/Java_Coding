@@ -1,0 +1,48 @@
+package codechef;
+import java.util.*;
+public class EOEO1 {
+  public static void main(String[] args) {
+	Scanner sc=new Scanner(System.in);
+	int T=sc.nextInt();
+	while(T-->0)
+	{
+		int n=sc.nextInt();
+		if(n%2==0)
+		{
+			
+			int count=0;
+			for(int i=n-2;i>=1;i-=2)
+			{
+				int p=i;
+				int a=n;
+				while(true)
+				{
+					
+					if(a%2==0 && p%2==1)
+						break;
+					else if(a%2==1 && p%2==0)
+					{
+						count++;
+						System.out.print(i+" ");
+						break;
+					}
+					else if(a%2==1 && p%2==1)
+					{
+						break;
+					}
+					else
+					{
+					a=a/2;
+					p=p/2;
+					}
+				}
+				
+			}
+			System.out.println(count);
+			
+		}
+		else
+			System.out.println(n/2);
+	}
+}
+}

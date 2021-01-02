@@ -1,0 +1,11 @@
+package spring.demo;
+
+public class Trackcoach implements Coach_inteface {
+
+	@Override
+	public String getdaily() {
+		// TODO Auto-generated method stub
+		return null;
+	}
+
+}

@@ -1,0 +1,106 @@
+package codechef;
+import java.util.*;
+public class NOCHANGE {
+ public static void main(String[] args) {
+	 Scanner sc=new Scanner(System.in);
+	 int T=sc.nextInt();
+	 while(T-->0)
+	 {
+		 int N=sc.nextInt();long P=sc.nextLong();
+		 long arr[]=new long[N];
+		 for(int i=0;i<N;i++)
+			 arr[i]=sc.nextLong();
+		 
+		 long count[]=new long[N];
+		if(N==1)
+		{
+			if(P%arr[0]==0)
+			{
+				System.out.println("NO");
+				continue;
+			}
+			else
+			{
+				count[0]=P/arr[0]+1;
+				System.out.print("YES "+count[0]);
+				System.out.println();
+				continue;
+			}
+		}
+		 
+		 
+		else  if(change(arr,P))
+		 {
+			 System.out.println("NO");
+		 }
+		 else
+		 {
+			 
+		     long rem=P; 
+			 int flag=0;
+			 for(int i=N-1;i>=0;i--)
+			 {
+				 if(P%arr[i]==0)
+					 continue;
+				 else
+				 {
+					 count[i]=P/arr[i]+1;
+					 flag=1;
+					 break;
+				 }
+			 }
+			 if(flag==0)
+			 {
+				
+					 long m1=arr[0];
+					  int ind=0;	
+						for(int i=1;i<arr.length;i++)
+						{
+						    if(arr[i]%m1==0)
+						    {
+						    	m1=arr[i];
+						    }
+						    else
+						    {
+						    	ind=i;
+						    	m1=arr[i];
+						    }
+						}
+						count[ind]=P/arr[ind]-1;
+						count[ind-1]=arr[ind]/arr[ind-1]+1;
+				 
+			 }
+			 
+			 
+			 
+			 System.out.print("YES"+" ");
+			 for(int j=0;j<N;j++)
+			 {
+				 System.out.print(count[j]+" ");
+			 }
+			 System.out.println();
+		 }
+		  
+	 }
+}
+
+ static boolean change(long[] arr,long P) {
+	// TODO Auto-generated method stub
+	long m1=arr[0];
+	
+	for(int i=1;i<arr.length;i++)
+	{
+	    if(arr[i]%m1==0 && P%arr[i]==0)
+	    {
+	    	m1=arr[i];
+	    }
+	    else
+	    {
+	      return false;
+	    }
+	    	
+	}
+	return true;
+	
+}
+}

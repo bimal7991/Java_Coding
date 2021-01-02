@@ -1,0 +1,54 @@
+package codechef;
+import java.util.*;
+public class Flood_fill_algo {
+ public static void main(String[] args) {
+	Scanner sc=new Scanner(System.in);
+	int T=sc.nextInt();
+	while(T-->0)
+	{
+		int N=sc.nextInt();
+		int M=sc.nextInt();
+		int arr[][]=new int[N][M];
+		for(int row=0;row<N;row++)
+		{
+			for(int col=0;col<M;col++)
+			{
+				arr[row][col]=sc.nextInt();
+			}
+		}
+		
+		int x=sc.nextInt(),y=sc.nextInt(),k=sc.nextInt();
+		Dfs(arr,x,y,k,arr[x][y]);
+		//System.out.println(count);
+		for(int i=0;i<N;i++)
+		{
+			for(int j=0;j<M;j++)
+			{
+				System.out.print(arr[i][j]+" ");
+			}
+			System.out.println();
+		}
+		
+	}
+ }
+
+ 
+private static void Dfs(int[][] arr, int row, int col,int k,int val) {
+	// TODO Auto-generated method stub
+	if(row<0 ||row>=arr.length || col<0 || col>=arr[0].length)
+		return;
+	
+	
+	
+	if(arr[row][col]==val)
+	{
+	arr[row][col]=k;
+	Dfs(arr, row+1, col,k,val);
+	Dfs(arr, row-1, col,k,val);
+	Dfs(arr, row, col+1,k,val);
+	Dfs(arr, row, col-1,k,val);
+	
+	}
+	
+}
+}

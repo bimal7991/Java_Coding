@@ -1,0 +1,53 @@
+package codechef;
+import java.util.*;
+public class Cycle_detection {
+    public static void main(String[] args) {
+		Scanner sc=new Scanner(System.in);
+		int T=sc.nextInt();
+		while(T-->0)
+		{
+			int N=sc.nextInt(),M=sc.nextInt();
+			for(int i=1;i<=N;i++)
+			{
+				arr[i]=new ArrayList<Integer>();
+			}
+			for(int i=0;i<M;i++)
+			{
+				int u=sc.nextInt(),v=sc.nextInt();
+				arr[u].add(v);
+				arr[v].add(u);
+				
+				
+			}	
+			boolean res=dfs(1,-1);
+			if(res==true)
+				System.out.println("Cycle Presnet");
+			else
+				System.out.println("No cycle Present");
+			
+		}
+	}
+   private static boolean dfs(int i, int j) {
+		// TODO Auto-generated method stub
+	   vis[i]=1;
+	   for(int child:arr[i])
+	   {
+		   if(vis[child]==0)
+		   {
+			   if(dfs(child,i)==true)
+				   return true;
+		   }
+		   else
+		   {
+			   if(child!=j)
+				   return true;
+		   }
+	   }
+		return false;
+	}
+static ArrayList<Integer> arr[]=new ArrayList[10001];
+   static int vis[]=new int[10001];
+       
+  
+    
+}

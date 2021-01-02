@@ -1,0 +1,59 @@
+package codechef;
+
+import java.util.*;
+
+public class CHANDF {
+	public static void main(String[] args) {
+		Scanner sc = new Scanner(System.in);
+		int T = sc.nextInt();
+		while (T-- > 0) {
+			long x = sc.nextLong(), y = sc.nextLong(), l = sc.nextLong(), r = sc.nextLong();
+			long max = 0;
+			
+			if(x==0 || y==0)
+				System.out.println(0);
+			else
+			{
+			    long ans=x|y;
+			     System.out.println(ans);
+			    if(r>=ans)
+			    	System.out.println(ans);
+			    else
+			    {
+			    	String btr=Integer.toBinaryString((int)ans);
+			    	//System.out.println(btr);
+			    	char arr[]=new char[btr.length()];
+			    	for(int i=0;i<btr.length();i++)
+			    	{
+			    		arr[i]=btr.charAt(i);
+			    	}
+			    	int ans2=0;
+			    	for(int i=arr.length-1;i>=0;i--)
+			    	{
+			    		if(arr[i]=='1')
+			    		{
+			    		     arr[i]='0';
+			    		     String str=String.valueOf(arr);
+			    		    // System.out.println(str);
+			    		     int val=Integer.parseInt(str,2);
+			    		     if(val>l && val<r)
+			    		     {
+			    		    	ans2=val;
+			    		    	break;
+			    		     }
+			    		     arr[i]='1';
+			    		}
+			    		
+			    	}
+			    	System.out.println(ans2);
+			    }
+			
+			
+			     
+			}
+			 
+
+		}
+	}
+
+}

@@ -1,0 +1,53 @@
+package codechef;
+import java.util.*;
+public class ENGXOR {
+	public static void main(String[] args) {
+		Scanner sc=new Scanner(System.in);
+		int T=sc.nextInt();
+		while(T-->0)
+		{
+			int N=sc.nextInt(),Q=sc.nextInt();
+			int A[]=new int[N];
+			int even=0,odd=0;
+			for(int i=0;i<N;i++)
+			{
+				A[i]=sc.nextInt();
+			}
+			for(int i=0;i<N;i++)
+			{
+				if(countSetBits(A[i])%2==0)
+					even++;
+				else
+					odd++;
+				
+
+			}
+			//System.out.println("even="+even+" odd="+odd);
+			for(int i=0;i<Q;i++)
+			{
+				int p=sc.nextInt();
+				if(countSetBits(p)%2==0)
+				{
+					System.out.println(even+" "+odd);
+				}
+				else
+				{
+					System.out.println(odd+" "+even);	
+				}
+			}
+			
+			
+		}
+	}
+	static int countSetBits(int n) 
+    { 
+        int count = 0; 
+        while (n > 0) { 
+            n &= (n - 1); 
+            count++; 
+        } 
+        return count; 
+    } 
+	
+
+}

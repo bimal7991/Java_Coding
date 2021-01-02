@@ -1,0 +1,108 @@
+package codechef;
+import java.util.*;
+public class LONGCOOK {
+  public static void main(String[] args) {
+	  
+	  int arr[]=new int[10000000];
+	  for(int i=1;i<10000000;i++)
+	  {
+		  if(checkYear(i))
+			 {
+				 if(method(i)==0)
+					arr[i]=1;
+			 }
+			 else
+			 {
+				 if(method(i)==0 || method(i)==1)
+					arr[i]=1;
+			 }
+		  
+	  }
+//	  for(int i=1;i<1000;i++)
+//	  {
+//		  if(arr[i]==1)
+//			  System.out.print(i+" ");
+//	  }
+	  int intersect[]=new int[10000000];
+	  int sum=0;
+	  for(int i=1;i<10000000;i++)
+	  {
+		  sum=sum+arr[i];
+		  intersect[i]=sum;
+	  }
+//	  System.out.println();
+//	  for(int i=1;i<1000;i++)
+//	  {
+//		  System.out.print(intersect[i]+" ");
+//	  }
+	  
+	  
+	 Scanner sc=new Scanner(System.in);
+	 int T=sc.nextInt();
+	 while(T-->0)
+	 {
+		 int month1=sc.nextInt();long year1=sc.nextLong(),month2=sc.nextInt();long year2=sc.nextLong();
+		 int count=0;
+		 if(month1>2)
+			 year1++;
+		 if(month2<=1)
+			 year2--;
+		
+		 long k=year1/400;
+		 long rem=year1%400;
+		 long first=k*101+intersect[(int)rem];
+		 
+		 long k2=year2/400;
+		 long rem2=year2%400;
+		 long last=k2*101+intersect[(int)rem2];
+		 if(year1==year2)
+		 {
+			 System.out.println(arr[(int)rem]);
+			 continue;
+		 }
+         long ans1=last-first;
+         if(arr[(int)rem]==1)
+        	 ans1++;
+		 System.out.println(ans1);
+		 
+		 
+//		 int ans=0;
+//		 if(year2>year1)
+//		 {
+//			 ans=intersect[(int)year2]-intersect[(int)year1];
+//		         if(arr[(int)year1]==1)
+//		        	 ans++;
+//		         
+//		     
+//		 }
+//		 System.out.println(ans);
+		 
+	 }
+}
+  static int method(int year) 
+{ 
+         year--;
+         int k = year % 100; 
+         int j = year / 100; 
+         int h =  40 + k + k / 4 + j / 4 + 5 * j; 
+         h = h % 7; 
+        return h;
+}
+  
+  static boolean checkYear(int year) 
+  { 
+     
+      if (year % 400 == 0) 
+          return true; 
+    
+      
+      if (year % 100 == 0) 
+          return false; 
+    
+   
+      if (year % 4 == 0) 
+          return true; 
+      return false; 
+  } 
+  
+}

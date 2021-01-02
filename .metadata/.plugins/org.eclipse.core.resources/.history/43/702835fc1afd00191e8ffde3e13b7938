@@ -1,0 +1,44 @@
+package codechef;
+import java.util.*;
+public class SIMGAM {
+	public static void main(String[] args) {
+		Scanner sc=new Scanner(System.in);
+		int T=sc.nextInt();
+		for(int t=0;t<T;t++)
+		{
+			int N=sc.nextInt();
+			int row[]=new int[N];
+			int sum=0;
+			ArrayList<Integer> mid=new ArrayList<Integer>();
+			for(int n=0;n<N;n++)
+			{
+				row[n]=sc.nextInt();
+
+				int A[]=new int[row[n]];
+
+				for(int i=0;i<row[n];i++)
+				{
+					A[i]=sc.nextInt();
+				}
+
+				if(row[n]%2!=0)
+				{
+					mid.add(A[row[n]/2]);
+				}
+				for(int i=0;i<row[n]/2;i++)
+				{
+					sum=sum+A[i];
+				}
+				Collections.sort(mid,Collections.reverseOrder());
+               for(int i=0;i<mid.size();i+=2)
+               {
+            	   sum=sum+mid.get(i);
+               }
+
+			}
+			System.out.println(sum);
+
+		}
+
+	}
+}

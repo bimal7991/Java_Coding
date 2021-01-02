@@ -1,0 +1,32 @@
+package codechef;
+import java.util.*;
+public class Row_excel {
+   public static void main(String[] args) {
+	Scanner sc=new Scanner(System.in);
+	int n=sc.nextInt();
+	int k=n;
+	String s="A";
+	while(n>26)
+	{
+		int mod=n%26;
+		n=n/26;
+		if(mod==0)
+		{
+			s=s+'Z';
+		    n=n-1;			
+		}
+		else
+		{
+			int m=64+mod;
+			s=s+(char)m;
+		}
+	}
+	int m=64+n;
+	s=s+(char)m;
+	
+	for(int i=s.length()-1;i>0;i++)
+		System.out.print(s.charAt(i));
+	
+	
+}
+}

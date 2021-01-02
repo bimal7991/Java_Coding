@@ -1,0 +1,47 @@
+package codechef;
+
+
+
+import java.util.*;
+
+ class CHANDF2 {
+	public static void main(String[] args) {
+		Scanner sc = new Scanner(System.in);
+		int T = sc.nextInt();
+		while (T-- > 0) {
+			long x = sc.nextLong(), y = sc.nextLong(), l = sc.nextLong(), r = sc.nextLong();
+			long max = 0;
+			
+			if(x==0 || y==0)
+				System.out.println(0);
+			else
+			{
+			    long ans=x|y;
+			    System.out.println(ans);
+			    if(r>=ans && l<=ans)
+			    	System.out.println(ans);
+			    else
+			    {
+			    	long ans2=l;
+			    	for(long i=l;i<=r;i++)
+			    	{
+			    		long val=(x&i)*(y&i);
+			    		System.out.print(val+" ");
+			    		if(val>max)
+			    		{
+			    			max=val;
+			    			ans2=i;
+			    		}
+			    	}
+			    	System.out.println(ans2);
+			    }
+			
+			
+			     
+			}
+			 
+
+		}
+	}
+
+}

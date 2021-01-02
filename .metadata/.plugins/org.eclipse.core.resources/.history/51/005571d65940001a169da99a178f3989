@@ -1,0 +1,58 @@
+package codechef;
+import java.util.*;
+public class Island {
+ public static void main(String[] args) {
+	Scanner sc=new Scanner(System.in);
+	int T=sc.nextInt();
+	while(T-->0)
+	{
+		int N=sc.nextInt();
+		int M=sc.nextInt();
+		int arr[][]=new int[N][M];
+		for(int row=0;row<N;row++)
+		{
+			for(int col=0;col<M;col++)
+			{
+				arr[row][col]=sc.nextInt();
+			}
+		}
+		int count=0;
+		for(int row=0;row<N;row++)
+		{
+			for(int col=0;col<M;col++)
+			{
+				if(arr[row][col]==1)
+				{
+					c=0;
+					int size=Dfs(arr,row,col);
+					if(size>count)
+						count=size;
+					
+				}
+			}
+		}
+		System.out.println(count);
+	}
+ }
+static int c=0;
+ 
+private static int Dfs(int[][] arr, int row, int col) {
+	// TODO Auto-generated method stub
+	if(row<0 || row>arr[0].length || col<0 || col>arr[0].length || arr[row][col]==0)
+	 return 0;
+	c++;
+	arr[row][col]=0;
+	Dfs(arr, row+1, col);
+	Dfs(arr, row-1, col);
+	Dfs(arr, row, col+1);
+	Dfs(arr, row, col-1);
+	Dfs(arr, row+1, col+1);
+	Dfs(arr, row+1, col-1);
+	Dfs(arr, row-1, col+1);
+	Dfs(arr, row-1, col-1);
+  
+	
+	
+	return c;
+}
+}

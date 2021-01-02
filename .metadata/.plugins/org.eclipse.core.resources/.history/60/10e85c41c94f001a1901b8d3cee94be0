@@ -1,0 +1,202 @@
+package codechef;
+import java.util.*;
+public class CHEFRAIL {
+  public static void main(String[] args) {
+	Scanner sc=new Scanner(System.in);
+	int T=sc.nextInt();
+	 while(T-->0)
+	 {
+		 int N=sc.nextInt();
+		 int M=sc.nextInt();
+		 int X[]=new int[N];
+		 int Y[]=new int[M];
+		 
+		 int pos=0,neg=0,x=0,y=0;
+		 for(int i=0;i<N;i++)
+		 {
+			 X[i]=sc.nextInt();
+			 if(X[i]<0)
+			 {
+				 neg++;
+			 }
+			 else if(X[i]>0)
+			 {
+				 pos++;
+			 }
+			 else
+			 {
+				 x=1;
+			 }
+			
+		 }
+		 int xpos[]=new int[pos];
+		 int xneg[]=new int[neg];
+		 int j=0,k=0;
+		 for(int i=0;i<N;i++)
+		 {
+			if(X[i]<0)
+			{
+				xneg[j++]=X[i];
+			}
+			else if(X[i]>0)
+			{
+				xpos[k++]=X[i];
+			}
+			
+		 }
+		 
+		 
+		 pos=0;neg=0;
+		 for(int i=0;i<M;i++)
+		 {
+			 Y[i]=sc.nextInt();
+			 if(Y[i]<0)
+			 {
+				 neg++;
+			 }
+			 else if(Y[i]>0)
+			 {
+				 pos++;
+			 }
+			 else
+				 y=1;
+		 }
+		 int ypos[]=new int[pos];
+		 int yneg[]=new int[neg];
+		  j=0;k=0;
+		 for(int i=0;i<M;i++)
+		 {
+			if(Y[i]<0)
+			{
+				yneg[j++]=Y[i];
+			}
+			else if(Y[i]>0)
+			{
+				ypos[k++]=Y[i];
+			}
+		 }
+		 int count=0;
+		 for(int i=0;i<xpos.length;i++)
+		 {
+			 for( j=0;j<ypos.length;j++)
+			 { 
+				 int flag=0;
+				 for( k=0;k<yneg.length;k++)
+				 {
+					 
+					 if(Right(xpos[i],0,0,ypos[j],0,yneg[k]))
+					 {
+						count++; 
+						flag=1;
+						break;
+					 }
+					 
+				 }
+				 if(flag==1)
+					 break;
+				 
+			 }
+		 }
+		 for(int i=0;i<xneg.length;i++)
+		 {
+			 for( j=0;j<ypos.length;j++)
+			 { 
+				 int flag=0;
+				 for( k=0;k<yneg.length;k++)
+				 {
+					 if(Right(xneg[i],0,0,ypos[j],0,yneg[k]))
+					 {
+						count++; 
+						flag=1;
+						break;
+					 }
+					 
+				 }
+				 
+				 if(flag==1)
+					 break;
+			 }
+		 }
+		 
+		 
+		 for(int i=0;i<ypos.length;i++)
+		 {
+			
+			 for(j=0;j<xpos.length;j++)
+			 {
+				 int flag=0;
+				 for( k=0;k<xneg.length;k++)
+				 {
+					 if(Right(0,ypos[i],xpos[j],0,xneg[k],0))
+					 {
+						 count++;
+						 flag=1;
+						 break;
+						
+					 }
+				}
+				 if(flag==1)
+					 break;
+			}
+		 }
+		 for(int i=0;i<yneg.length;i++)
+		 {
+			 for(j=0;j<xpos.length;j++)
+			 {
+				 int flag=0;
+				 for( k=0;k<xneg.length;k++)
+				 {
+					 if(Right(0,yneg[i],xpos[j],0,xneg[k],0))
+					 {
+						 count++;
+						 flag=1;
+						 break;
+					 }
+				}
+				 if(flag==1)
+					 break;
+			}
+		 }
+		 if(x==1)
+		 {
+			 count=count+(xpos.length+xneg.length)*(ypos.length+yneg.length);
+		 }
+		 if(y==1)
+		 {
+			 count=count+(xpos.length+xneg.length)*(ypos.length+yneg.length);
+		 }
+		 
+		 System.out.println(count);
+		 
+		 }
+		 
+	 
+}
+
+private static boolean Right(int x1, int y1, int x2, int y2, int x3, int y3) {
+	
+	int dis[]=new int[3];
+	// TODO Auto-generated method stub
+	dis[0]=distance(x1, y1, x2, y2);
+	dis[1]=distance(x1, y1, x3, y3);
+	dis[2]=distance(x3, y3, x2, y2) ;
+	 //System.out.println(dis[0]+" "+dis[1]+" "+dis[2]);
+	 
+	
+	if(dis[2]==dis[0]+dis[1] || dis[0]==dis[1]+dis[2] || dis[1]==dis[0]+dis[2])
+	{
+		return true;
+	}
+	else
+	{
+		return false;
+	}
+	
+	
+}
+static int distance(int x1, int y1, int x2, int y2) 
+{ 
+    // Calculating distance 
+    return  (x2 - x1)*(x2-x1) +  (y2 - y1)* (y2-y1); 
+} 
+}

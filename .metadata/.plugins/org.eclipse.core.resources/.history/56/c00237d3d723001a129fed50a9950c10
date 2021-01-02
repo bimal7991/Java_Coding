@@ -1,0 +1,33 @@
+package codechef;
+import java.io.*;
+import java.math.BigInteger;
+import java.util.*;
+public class Loop {
+	public static void main(String[] args) throws IOException {
+		 BufferedReader sc =  
+                 new BufferedReader(new InputStreamReader(System.in));
+        String T=sc.readLine();
+        int n=Integer.parseInt(T);
+        for(int t=0;t<n;t++)
+        {
+        	String a=sc.readLine();
+        	String b=sc.readLine();
+        	//System.out.println(a+" "+b);
+        	BigInteger A=new BigInteger(a,2);
+        	BigInteger B=new BigInteger(b,2);
+        	BigInteger U,V;
+        	int count=0;
+        	while(B.intValue()>0)
+        	{
+        		U=A.xor(B);
+        		V=A.and(B);
+        		A=U;
+        		B=V.multiply(new BigInteger("2"));
+        		count++;
+        		
+        	}
+        	System.out.println(count);
+        }
+	}
+
+}

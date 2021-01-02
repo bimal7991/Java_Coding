@@ -1,0 +1,51 @@
+import java.util.*;
+public class Max_min {
+   public static void main(String[] args) {
+	  
+	Scanner sc=new Scanner(System.in);
+	int t,i;
+	t=sc.nextInt();
+	for(i=0;i<t;i++)
+	{
+	   double n=sc.nextDouble());
+	   double k=sc.nextDouble();
+	   //int div=k/n;
+	    
+	   
+       int rem=(int) (k%n);
+      
+       if(n%2==0)
+       {
+    	   if(n/2>rem)
+    	   {
+    		   System.out.println(2*rem);
+    		   continue;
+    	   }
+    	   else if(n/2==rem)
+    	   {
+    		   System.out.println(2*rem-1);
+    		   continue;
+    	   }
+    	   else
+    	   {
+    		   System.out.println((2*(n-rem)));
+    		   continue;
+    	   }
+       }
+       else
+       {
+    	  if((n+1)/2>rem)
+    		  System.out.println(2*rem);    		  
+    	  else
+    		  System.out.println(2*(n-rem));
+    		  
+       }
+       
+    	   
+	   
+	}
+
+   
+   
+}
+}

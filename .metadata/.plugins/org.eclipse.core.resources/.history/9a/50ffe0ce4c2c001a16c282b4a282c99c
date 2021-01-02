@@ -1,0 +1,52 @@
+package codechef;
+import java.util.*;
+public class Crane {
+     public static void main(String[] args) {
+		Scanner sc=new Scanner(System.in);
+		int n=sc.nextInt(),h=sc.nextInt();
+		int arr[]=new int[n];
+		while(true)
+		{
+			int c=sc.nextInt();
+			int mv=0,flag=0;
+			if(c==0)
+				break;
+			else
+			{
+				switch(c) {
+				case 1:
+					if(mv!=0)
+						mv=mv-1;
+				     break;
+				case 2:
+					if(mv!=n-1)
+						mv=mv+1;
+				    break;
+				case 3:
+					if(flag!=1)
+					{
+						arr[mv]=arr[mv]-1;
+						flag=1;
+					}
+					break;
+				case 4:
+					if(arr[mv]!=h && flag==1)
+				{
+					arr[mv]=arr[mv]+1;
+					flag=0;
+				}
+					break;
+					default:
+						break;
+				
+			}
+				
+				
+			}
+		}
+		for(int i=0;i<n;i++)
+		{
+			System.out.print(arr[i]+" ");
+		}
+	}
+}

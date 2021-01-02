@@ -1,0 +1,38 @@
+package codechef;
+import java.util.*;
+public class CORUS {
+  public static void main(String[] args) {
+	Scanner sc=new Scanner(System.in);
+	int T=sc.nextInt();
+	while(T-->0)
+	{
+		int N=sc.nextInt(),Q=sc.nextInt();
+		String str=sc.next();
+		sc.nextLine();
+		
+		int hash[]=new int[26];
+		for(int i=0;i<str.length();i++)
+		{
+			hash[str.charAt(i)-'a']++;
+		}
+		
+		for(int i=0;i<26;i++)
+			System.out.print(hash[i]+" ");
+		System.out.println();
+		
+		while(Q-->0)
+		{
+			int c=sc.nextInt();
+			int sum=0;
+			for(int i=0;i<26;i++)
+			{
+			     int add=hash[i]=c;
+			     if(add>0)
+			    	 sum=sum+add;
+			}
+			System.out.println(sum);
+		}
+		
+	}
+}
+}

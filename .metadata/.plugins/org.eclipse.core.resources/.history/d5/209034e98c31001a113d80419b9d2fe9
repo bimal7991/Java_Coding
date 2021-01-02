@@ -1,0 +1,44 @@
+package codechef;
+import java.util.*;
+public class Doraemon {
+ public static void main(String[] args) {
+	Scanner sc=new Scanner(System.in);
+	int T=sc.nextInt();
+	for(int t=0;t<T;t++)
+	{
+		int n=sc.nextInt(),m=sc.nextInt();
+		int arr[][]=new int[n][m];
+		for(int i=0;i<n;i++)
+		{
+			for(int j=0;j<m;j++)
+			{
+				arr[i][j]=sc.nextInt();
+			}
+		}
+		int count=0;
+		for(int i=1;i<n-1;i++)
+		{
+			int l=1;
+			while(l<=n-2)
+			{
+			int flag=0;
+		   for(int j=l-1,k=l+1;j>=0 && k<=i+i;j--,k++)
+		   {
+			   if(arr[i][j]==arr[i][k])
+			   {
+				   if(arr[j][l]==arr[k][l])
+					   count++;
+			   }
+			   
+		   }
+		   
+		   l++;
+			}
+			
+		}
+		System.out.println(count);
+		
+		
+	}
+}
+}

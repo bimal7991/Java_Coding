@@ -1,0 +1,66 @@
+package codechef;
+
+import java.math.BigInteger;
+import java.util.Scanner;
+
+public class test {
+	public static void main(String[] args) {
+       Scanner sc=new Scanner(System.in);
+      int T=sc.nextInt();
+      for(int t=0;t<T;t++)
+      {
+    	  long a=sc.nextLong();
+    	  long b=sc.nextLong();
+    	  long n=sc.nextLong();
+    	  long X=fibxor(a,b,n);
+    	  long E=fibxnor(a,b,n);
+    	  if(X>=E)
+    		  System.out.println(X);
+    	  else
+    		  System.out.println(E);  
+    	  
+      }
+	}
+
+	private static long fibxnor(long a, long b, long n) {
+		// TODO Auto-generated method stub
+		if(n==1)
+			return a;
+		else if(n==2)
+			return b;
+		else
+		{
+			long temp=1;
+		    for(long i=3;i<=n;i++)
+		    {
+		    	temp=~(a^b);
+		    	a=b;
+		    	b=temp;
+		    }
+		return temp;
+		
+		}
+		
+		
+	}
+
+	private static long fibxor(long a, long b, long n) {
+		// TODO Auto-generated method stub
+		if(n==1)
+			return a;
+		else if(n==2)
+			return b;
+		else
+		{
+			long temp=1;
+		    for(long i=3;i<=n;i++)
+		    {
+		    	temp=a^b;
+		    	a=b;
+		    	b=temp;
+		    }
+		return temp;
+		
+		}
+	}
+}

@@ -1,0 +1,27 @@
+package codechef;
+import java.util.*;
+public class STFOOD {
+	public static void main(String[] args) {
+  Scanner sc=new Scanner(System.in);
+      int T=sc.nextInt();
+      for(int t=0;t<T;t++)
+      {
+    	  int N=sc.nextInt();
+    	long ans=0;
+    	  for(int n=0;n<N;n++)
+    	  {
+    		  int s=sc.nextInt();
+    		  int v=sc.nextInt();
+    		  int p=sc.nextInt();
+    		
+    			  int m=p/(s+1);
+    			long  k=m*v;
+    			  if(k>ans)
+    				  ans=k;
+    		
+    		  
+    	  }
+    	  System.out.println(ans);
+      }
+	}
+}

@@ -1,0 +1,32 @@
+package codechef;
+import java.util.*;
+public class TILE {
+	
+	static long arr[]=new long[3];
+	static long I[][]=new long[3][3];
+	static long T[][]=new long[3][3];
+	
+
+	public static void main(String[] args) {
+		Scanner sc=new Scanner(System.in );
+		int t=sc.nextInt();
+		arr[1]=1;
+		arr[2]=2;
+		while(t-->0)
+		{
+			long n=sc.nextLong();
+			System.out.println(getFib(n));
+			
+		}
+	}
+
+	private static long getFib(long n) {
+		// TODO Auto-generated method stub
+		if(n<=2)
+			return arr[n];
+		
+		
+		return null;
+	}
+
+}

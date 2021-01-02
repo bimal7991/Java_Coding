@@ -1,0 +1,68 @@
+package codechef;
+import java.util.*;
+public class Subsequence {
+	public static void main(String[] args) {
+		Scanner sc=new Scanner(System.in);
+		int T=sc.nextInt();
+		for(int t=0;t<T;t++)
+		{
+			int n=sc.nextInt(),k=sc.nextInt();
+			int arr[]=new int[n];
+			for(int i=0;i<n;i++)
+			{
+				arr[i]=sc.nextInt();
+			}
+			printCombination(arr, n, k); 
+			System.out.println(arr2[min]);
+			min=99999;
+			Arrays.fill(arr2, 1);
+		}
+
+
+
+
+	}
+	static int min=99999;
+	static  int arr2[]=new int[100000];
+	static void combinationUtil(int arr[], int n, int r, 
+			int index, int data[], int i) 
+	{ 
+
+
+
+		if (index == r) { 
+			int sum=0;
+			for (int j = 0; j < r; j++) 
+			{
+				sum=sum+data[j];	
+
+				//System.out.print(data[j] + " "); 
+			}
+			if(sum<min)
+				min=sum;
+			arr2[sum]++;
+			//System.out.println(""); 
+			return; 
+		} 
+
+
+		if (i >= n) 
+			return; 
+
+
+		data[index] = arr[i]; 
+		
+		combinationUtil(arr, n, r, index + 1,  
+				data, i + 1); 
+		combinationUtil(arr, n, r, index, data, i + 1); 
+
+	} 
+
+
+	static void printCombination(int arr[], int n, int r) 
+	{ 
+
+		int data[] = new int[r]; 
+		combinationUtil(arr, n, r, 0, data, 0); 
+	} 
+}

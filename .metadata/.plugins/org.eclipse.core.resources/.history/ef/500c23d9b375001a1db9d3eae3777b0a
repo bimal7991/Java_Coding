@@ -1,0 +1,29 @@
+package codechef;
+import java.util.*;
+public class STRNO {
+   public static void main(String[] args) {
+	Scanner sc=new Scanner(System.in);
+	int T=sc.nextInt();
+	while(T-->0)
+	{
+	  long X=sc.nextLong();
+	  long K=sc.nextLong();
+	  if(K==1 && X==1)
+	  {
+		  System.out.println(1);
+		  continue;
+	  }
+	  else if(Math.pow(2, K)<=X)
+	  {
+		  System.out.println(1);
+	  }
+	  else
+	  {
+		  System.out.println(0);
+	  }
+	  
+	}
+ }
+   
+   
+}

@@ -1,0 +1,30 @@
+package codechef;
+import java.util.*;
+public class Non_Divisible_Subset {
+	public static void main(String[] args) {
+		Scanner sc=new Scanner(System.in);
+		int T=sc.nextInt();
+		for(int t=0;t<T;t++)
+		{
+			int n=sc.nextInt();
+			int k=sc.nextInt();
+			int arr[]=new int[k];
+			for(int i=0;i<n;i++)
+			{
+				arr[sc.nextInt()%k]++;
+			}
+            int count=Math.min(arr[0],1);
+            for(int i=1;i<k/2+1;i++)
+            {
+            	if(i!=k-i)
+            	{
+            		count=count+Math.max(arr[i], arr[k-i]);
+            	}
+
+            }
+            if(k%2==0)
+            	count=count+Math.min(arr[k/2], 1);
+            
+		}
+	}
+}

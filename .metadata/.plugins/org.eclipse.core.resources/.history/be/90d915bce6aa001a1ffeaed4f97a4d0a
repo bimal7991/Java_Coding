@@ -1,0 +1,79 @@
+package codechef;
+import java.util.*;
+public class TILE {
+	
+	static long arr[]=new long[3];
+	static long I[][]=new long[3][3];
+	static long T[][]=new long[3][3];
+	static int mod=1000000007;
+
+	public static void main(String[] args) {
+		Scanner sc=new Scanner(System.in );
+		int t=sc.nextInt();
+		arr[1]=1;
+		arr[2]=2;
+		while(t-->0)
+		{
+			long n=sc.nextLong();
+			System.out.println(getFib(n));
+			
+		}
+	}
+
+	private static long getFib(long n) {
+		// TODO Auto-generated method stub
+		if(n<=2)
+			return arr[(int)n];
+		
+		I[1][1]=1;
+		I[2][2]=1;
+		T[1][2]=1;
+		T[2][1]=1;
+		T[2][2]=1;
+		n=n-1;
+		while(n>0)
+		{
+			if(n%2==1)
+			{
+				mul(I,T);
+				n=n-1;
+			}
+			else
+			{
+				mul(T,T);
+				n=n/2;
+			}
+		}
+		
+		long res=(arr[1]*I[1][1]+arr[2]*I[2][1])%mod;
+		
+		return res;
+		
+	}
+
+	private static void mul(long[][] A, long[][] B) {
+		// TODO Auto-generated method stub
+		long res[][]=new long[3][3];
+		for(int i=1;i<3;i++)
+		{
+			for(int j=1;j<3;j++)
+			{
+				res[i][j]=0;
+				for(int k=1;k<3;k++)
+				{
+					long val=A[i][k]*B[k][j]%mod;
+					
+					res[i][j]=(res[i][j]+val)%mod;
+				}
+					
+			}
+		}
+		
+		for(int i=1;i<3;i++)
+			for(int j=1;j<3;j++)
+				A[i][j]=res[i][j];
+		
+		
+	}
+
+}

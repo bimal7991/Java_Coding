@@ -1,0 +1,154 @@
+package codechef;
+import java.util.*;
+public class LSTBTF {
+	public static void main(String[] args) {
+		Scanner sc=new Scanner(System.in);
+		int T=sc.nextInt();
+		for(int t=0;t<T;t++)
+		{
+			int n=sc.nextInt(),m=sc.nextInt();
+			long arr[]=new long[n];
+			int p=0;
+			if(n%m==0)
+				p=n/m;
+			else
+				p=n/m+1;
+
+			long col[][]=new long[m][p];
+			int cval=0;
+			int no=0;
+			for(int i=0;i<n;i++)
+			{
+				arr[i]=sc.nextLong();
+				col[cval][no]=arr[i];
+				cval++;
+				if(cval==m)
+				{
+					cval=0;
+					no++;
+				}
+			}
+			long minimum[]=new long[m];
+			long maximum[]=new long[m];
+			for(int i=0;i<m;i++)
+			{
+				long min=Long.MAX_VALUE;
+				long max=Long.MIN_VALUE;
+
+				for(int j=0;j<col[i].length;j++)
+				{
+
+					if(col[i][j]<min && col[i][j]!=0) 
+						min=col[i][j];
+
+					if(col[i][j]>max && col[i][j]!=0)
+						max=col[i][j];
+					//System.out.print(col[i][j]+" ");
+				}
+				minimum[i]=min;
+				maximum[i]=max;
+
+			}
+			Arrays.sort(minimum);
+			Arrays.sort(maximum);
+			//System.out.println(min+" "+max);
+			long diff1=minimum[m-1]-minimum[0];
+
+			long diff2=maximum[m-1]-maximum[0];
+			if(diff1<diff2)
+			{
+				long ans=Long.MAX_VALUE;
+				for(int i=0;i<n;i++)
+				{
+					for(int j=i+1;j<n;j++)
+					{
+						if((j-i)%m!=0)
+                            {
+							    int flag=0;
+                            	if(arr[i]<=minimum[m-1] && arr[i]>=minimum[0])
+                            	{
+                            		flag=1;
+                            	}
+                            	if(flag==1)
+                            	{
+                            		if(arr[j]<=minimum[m-1] && arr[j]>=minimum[0])
+                            				{
+                            			      if(Math.abs(arr[i]-arr[j])<ans)
+                            			    	  ans=Math.abs(arr[i]-arr[j]);
+                            				}
+                            	}
+                            }
+
+					}
+				}
+
+				System.out.println(ans);
+			}
+			else
+			{
+				long ans=Long.MAX_VALUE;
+				for(int i=0;i<n;i++)
+				{
+					for(int j=i+1;j<n;j++)
+					{
+						if((j-i)%m!=0)
+                            {
+							    int flag=0;
+                            	if(arr[i]<=maximum[m-1] && arr[i]>=maximum[0])
+                            	{
+                            		flag=1;
+                            	}
+                            	if(flag==1)
+                            	{
+                            		if(arr[j]<=maximum[m-1] && arr[j]>=maximum[0])
+                            				{
+                            			      if(Math.abs(arr[i]-arr[j])<ans)
+                            			    	  ans=Math.abs(arr[i]-arr[j]);
+                            				}
+                            	}
+                            }
+
+					}
+				}
+				System.out.println(ans);
+			
+				
+			}
+
+
+			//	    	for(int i=0;i<29;i++)
+			//	    	{
+			//	    		System.out.println(col[i]);
+			//	    	}
+			//	    	Arrays.sort(arr);
+			//	    	int min=999999999;
+			//	    	for(int i=0;i<n-m+1;i++)
+			//	    	{
+			//	    		List<Integer> check = new ArrayList<Integer>();
+			//	    		int flag=0;
+			//
+			//	    		for(int j=i;j<i+m;j++)
+			//	    		{
+			//	    			if(!check.contains(col[arr[j]]))
+			//	    			{
+			//	    				check.add(col[arr[j]]);
+			//	    			}
+			//	    			else
+			//	    			{
+			//	    				flag=1; 
+			//	    				break;  
+			//	    			} 	    			  
+			//	    		}
+			//	    		//System.out.println(flag);
+			//	    		if(flag==0)
+			//	    			if((arr[i+m-1]-arr[i])<min)
+			//	    				min=arr[i+m-1]-arr[i];
+			//
+			//
+			//	    	}
+			//	    	System.out.println(min);
+		}
+		
+	}
+
+}

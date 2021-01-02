@@ -1,0 +1,9 @@
+INDEX VERSION 1.4+/home/bimal/eclipse-workspace/.metadata/.plugins/org.eclipse.wst.jsdt.core/indexes
+3532120138.index
+352829657.index
+1688173890.index
+2304830979.index
+846732506.index
+3415293524.index
+789657530.index
+2170125840.index

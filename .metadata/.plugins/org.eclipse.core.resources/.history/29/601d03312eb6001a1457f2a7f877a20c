@@ -1,0 +1,217 @@
+package codechef;
+
+
+import java.util.*;
+public class TreeandQueries_Codeforce {
+	
+	static int timer,block=600;
+	static int S[]=new int[100001];
+	static int T[]=new int[100001];
+	static int FT[]=new int[2*100001];
+	static ArrayList<Integer> arr[]=new ArrayList[100001];
+	static Query1  Q[] =new Query1[100001]; 
+	static int col[]=new int[100001];
+	static int nodeF[]=new int[100001];
+	static int ans[]=new int[100001];
+	static int bucket[]=new int[100001];
+	
+     public static void main(String[] args) {
+		Scanner sc=new Scanner(System.in);
+		int n=sc.nextInt(),q=sc.nextInt();
+		for(int i=1;i<=n;i++)
+			arr[i]=new ArrayList<Integer>();
+		
+		for(int i=1;i<=n;i++)
+			col[i]=sc.nextInt();
+		
+		for(int i=1;i<n;i++)
+		{
+			int u=sc.nextInt(),v=sc.nextInt();
+			arr[u].add(v);
+			arr[v].add(u);
+		}
+		timer=1;
+		dfs(1,-1);
+		
+		for(int i=0;i<q;i++)
+		{
+			int u=sc.nextInt(),k=sc.nextInt();
+			int L=S[u],R=T[u];
+			Q[i]=new Query1(L, R, i, k);
+			
+		}
+		
+		Arrays.sort(Q, new Comparator<Query1>(){ 
+			public int compare(Query1 x, Query1 y){ 
+
+				System.out.println(x.L);
+
+				if ((x.L)/block != (y.L)/block)  
+					return (x.L - y.L);  
+
+				return (x.R -y.R ); 
+			} 
+		}); 
+
+//		 for(int i=0;i<Q.size();i++) {
+//		 System.out.println(Q.get(i).L+" "+Q.get(i).R+" "+Q.get(i).ind); }
+//		
+		int ml=1,mr=0;
+		for(int i=0;i<q;i++)
+		{
+			int L=Q[i].L;
+			int R=Q[i].R;
+			int ind=Q[i].ind;
+			int k=Q[i].k;
+			
+
+			while(mr<R)
+			{
+				mr++;
+				add(mr);
+
+			}
+			while(ml>L)
+			{
+				ml--;   
+				add(ml);
+
+			}
+
+
+			while(mr>R)
+			{
+				remove(mr);
+				mr--;
+			}
+
+			while (ml<L)
+			{
+				remove(ml);
+				ml++;
+			}
+           
+             ans[ind]=getAns(k,n);
+
+
+
+		}
+		for(int i=0;i<q;i++)
+			System.out.println(ans[i]);
+				
+	}
+
+
+     private static int getAns(int k,int n) {
+		// TODO Auto-generated method stub
+    	int Lb=getBlock(k);
+    	int Rb=getBlock(n);
+		int res=0;
+		if(Lb==Rb)
+		{
+			for(int i=k;i<n;i++)
+				res=res+ff[i];
+		}
+		else
+		{
+			for(int i=k;i<Lb*block;i++)
+				res=res+ff[i];
+			for(int i=Lb;i<Rb;i++)
+			{
+				res=res+bucket[i];
+				
+			}
+			for(int i=Rb*block;i<n;i++)
+				res=res+ff[i];
+		}
+		return res;
+	}
+
+
+	static int f[]=new int[100001];
+     static int ff[]=new int[100001];
+    
+     
+	private static void remove(int mr) {
+		// TODO Auto-generated method stub
+		int node=FT[mr];
+		nodeF[node]--;
+		int c=col[node];
+		
+		
+		if(nodeF[node]==1)
+		{
+			f[c]--;
+			ff[f[c]]++;
+			bucket[getBlock(f[c])]++;
+			
+			ff[f[c]+1]--;
+			bucket[getBlock(f[c]+1)]--;
+		}
+		
+	}
+
+
+	private static int getBlock(int i) {
+		// TODO Auto-generated method stub
+		return (i/block);
+	}
+
+
+	private static void add(int ml) {
+		
+		int node=FT[ml];
+		nodeF[node]++;
+		int c=col[node];
+		
+		
+		if(nodeF[node]==2)
+		{
+			f[c]++;
+			ff[f[c]]++;
+			bucket[getBlock(f[c])]++;
+			ff[f[c]-1]--;
+			bucket[getBlock(f[c]-1)]--;
+			
+		}
+		
+		
+		
+		
+		
+	}
+
+
+	private static void dfs(int node, int parent) {
+		// TODO Auto-generated method stub
+		S[node]=timer;
+		FT[timer]=node;
+		timer++;
+		
+		for(int child:arr[node])
+		{
+			if(child!=parent)
+				dfs(child,node);
+		}
+		T[node]=timer;
+		FT[timer]=node;
+		timer++;
+		
+		
+		
+		
+		
+	}
+}
+class Query1{  
+	int L;  
+	int R; 
+	int ind;
+	int k;
+	Query1(int L, int R,int ind,int k){ 
+		this.L = L; 
+		this.R = R; 
+		this.ind=ind;
+		this.k=k;
+	} 
+}

@@ -1,0 +1,38 @@
+package codechef;
+import java.util.*;
+public class GUESSG {
+  public static void main(String[] args) {
+	 Scanner sc=new Scanner(System.in);
+	 int n=sc.nextInt();
+	 int a=n;
+	 int flag=0;
+	 for(int i=1;i<=300;i++)
+	 {
+		if(i%2==1)
+		{
+			System.out.println(a);
+			String s=sc.next();
+			if(s.equals("E"))
+			{
+				flag=1;
+				break;
+			}
+			else if(s.equals("L"))
+			{
+               a=a/2; 				
+			}
+			else if(s.equals("G"))
+			{
+				a=a+1;
+			}
+		}
+		else
+		{
+			System.out.println(n/2);
+		}
+		
+		
+	 }
+	 
+}
+}

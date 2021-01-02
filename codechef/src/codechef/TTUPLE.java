@@ -1,0 +1,229 @@
+package codechef;
+import java.util.*;
+public class TTUPLE {
+	public static void main(String[] args) {
+		Scanner sc=new Scanner(System.in);
+		int t=sc.nextInt();
+		while(t-->0)
+		{
+			int x1=sc.nextInt(),y1=sc.nextInt(),z1=sc.nextInt();
+			int x2=sc.nextInt(),y2=sc.nextInt(),z2=sc.nextInt();
+			int diff1=x2-x1,diff2=y2-y1,diff3=z2-z1;
+			if(diff1==0 && diff2==0 && diff3==0)
+			{
+				System.out.println(0);
+				continue;
+			}            
+
+			else if(diff1==diff2)
+			{
+				if(diff2==diff3 || diff3==0 || diff1==0)
+				{
+					System.out.println(1);
+					continue;
+
+				}
+				else
+				{
+					System.out.println(2);
+					continue;
+
+				}
+
+			}
+			else if(diff2==diff3)
+			{
+				if(diff1==0 || diff2==0)
+				{
+					System.out.println(1);
+					continue;
+
+				}
+				else
+				{
+					System.out.println(2);
+					continue;
+
+				}
+			}
+			else if(diff1==diff3)
+			{
+				if(diff1==0 || diff2==0)
+				{
+					System.out.println(1);
+					continue;
+
+				}
+				else
+				{
+					System.out.println(2);
+					continue;
+
+				}
+			}
+			int k=0;
+			if((diff2-diff1)==diff3 || (diff3-diff1)==diff2 )
+			{
+				System.out.println(2);
+				continue;
+			}
+			else if(diff3-diff2==diff1 || diff1-diff2==diff3)
+			{
+				System.out.println(2);
+				continue;
+			}
+			else if(diff2-diff3==diff1 || diff1-diff3==diff2)
+			{
+				System.out.println(2);
+				continue;
+			}
+
+
+
+
+
+			k=0;
+			if(z1!=0 && y1!=0 && ((diff1+y1!=0 && y2/(diff1+y1)==z2/z1 && y2%(diff1+y1)==0 && z2%z1==0 ) || (  diff1+z1!=0 &&   z2/(diff1+z1)==y2/y1 && z2%(diff1+z1)==0 && y2%y1==0 ))  )
+			{
+				System.out.println(2);
+				System.out.println(1);
+				
+				continue;
+			}
+			else if(x1!=0 && y1!=0 && (( diff3+y1!=0 &&   y2/(diff3+y1)==x2/x1  && y2%(diff3+y1)==0 && x2%x1==0 )|| ( diff3+x1!=0 &&   x2/(diff3+x1)==y2/y1  && x2%(diff3+x1)==0 && y2%y1==0)))   
+			{
+				System.out.println(2);
+				System.out.println(2);
+				
+				continue;
+			}
+			else if(x1!=0 && z1!=0 && (( diff2+x1!=0 &&  x2/(diff2+x1)==z2/z1  && x2%(diff2+x1)==0 && z2%z1==0 ) || ( diff2+z1!=0 &&  z2/(diff2+z1)==x2/x1 && z2%(diff2+z1)==0 && x2%x1==0)))
+			{
+				System.out.println(2);
+				System.out.println(3);
+				
+				continue;
+			}
+
+			k=0;
+
+
+			if(x1!=0 && y1!=0 && x2/x1==y2/y1 )
+			{
+				if(y1!=0 && z1!=0 && y2/y1==z2/z1)        //rem2==rem3
+				{
+					k=1;
+					if(x1!=0)
+						x1=x1*(x2/x1);
+					if(y1!=0)
+						y1=y1*(y2/y1);
+					if(z1!=0)
+						z1=z1*(z2/z1);
+				}
+				else
+				{
+					k=1;
+					if(x1!=0)
+						x1=x1*(x2/x1);
+					if(y1!=0)
+						y1=y1*(y2/y1);
+				}
+			}
+			else if(y1!=0 && z1!=0 && y2/y1==z2/z1)   
+			{
+
+				k=1;
+				if(y1!=0)
+					y1=y1*(y2/y1);
+				if(z1!=0)
+					z1=z1*(z2/z1);
+
+
+			}
+			else if(x1!=0 && z1!=0 && x2/x1==z2/z1 )  //     rem1==rem3)
+			{
+				k=1;
+				if(x1!=0)
+					x1=x1*(x2/x1);
+				if(z1!=0)
+					z1=z1*(z2/z1);
+			}
+
+
+
+
+
+
+
+
+
+
+
+			 System.out.println(x1+" "+y1+" "+z1);
+
+			diff1=x2-x1;diff2=y2-y1;diff3=z2-z1;
+
+
+			if(diff1==0 && diff2==0 && diff3==0)
+			{
+				System.out.println(1);
+				continue;
+			} 
+
+			else if(diff1==diff2)
+			{
+				if(diff2==diff3 || diff3==0 || diff1==0)
+				{
+					System.out.println(2);
+					continue;
+
+				}
+				else
+				{
+					System.out.println(3);
+					continue;
+
+				}
+
+			}
+			else if(diff2==diff3)
+			{
+				if(diff1==0 || diff2==0)
+				{
+					System.out.println(2);
+					continue;
+
+				}
+				else
+				{
+					System.out.println(3);
+					continue;
+
+				}
+			}
+			else if(diff1==diff3)
+			{
+				if(diff1==0 || diff2==0)
+				{
+					System.out.println(2);
+					continue;
+
+				}
+				else
+				{
+					System.out.println(3);
+					continue;
+
+				}
+			}
+
+			else
+				System.out.println(3);
+
+
+
+
+
+		}
+	}
+}

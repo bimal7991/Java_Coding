@@ -1,0 +1,70 @@
+package LeetCode;
+import java.util.*;
+public class Decode_string {
+  public static void main(String[] args) {
+	Scanner sc=new Scanner(System.in);
+	int n=sc.nextInt();
+	int arr[]=new int[n];
+	
+	for(int i=0;i<n;i++)
+	{
+		arr[i]=sc.nextInt();
+	}
+	
+	int ans=rain(arr);
+	
+	
+	System.out.println(ans);
+}
+
+ static int rain(int arr[]) {
+	// TODO Auto-generated method stub
+	 int start=0;
+	 int end=0;
+	  for(int i=0;i<arr.length;i++)
+	  {
+		  if(arr[i]>0)
+		  {
+			  start=i;
+			  break;
+		  }
+	  }
+	  int val=arr[start];
+	  int sum=0;
+	  end=start+1;
+	 while(start<arr.length)
+	 {
+		 if(end>=arr.length-1 && start!=arr.length-1)
+			{
+				start++;
+				end=start+1;
+			}
+		 if(start==arr.length-1)
+			 break;
+		 
+		if(arr[end]<arr[start])
+		{
+			end++;
+		}
+		else
+		{
+		   if(arr[start]<=arr[end])
+		   {
+			  for(int i=start;i<end;i++)
+			  {
+				 int add= arr[start]-arr[i];
+				 sum=sum+add;
+				 arr[i]=arr[i]+add;
+			  }
+		   }
+		   start=end;
+		   end=start+1;
+		}
+		
+		
+		
+	 }
+	return sum;
+}
+  
+}

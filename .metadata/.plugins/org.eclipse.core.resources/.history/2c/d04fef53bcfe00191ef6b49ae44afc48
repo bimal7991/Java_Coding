@@ -1,0 +1,114 @@
+package codechef;
+import java.util.*;
+public class PHCUL {
+	public static void main(String[] args) {
+		Scanner sc=new Scanner(System.in);
+		int T=sc.nextInt();
+		for(int t=0;t<T;t++)
+		{
+			int x=sc.nextInt(),y=sc.nextInt();
+			int n=sc.nextInt(),m=sc.nextInt(),k=sc.nextInt();
+			int narr[][]=new int[n][2],marr[][]=new int[m][2],karr[][]=new int[k][2];
+			double reddist[]=new double[n],greendist[]=new double[m],bluedist[]=new double[k];
+
+			double smallred=999999999;int redind=0;
+			for(int i=0;i<n;i++)
+			{
+				narr[i][0]=sc.nextInt();
+				narr[i][1]=sc.nextInt();
+				reddist[i]=Math.sqrt((narr[i][0]-x)*(narr[i][0]-x) + (narr[i][1]-y)*(narr[i][1]-y));
+				if(reddist[i]<smallred)
+				{
+					smallred=reddist[i];
+					redind=i;
+				}
+			}
+			//System.out.println(smallred);
+			double smallgreen=999999999;int greenind=0;
+			for(int i=0;i<m;i++)
+			{
+				marr[i][0]=sc.nextInt();
+				marr[i][1]=sc.nextInt();
+				greendist[i]=Math.sqrt((marr[i][0]-x)*(marr[i][0]-x) + (marr[i][1]-y)*(marr[i][1]-y));
+				if(greendist[i]<smallgreen)
+				{
+					smallgreen=greendist[i];
+					greenind=i;
+				}
+			}
+			//System.out.println(smallgreen);
+			double totalred=999999999;int totalredindex=0;
+			for(int i=0;i<m;i++)
+			{
+
+				double istdist=smallred+Math.sqrt((marr[i][0]-narr[redind][0])*(marr[i][0]-narr[redind][0]) + (marr[i][1]-narr[redind][1])*(marr[i][1]-narr[redind][1]));
+				{
+					if(istdist<totalred)
+					{
+						totalred=istdist;
+						totalredindex=i;
+					}
+				}
+
+			}
+			//System.out.println(totalred);
+			
+			double totalgreen=999999999;int totalgreenindex=0;
+			for(int i=0;i<n;i++)
+			{
+
+				double istdist=smallgreen+Math.sqrt((marr[greenind][0]-narr[i][0])*(marr[greenind][0]-narr[i][0]) + (marr[greenind][1]-narr[i][1])*(marr[greenind][1]-narr[i][1]));
+				{
+					if(istdist<totalgreen)
+					{
+						totalgreen=istdist;
+						totalgreenindex=i;
+					}
+				}
+
+			}
+			//System.out.println(totalgreen);
+			double finaldist=0;int nextind=0;
+			if(totalgreen<totalred)
+			{
+				finaldist=totalgreen;
+				nextind=totalgreenindex;
+				double lastdist=999999999;
+				for(int i=0;i<k;i++)
+				{
+					karr[i][0]=sc.nextInt();
+					karr[i][1]=sc.nextInt();
+					double fdist=Math.sqrt((narr[totalgreenindex][0]-karr[i][0])*(narr[totalgreenindex][0]-karr[i][0]) + (narr[totalgreenindex][1]-karr[i][1])*(narr[totalgreenindex][1]-karr[i][1]));
+					if(fdist<lastdist)
+					{
+						lastdist=fdist;
+						
+					}
+				}
+				System.out.format("%.10f",lastdist+finaldist);
+				
+			}
+			else
+			{
+				finaldist=totalred;
+				nextind=totalredindex; 
+				double lastdist=999999999;
+				for(int i=0;i<k;i++)
+				{
+					karr[i][0]=sc.nextInt();
+					karr[i][1]=sc.nextInt();
+					double fdist=Math.sqrt((marr[totalredindex][0]-karr[i][0])*(marr[totalredindex][0]-karr[i][0]) + (marr[totalredindex][1]-karr[i][1])*(marr[totalredindex][1]-karr[i][1]));
+					if(fdist<lastdist)
+					{
+						lastdist=fdist;
+						
+					}
+				}
+				 System.out.format("%.10f",finaldist+lastdist);
+			}
+			
+		}
+
+	}
+
+}

@@ -1,0 +1,44 @@
+package codechef;
+import java.util.*;
+public class CASH {
+ public static void main(String[] args) {
+	Scanner sc=new Scanner(System.in);
+	int T=sc.nextInt();
+	while(T-->0)
+	{
+		int N=sc.nextInt(),k=sc.nextInt();
+		int arr[]=new int[N];
+		int rem[]=new int[N];
+		for(int i=0;i<N;i++)
+		{
+			arr[i]=sc.nextInt();
+			rem[i]=arr[i]%k;
+		}
+		long fsum=rem[0];
+		
+		long bsum=0;
+		for(int i=1;i<N;i++)
+		{
+			if(rem[i]==0)
+				continue;
+			bsum=bsum+(k-rem[i]);
+		}
+		int i=1;
+		while(fsum<bsum && i<N)
+		{ 
+			if(rem[i]==0)
+			{
+				i++;
+				continue;
+			}
+			
+			fsum=fsum+rem[i];
+			bsum=bsum-(k-rem[i]);
+			i++;
+		}
+		System.out.println(fsum-bsum);
+		
+		
+	}
+}
+}

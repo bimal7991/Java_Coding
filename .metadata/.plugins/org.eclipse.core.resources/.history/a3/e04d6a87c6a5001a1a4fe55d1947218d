@@ -1,0 +1,73 @@
+package codechef;
+
+import java.util.Arrays;
+import java.util.Scanner;
+
+public class Owl_Fight {
+	public static void main(String[] args) {
+		 Scanner sc=new Scanner(System.in);
+		 int n=sc.nextInt(),m=sc.nextInt();
+		 int parent[]=new int[n+1];
+		 for(int i=1;i<=n;i++)
+			 parent[i]=-i;
+		 while(m-->0)
+		 {
+			 int a=sc.nextInt(),b=sc.nextInt();
+			 a=find(a,parent);
+			 b=find(b,parent);
+			 if(a!=b)
+				 union(a,b,parent);
+		 }	
+		 for(int i=1;i<=n;i++)
+			 System.out.print(parent[i]+" ");
+		 
+		 
+		 int q=sc.nextInt();
+		 while(q-->0)
+		 {
+			 int a=sc.nextInt(),b=sc.nextInt();
+			int para=find(a,parent);
+			 int parb=find(b,parent);
+			 
+			 System.out.println(para+" "+parb);
+               if(para==parb)
+            	   System.out.println("TIE");
+               else
+               {
+            	   if(parent[para]<parent[parb])
+            		   System.out.println(a);
+            	   else
+            		   System.out.println(b);
+               }
+			 
+		 }
+		 
+		 
+		 
+	}
+	static void union(int a, int b, int[] parent) {
+		// TODO Auto-generated method stub
+		  parent[a]=Math.min(parent[a], parent[b]);
+		  parent[b]=a;
+		
+		
+	}
+	static int find(int a, int[] parent) {
+		// TODO Auto-generated method stub
+		
+		if(parent[a]<0)
+			return a;
+		else
+			return find(parent[a],parent);
+//		if(parent[a]<0)
+//			return a;
+//		else
+//			return find(parent[a],parent);
+	//	
+		
+	}
+	   
+	}
+
+
+

@@ -1,0 +1,36 @@
+package codechef;
+import java.util.*;
+public class Change_coin {
+  public static void main(String[] args) {
+	Scanner sc=new Scanner(System.in);
+	int t=sc.nextInt(),i;
+	for(i=0;i<t;i++)
+	{
+		int n=sc.nextInt();
+		int arr[]=new int[n];
+		for(int j=0;j<n;j++)
+		{
+			arr[j]=sc.nextInt();
+		}
+		int coin=sc.nextInt();
+		int ans=chnge(n,arr,coin);
+		System.out.println(ans);
+	}
+}
+
+private static int chnge(int n, int[] arr, int coin) {
+	// TODO Auto-generated method stub
+	int dp[]=new int[coin+1];
+	dp[0]=1;
+	for(int i=0;i<n;i++)
+	{
+		for(int j=arr[i];j<=coin;j++)
+			dp[j]+=dp[j-arr[i]];
+		
+	}
+	
+	return dp[coin];
+	
+}
+}
+

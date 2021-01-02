@@ -1,0 +1,41 @@
+
+import java.util.*;
+public class Kick {
+	public static void main(String[] args) {
+		Scanner sc=new Scanner(System.in);
+		int t=sc.nextInt();
+       for(int T=0;T<t;T++)
+       {
+    	   int a=sc.nextInt(),b=sc.nextInt(),n=sc.nextInt(),n1=0;
+    	   if(n==0)
+    		   System.out.println(a);
+    	   else if(n==1)
+    		   System.out.println(b);
+    	   else
+    	   {
+    		   int f[] = new int[n + 1]; 
+    	        int i; 
+    	  
+    	        /* 0th and 1st number of the series are 0 and 1*/
+    	        f[0] = a; 
+    	        f[1]=b;
+    	        if (n > 1) { 
+    	            
+    	  
+    	            for (i = 2; i <= n; i++) { 
+    	                /* Add the previous 2 numbers in the series 
+    	             and store it */
+    	                f[i] = f[i - 1] + f[i - 2]; 
+    	            } 
+    	        } 
+    	        System.out.println(f[n]);
+    	  
+    	   }
+    		   
+    	    		   
+       }
+		
+
+}
+	
+}

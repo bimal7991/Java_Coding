@@ -1,0 +1,48 @@
+package codechef;
+import java.util.*;
+public class Teachers_Dilemma {
+   public static void main(String[] args) {
+	 Scanner sc=new Scanner(System.in);
+	 int n=sc.nextInt(),m=sc.nextInt();
+	 int parent[]=new int[n+1];
+	 Arrays.fill(parent, -1);
+	 while(m-->0)
+	 {
+		 int a=sc.nextInt(),b=sc.nextInt();
+		 a=find(a,parent);
+		 b=find(b,parent);
+		 if(a!=b)
+			 union(a,b,parent);
+	 }	
+	 int ans=1;
+	 for(int i=1;i<=n;i++)
+	 {
+		 if(parent[i]<0)
+			 ans=ans*(-parent[i])%1000000007;
+	 }
+		 System.out.println(ans);
+	 
+}
+static void union(int a, int b, int[] parent) {
+	// TODO Auto-generated method stub
+	  parent[a]+=parent[b];
+	  parent[b]=a;
+	
+	
+}
+static int find(int a, int[] parent) {
+	// TODO Auto-generated method stub
+	
+	if(parent[a]<0)
+		return a;
+	else
+		return find(parent[a],parent);
+//	if(parent[a]<0)
+//		return a;
+//	else
+//		return find(parent[a],parent);
+//	
+	
+}
+   
+}

@@ -1,0 +1,44 @@
+package codechef;
+import java.util.*;
+public class Max_product_sum {
+	public static void main(String[] args) {
+		Scanner sc=new Scanner(System.in);
+		int t=sc.nextInt();
+		for(int i=0;i<t;i++)
+		{
+		int n=sc.nextInt();
+		int arr[]=new int[n];
+		for(int j=0;j<n;j++)
+		{
+			arr[j]=sc.nextInt();
+		}
+		int large=arr[0],pos=0;
+		for(int j=1;j<n;j++)
+		{
+		 if(arr[j]>large && arr[j]%10!=0)
+		 {
+			 large=arr[j];
+			 pos=j;
+		 }
+		}
+		int large2=arr[0];
+		for(int j=1;j<n;j++)
+		{
+		 if(arr[j]>large2 && j!=pos && arr[j]%10!=0)
+			 large2=arr[j];
+			
+		}
+		 long prod=large*large2;
+		 int sum=0;
+		while(prod!=0)
+		{
+			int k=(int) (prod%10);
+			sum=sum+k;
+			prod=prod/10;
+			
+		}
+		System.out.println(sum);
+		
+	}
+	}
+}

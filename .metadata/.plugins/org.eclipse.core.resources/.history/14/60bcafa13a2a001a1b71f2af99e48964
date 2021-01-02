@@ -1,0 +1,34 @@
+package codechef;
+import java.util.*;
+public class Divisor {
+   public static void main(String[] args) {
+	Scanner sc=new Scanner(System.in);
+	int T=sc.nextInt();
+	for(int t=0;t<T;t++)
+	{
+		long A=sc.nextLong();
+		long M=sc.nextLong();
+		long lim=M/A;
+		int count=0;
+		long d=0;
+		ArrayList<Integer> li=new ArrayList<Integer>();
+		for(int i=(int) lim;i>=d && i>=A;i--)
+		{
+			 d=M-A*i;
+			if( d!=0 && i%d==0)
+			{
+				count++;
+				li.add(i);
+			}
+			if(d>i)
+				break;
+		}
+	System.out.println(count);
+	 for(int i=li.size();i>=0;i--)
+	 {
+		 System.out.print(li.get(i)+" ");
+	 }
+		System.out.println();
+	}
+}
+}

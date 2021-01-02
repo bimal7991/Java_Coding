@@ -1,0 +1,8 @@
+package codechef;
+import java.util.*;
+public class Special {
+	public static void main(String[] args) {
+		
+	}
+
+}

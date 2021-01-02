@@ -1,0 +1,38 @@
+package codechef;
+import java.util.*;
+public class CARSELL {
+	public static void main(String[] args) {
+		Scanner sc=new Scanner(System.in);
+		int T=sc.nextInt();
+		while(T-->0)
+		{
+			int N=sc.nextInt();
+			long P[]=new long[N];
+			for(int i=0;i<N;i++)
+			{
+				P[i]=sc.nextLong();
+			}
+			Arrays.sort(P); 
+			long sum=0;
+			long mod=1000000007;
+			int  k=0;
+			for(int i=N-1;i>=0;i--)
+			{
+				long add=P[i]-k;
+				if(add<0)
+				{
+					
+					break;
+				}
+				else
+				{
+					sum=sum+add;
+					sum=sum%mod;
+				}
+				k++;
+			}
+			System.out.println(sum%mod);
+		}
+	}
+
+}

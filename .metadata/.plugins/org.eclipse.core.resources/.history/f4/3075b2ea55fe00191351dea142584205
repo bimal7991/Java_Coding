@@ -1,0 +1,57 @@
+package codechef;
+import java.util.*;
+public class LSTBTF {
+	public static void main(String[] args) {
+	    Scanner sc=new Scanner(System.in);
+	    int T=sc.nextInt();
+	    for(int t=0;t<T;t++)
+	    {
+	    	int n=sc.nextInt(),m=sc.nextInt();
+	    	int arr[]=new int[n];
+	    	int col[]=new int[100000000];
+	    	int cval=1;
+	    	for(int i=0;i<n;i++)
+	    	{
+	    		arr[i]=sc.nextInt();
+	    		col[arr[i]]=cval;
+	    		cval++;
+	    		if(cval==m+1)
+	    			cval=1;
+	    		
+	    	}
+//	    	for(int i=0;i<29;i++)
+//	    	{
+//	    		System.out.println(col[i]);
+//	    	}
+	    	Arrays.sort(arr);
+	    	int min=999999999;
+	    	for(int i=0;i<n-m+1;i++)
+	    	{
+	    		List<Integer> check = new ArrayList<Integer>();
+	    		int flag=0;
+	    		
+	    		for(int j=i;j<i+m;j++)
+	    		{
+	    		  if(!check.contains(col[arr[j]]))
+	    		  {
+	    			  check.add(col[arr[j]]);
+	    		  }
+	    		  else
+	    		  {
+	    			 flag=1; 
+	    			break;  
+	    		  } 	    			  
+	    		}
+	    		//System.out.println(flag);
+	    		if(flag==0)
+	    			if((arr[i+m-1]-arr[i])<min)
+	    				min=arr[i+m-1]-arr[i];
+	    		
+	    		
+	    	}
+	    	System.out.println(min);
+	    	
+	    }
+	}
+
+}

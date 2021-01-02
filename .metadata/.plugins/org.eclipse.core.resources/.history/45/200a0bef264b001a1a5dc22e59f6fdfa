@@ -1,0 +1,137 @@
+package codechef;
+import java.util.*;
+public class THEATRE {
+ public static void main(String[] args) {
+	Scanner sc=new Scanner(System.in);
+	int T=sc.nextInt();
+	long sum=0;
+	while(T-->0)
+	{
+	int N=sc.nextInt();
+	int arr[][]=new int[4][13];
+	for(int i=0;i<N;i++)
+	{
+		String s=sc.next();
+        String R=sc.next();
+        sc.nextLine();
+       int r=Integer.parseInt(R);
+	   arr[s.charAt(0)-'A'][r]++;
+		
+	}
+	int th[][]=new int[4][4];
+	int A[]=new int[4];
+	int B[]=new int[4];
+	int C[]=new int[4];
+	int D[]=new int[4];
+	for(int i=0;i<4;i++)
+	{
+		if(i==0)
+		{
+		for(int j=3,k=0;j<=12 && k<4;j+=3,k++)
+		{
+			A[k]=arr[i][j];
+		}
+		}
+		else if(i==1)
+		{
+			for(int j=3,k=0;j<=12 && k<4;j+=3,k++)
+			{
+				B[k]=arr[i][j];
+			}
+
+		}
+		else if(i==2)
+		{
+		for(int j=3,k=0;j<=12 && k<4;j+=3,k++)
+		{
+			C[k]=arr[i][j];
+		}
+		}
+		else
+		{
+			for(int j=3,k=0;j<=12 && k<4;j+=3,k++)
+			{
+				D[k]=arr[i][j];
+			}
+
+		}
+		
+		
+	}
+	int max[]=new int[4],row=0,col=0;
+	Arrays.fill(max, 0);
+	
+	int k=0;long acprofit=-500;
+	for(int i=0;i<4;i++)
+	{
+	
+			max[0]=A[i];
+			//System.out.print(max[0]+" ");
+		for(int j=0;j<4;j++)
+		{
+			if(j==i)
+				continue;
+			max[1]=B[j];
+			//System.out.print(max[1]+" ");
+			for(int p=0;p<4;p++)
+			{
+				if(p==i || p==j)
+					continue;
+				max[2]=C[p];
+				
+				//System.out.print(max[2]+" ");
+				for(int q=0;q<4;q++)
+				{
+					if(q==i || q==j || q==p)
+						continue;
+					
+					max[3]=D[q];
+				int max1[]=new int[4];
+				for(int l=0;l<4;l++)
+				{
+				   max1[l]=max[l];
+				}
+				
+				  
+				 
+					//System.out.print(max[0]+" ");
+					//System.out.println();
+					//Arrays.sort(max);
+					
+					long profit=0;
+					if(max1[3]>0)
+						profit=profit+max1[3]*100;
+					else
+						profit=profit-100;
+					if(max1[2]>0)
+						profit=profit+max1[2]*75;
+					else
+						profit=profit-100;
+					if(max1[1]>0)
+						profit=profit+max1[1]*50;
+					else
+						profit=profit-100;
+					if(max1[0]>0)
+						profit=profit+max1[0]*25;
+					else
+						profit=profit-100;
+					
+					//System.out.println(profit);
+					if(profit>acprofit)
+						acprofit=profit;
+				
+				}
+			}
+			
+		}
+	}
+	
+	
+	
+	
+	sum=sum+acprofit;
+	System.out.println(acprofit);
+	}
+	System.out.println(sum);
+}
+}

@@ -1,0 +1,61 @@
+package codechef;
+import java.util.*;
+public class Zombie_cave {
+	public static void main(String[] args) {
+		Scanner sc=new Scanner(System.in);
+		int t=sc.nextInt();
+		for(int j=0;j<t;j++)
+		{
+			int n=sc.nextInt();
+			int arr[]=new int[n+1];
+			int zom[]=new int[n+1];
+			for(int i=1;i<=n;i++)
+				arr[i]=sc.nextInt();
+			for(int i=1;i<+n;i++)
+				zom[i]=sc.nextInt();
+			
+			int rad[]=new int[n+1];
+			Arrays.fill(rad, 0);
+			for(int i=1;i<=n;i++)
+			{
+				int rads=i-arr[i];
+				if(rads<1)
+					rads=1;
+				int radl=i+arr[i];
+				if(radl>n)
+					radl=n;
+				for(int k=rads;k<=radl;k++)
+				{
+					rad[k]=rad[k]+1;
+				}
+					
+			}
+			int flag1=0;
+			for(int i=1;i<=n;i++)
+			{
+				int flag=0;
+				for(int k=1;k<=n;k++)
+				{
+					if(zom[i]==rad[k])
+					{
+						flag=1;
+						break;
+					}
+				}
+				if(flag!=1)
+				{
+					flag1=1;
+					break;
+				}
+
+			}
+			if(flag1==1)
+			 System.out.println("NO");
+			else
+				System.out.println("YES");
+			
+			
+		}
+	}
+
+}

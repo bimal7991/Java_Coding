@@ -1,0 +1,43 @@
+package codechef;
+import java.util.*;
+public class STRNO {
+   public static void main(String[] args) {
+	Scanner sc=new Scanner(System.in);
+	int T=sc.nextInt();
+	while(T-->0)
+	{
+	  long X=sc.nextLong();
+	  long K=sc.nextLong();
+	  if(K==1)
+	  {
+		  if(X>=2)
+		  {
+			  System.out.println(1);
+		  }
+		  else
+		  {
+			  System.out.println(0);
+		  }
+	  }
+	  else if(K==2)
+	  {
+		  if(X==4 || X==6 || X==8 || (X>=9))
+		  {
+			  System.out.println(1);
+		  }
+		  else
+		  {
+			  System.out.println(0); 
+		  }
+	  }
+	  else
+	  {
+		  
+	  }
+		  
+	  
+	}
+ }
+   
+   
+}

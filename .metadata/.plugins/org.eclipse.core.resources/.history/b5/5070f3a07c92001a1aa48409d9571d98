@@ -1,0 +1,121 @@
+package codechef;
+
+import java.util.*;
+
+public class CHANDF {
+	public static void main(String[] args) {
+		Scanner sc = new Scanner(System.in);
+		int T = sc.nextInt();
+		while (T-- > 0) {
+			long x = sc.nextLong(), y = sc.nextLong(), l = sc.nextLong(), r = sc.nextLong();
+			long max = 0;
+			long ans=x|y;
+			
+			if(x==0 || y==0)
+				System.out.println(0);
+			else if(r>=ans && l<=ans)
+			{
+			   
+				System.out.println(ans);
+			}
+			
+			/*
+			 * else if ((l | ans) < r) { System.out.println((l | ans)); } else if ((ans & l)
+			 * == ans || (x & y) == 0) { System.out.println(l); } else if (l > ans) { int
+			 * bitx = Long.toBinaryString(x).length(); int bity =
+			 * Long.toBinaryString(y).length(); String btr = Long.toBinaryString(ans); int
+			 * minbit = Math.min(bitx, bity);
+			 * 
+			 * String str = btr.substring(btr.length() - minbit, btr.length()); //
+			 * System.out.println(str); long val=Long.parseLong(str,2); long ans2=val|l;
+			 * System.out.println(ans2);
+			 * 
+			 * // System.out.println(btr);
+			 * 
+			 * }
+			 */
+			else if(r<ans){
+				
+				
+				int Rlength=Long.toBinaryString(r).length();
+				String btr = Long.toBinaryString(ans);
+				String ansstring = btr.substring(btr.length() - Rlength, btr.length()); 
+				long newans=Long.parseLong(ansstring,2);
+				
+				
+				
+				long diff=newans-r;
+				int difflength=Long.toBinaryString(diff).length();
+				if(isPowerOfTwo(diff))
+				{
+					difflength=difflength-1;
+				}
+			    
+			     
+			      char[] btrchar=ansstring.toCharArray();
+			      
+			      
+			      char[] str=Long.toBinaryString(r).toCharArray();
+			      
+			      for(int i=ansstring.length()-1,j=str.length-1;i>=0 && j>=0;i--,j--)
+			      {
+			    	  if(btrchar[i]=='0')
+			    		  str[j]='0';
+			    	 // System.out.println(btrchar[i]);
+			      }
+			      
+			      
+			      long value2=Long.parseLong(String.valueOf(str),2);
+			      System.out.println("valu2"+value2);
+			      
+			      long value1=0;
+			     if(ansstring.length()>difflength)
+			     {
+			    	 
+			    	 for(int j=ansstring.length()-difflength-1;j>=0;j--)
+			    	 {
+			    		if(btrchar[j]=='1') 
+			    		{
+			              btrchar[j]='0';
+			              break;
+			    		}
+			    	 }
+			     
+			     
+			     String val1=String.valueOf(btrchar);
+			     value1=Long.parseLong(val1,2);
+			     System.out.println("valu1"+value1);
+			     }
+			      
+               
+                 
+                
+                
+				
+				
+               System.out.println(Math.max(value1, value2));
+				
+				// System.out.println(str); 
+				
+		    		
+		    		//System.out.println(ans2);	
+				
+			     }
+			
+			
+			     
+			}
+			 
+
+		}
+	
+	static boolean isPowerOfTwo (long x) 
+    { 
+      /* First x in the below expression is  
+        for the case when x is 0 */
+        return x!=0 && ((x&(x-1)) == 0); 
+          
+    } 
+	}
+
+

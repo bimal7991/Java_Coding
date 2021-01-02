@@ -1,0 +1,131 @@
+package codechef;
+
+
+import java.util.*;
+class test {
+    public class Reduce_one {
+
+	}
+
+
+
+	public static void main(String args[] ) throws Exception {
+         Scanner sc=new Scanner(System.in);
+      int T=sc.nextInt();
+      for(int t=0;t<T;t++)
+      {
+    	  long a=sc.nextLong();
+    	  long b=sc.nextLong();
+    	  long n=sc.nextLong();
+    	 
+          n=n%3;
+          long X=fibxor(a,b,n);
+    	  long E=fibxnor(a,b,n);
+    	 // System.out.println(X);
+    	 // System.out.println(E);
+    	  if(X>=E)
+    		  System.out.println(X);
+    	  else
+    		  System.out.println(E);  
+    	  
+      }
+    }
+      private static long fibxnor(long a, long b, long n) {
+		// TODO Auto-generated method stub
+		if(n==1)
+			return a;
+		else if(n==2)
+			return b;
+		else
+		{
+			
+		    
+		    
+		return xnor(a,b);
+		
+		}
+		
+		
+	}
+	static long xnor(long num1, long num2) 
+    { 
+        // if num2 is greater then 
+        // we swap this number in num1   
+        if (num1 < num2) 
+        { 
+            long temp = num1; 
+            num1 = num2; 
+            num2 = temp; 
+        } 
+      
+        num1 = togglebit(num1); 
+      
+        return num1 ^ num2; 
+    } 
+	static long togglebit(long n) 
+    { 
+        if (n == 0) 
+            return 1; 
+  
+        // Make a copy of n as we are 
+        // going to change it. 
+       long i = n; 
+  
+        // Below steps set bits after 
+        // MSB (including MSB) 
+  
+        // Suppose n is 273 (binary 
+        // is 100010001). It does following 
+        // 100010001 | 010001000 = 110011001 
+        n |= n >> 1; 
+  
+        // This makes sure 4 bits 
+        // (From MSB and including MSB) 
+        // are set. It does following 
+        // 110011001 | 001100110 = 111111111 
+        n |= n >> 2; 
+        n |= n >> 4; 
+        n |= n >> 8; 
+        n |= n >> 16; 
+  
+        return i ^ n; 
+    } 
+	
+	
+
+	private static long fibxor(long a, long b, long n) {
+		if(n==1)
+			return a;
+		else if(n==2)
+			return b;
+		else
+		{
+			
+		    
+		    
+		return a^b;
+		
+		}
+	}
+        
+        
+        
+        /* Sample code to perform I/O:
+         * Use either of these methods for input
+
+        //BufferedReader
+        BufferedReader br = new BufferedReader(new InputStreamReader(System.in));
+        String name = br.readLine();                // Reading input from STDIN
+        System.out.println("Hi, " + name + ".");    // Writing output to STDOUT
+
+        //Scanner
+        Scanner s = new Scanner(System.in);
+        String name = s.nextLine();                 // Reading input from STDIN
+        System.out.println("Hi, " + name + ".");    // Writing output to STDOUT
+
+        */
+
+        // Write your code here
+
+    
+}

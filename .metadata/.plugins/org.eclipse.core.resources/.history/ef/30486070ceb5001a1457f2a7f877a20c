@@ -1,0 +1,110 @@
+package codechef;
+import java.util.*;
+public class MOOs_algo {
+
+	static int arr[]=new int[100001];
+	static int ans[]=new int[100001];
+	static int freq[]=new int[100001];
+	static int count=0;
+	static ArrayList<Query> Q =new ArrayList<Query>(); 
+	public static void main(String[] args) {
+		Scanner sc=new Scanner(System.in);
+		int n=sc.nextInt();
+		for(int i=0;i<n;i++)
+			arr[i]=sc.nextInt();
+		int q=sc.nextInt();
+		for(int i=0;i<q;i++)
+		{
+			int l=sc.nextInt(),r=sc.nextInt();
+			Q.add(new Query(l-1, r-1,i));
+		}
+		int block = (int) Math.sqrt(n); 
+		Collections.sort(Q, new Comparator<Query>(){ 
+			public int compare(Query x, Query y){ 
+
+
+				if (x.L/block != y.L/block)  
+					return (x.L < y.L ? -1 : 1);  
+
+				return (x.R < y.R ? -1 : 1); 
+			} 
+		}); 
+
+		for(int i=0;i<Q.size();i++)
+		{
+			System.out.println(Q.get(i).L+" "+Q.get(i).R+" "+Q.get(i).ind);
+		}
+		int ml=0,mr=-1;
+		for(int i=0;i<q;i++)
+		{
+			int L=Q.get(i).L;
+			int R=Q.get(i).R;
+
+			while(mr<R)
+			{
+				mr++;
+				add(mr);
+
+			}
+			while(ml>L)
+			{
+				ml--;   
+				add(ml);
+
+			}
+
+
+			while(mr>R)
+			{
+				remove(mr);
+				mr--;
+			}
+
+			while (ml<L)
+			{
+				remove(mr);
+				ml++;
+			}
+           ans[Q.get(i).ind]=count;
+
+
+
+
+		}
+
+     for(int i=0;i<q;i++)
+    	 System.out.println(ans[i]);
+
+
+
+
+
+	}
+	private static void remove(int mr) {
+		// TODO Auto-generated method stub
+		freq[arr[mr]]--;
+		if(freq[arr[mr]]==0)
+			count--;
+
+	}
+	private static void add(int mr) {
+		// TODO Auto-generated method stub
+		freq[arr[mr]]++;
+		if(freq[arr[mr]]==1)
+			count++;
+
+
+
+	}
+
+}
+class Query{  
+	int L;  
+	int R; 
+	int ind;
+	Query(int L, int R,int ind){ 
+		this.L = L; 
+		this.R = R; 
+		this.ind=ind;
+	} 
+}  

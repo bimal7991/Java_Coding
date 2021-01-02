@@ -1,0 +1,74 @@
+package codechef;
+import java.util.*;
+public class Bipartite_Graph {
+   public static void main(String[] args) { //two coloring problem
+	Scanner sc=new Scanner(System.in);
+	int T=sc.nextInt();
+	while(T-->0)
+	{
+	  int N=sc.nextInt(),M=sc.nextInt();
+	    
+	  for(int i=1;i<=N;i++)
+		  arr[i]=new ArrayList<Integer>();
+	  
+	  for(int i=0;i<M;i++)
+	  {
+		  int u=sc.nextInt(),v=sc.nextInt();
+		  arr[u].add(v);
+		  arr[v].add(u);
+	  }
+	  boolean flag=true;
+	  for(int i=1;i<=N;i++)
+	  {
+		  if(vis[i]==0)
+		  {
+			 boolean res=dfs(i,1);
+			 if(res==false)
+			 {
+				 flag=false;
+				 break;
+			 }
+		  }
+	  }
+	  if(flag==true)
+		  System.out.println("YES");
+	  else
+		  System.out.println("NO");
+	  
+	  for(int i=1;i<=N;i++)
+		  arr[i].clear();
+	  Arrays.fill(vis, 0);
+	  Arrays.fill(col, 0);
+		
+		
+	}
+ }
+   private static boolean dfs(int i, int j) {
+	// TODO Auto-generated method stub
+	   
+	   vis[i]=1;
+	   col[i]=j;
+	   for(int child:arr[i])
+	   {
+		   if(vis[child]==0)
+		   {
+			  boolean res=dfs(child, j==1?0:1);
+			  if(res==false)
+				  return false;
+		   }
+		   else
+		   {
+			   if(col[i]==col[child])
+				   return false;
+				   
+		   }
+	   }
+	   
+	return true;
+}
+static ArrayList<Integer> arr[]=new ArrayList[100001];
+   static int vis[]=new int[100001];
+   static int col[]=new int[100001];
+   
+   
+}

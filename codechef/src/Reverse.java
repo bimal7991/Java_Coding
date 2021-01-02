@@ -1,0 +1,27 @@
+
+import java.util.Scanner;
+
+public class Reverse {
+	public static void main(String[] args) {
+		Scanner sc=new Scanner(System.in);
+		int t=sc.nextInt();
+		for(int i=0;i<t;i++)
+		
+		{
+			String s1=sc.next();
+			String[] s2=s1.split("\\.");
+			for(int j=s2.length-1;j>=0;j--)
+			{
+				if(j!=0)
+             System.out.print(s2[j]+".");
+				else
+					System.out.print(s2[j]);	
+             
+			}
+			
+			System.out.println();
+			
+		}
+	}
+
+}

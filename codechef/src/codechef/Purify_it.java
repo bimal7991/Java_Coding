@@ -1,0 +1,30 @@
+package codechef;
+import java.util.*;
+public class Purify_it {
+  public static void main(String[] args) {
+	Scanner sc=new Scanner(System.in);
+	int T=sc.nextInt();
+	  
+	for(int t=0;t<T;t++)
+	{
+		
+		String s=sc.next();
+		int n=s.length();
+		int count1=0,count2=0;
+		for(int i=0;i<n-1;i++)
+		{
+			if(s.substring(i,i+2).equals("01"))
+				count1++;
+		}
+		for(int i=0;i<n-1;i++)
+		{
+			if(s.substring(i,i+2).equals("10"))
+				count2++;
+		}
+		if(count1==0 && count2==0)
+			System.out.println(0);
+	
+		System.out.println(Math.max(count1, count2)-1);
+	}
+}
+}

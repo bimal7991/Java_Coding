@@ -1,0 +1,81 @@
+package codechef;
+import java.util.*;
+public class PHCUL {
+	public static void main(String[] args) {
+		Scanner sc=new Scanner(System.in);
+		int T=sc.nextInt();
+		for(int t=0;t<T;t++)
+		{
+			int x=sc.nextInt(),y=sc.nextInt();
+			int n=sc.nextInt(),m=sc.nextInt(),k=sc.nextInt();
+			int narr[][]=new int[n][2],marr[][]=new int[m][2],karr[][]=new int[k][2];
+			double reddist[]=new double[n],greendist[]=new double[m],bluedist[]=new double[k];
+			
+			for(int i=0;i<n;i++)
+			{
+				narr[i][0]=sc.nextInt();
+				narr[i][1]=sc.nextInt();
+
+			}
+			//System.out.println(smallred);
+			
+			for(int i=0;i<m;i++)
+			{
+				marr[i][0]=sc.nextInt();
+				marr[i][1]=sc.nextInt();
+
+			}
+			for(int i=0;i<k;i++)
+			{
+				karr[i][0]=sc.nextInt();
+				karr[i][1]=sc.nextInt();
+			}
+			double red1st=999999999;
+			for(int i=0;i<n;i++)
+			{
+				reddist[i]=Math.sqrt((narr[i][0]-x)*(narr[i][0]-x) + (narr[i][1]-y)*(narr[i][1]-y));
+				
+				for(int j=0;j<m;j++)
+				{
+
+					greendist[j]=Math.sqrt((marr[j][0]-narr[i][0])*(marr[j][0]-narr[i][0]) + (marr[j][1]-narr[i][1])*(marr[j][1]-narr[i][1]));
+					for(int l=0;l<k;l++)
+					{
+						bluedist[l]=Math.sqrt((marr[j][0]-karr[l][0])*(marr[j][0]-karr[l][0]) + (marr[j][1]-karr[l][1])*(marr[j][1]-karr[l][1]));
+						if(reddist[i]+greendist[j]+bluedist[l]<red1st)
+							red1st=reddist[i]+greendist[j]+bluedist[l];
+					}		
+				}
+				
+
+			}
+			double green1st=999999999;
+			for(int i=0;i<m;i++)
+			{
+				greendist[i]=Math.sqrt((marr[i][0]-x)*(marr[i][0]-x) + (marr[i][1]-y)*(marr[i][1]-y));
+				
+				for(int j=0;j<n;j++)
+				{
+
+					reddist[j]=Math.sqrt((narr[j][0]-marr[i][0])*(narr[j][0]-marr[i][0]) + (narr[j][1]-marr[i][1])*(narr[j][1]-marr[i][1]));
+					for(int l=0;l<k;l++)
+					{
+						bluedist[l]=Math.sqrt((narr[j][0]-karr[l][0])*(narr[j][0]-karr[l][0]) + (narr[j][1]-karr[l][1])*(narr[j][1]-karr[l][1]));
+						if(reddist[j]+greendist[i]+bluedist[l]<green1st)
+							green1st=reddist[j]+greendist[i]+bluedist[l];
+					}	
+				}
+			}
+         if(green1st<red1st)
+        	 System.out.format("%.10f",green1st);
+         else
+        	 System.out.format("%.10f",red1st);
+         
+        System.out.println();
+
+
+		}
+
+	}
+
+}

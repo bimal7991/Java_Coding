@@ -1,0 +1,24 @@
+package codechef;
+import java.util.*;
+public class Multiplus {
+  public static void main(String[] args) {
+	Scanner sc=new Scanner(System.in);
+	int T=sc.nextInt();
+	for(int t=0;t<T;t++)
+	{
+		int n=sc.nextInt();
+		int count=0;
+		int cnt=0;
+		for(int i=0;i<n;i++)
+		{
+			int a=sc.nextInt();
+			if(a==2)
+				count++;
+			if(a==0)
+				cnt++;
+		}
+		long ans=count*(count-1)/2+cnt*(cnt-1)/2;
+		System.out.println(ans);
+	}
+}
+}

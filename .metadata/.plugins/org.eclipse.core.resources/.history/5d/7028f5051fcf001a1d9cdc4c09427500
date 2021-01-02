@@ -1,0 +1,85 @@
+package codechef;
+import java.util.*;
+public class Merge_Sort {
+	 public static void main(String[] args) {
+		Scanner sc=new Scanner(System.in);
+		int T=sc.nextInt();
+		while(T-->0)
+		{
+			int n=sc.nextInt();
+			int arr[]=new int[n];
+			for(int i=0;i<n;i++)
+				arr[i]=sc.nextInt();
+			
+			merge_sort(arr,0,n-1);
+			
+			for(int i=0;i<n;i++)
+			{
+				System.out.print(arr[i]+" ");
+			}
+			
+			
+		}
+	}
+
+	private static void merge_sort(int[] arr, int l, int r) {
+		// TODO Auto-generated method stub
+		  if(l<r)
+		  {
+			  int mid=(l+r)/2;
+			  merge_sort(arr, l, mid);
+			  merge_sort(arr, mid+1, r);
+			  merge(arr, l,mid, r);
+			  
+		  }
+		  
+		
+	     
+		
+		
+	}
+
+	private static void merge(int[] arr, int l, int mid, int r) {
+		// TODO Auto-generated method stub
+		   int temp[]=new int[10000];
+		   int ind=l;
+		   int i=l,j=mid;
+		   
+		   while(i<=mid && j<=r)
+		   {
+			   if(arr[i]<arr[j])
+			   {
+				   temp[ind++]=arr[i];
+				   i++;
+			   }
+			   else
+			   {
+				   temp[ind++]=arr[j];
+				   j++;
+			   }
+			     
+		   }
+		   
+		   while(i<=mid)
+		   {
+			   temp[ind++]=arr[i];
+			   i++;
+		   }
+		   
+		   while(j<=r)
+		   {
+			   temp[ind++]=arr[j];
+			   j++;
+		   }
+		   
+		   for(int k=l;k<=r;k++)
+			   arr[k]=temp[k];
+			   
+		   
+		
+		
+		
+	}
+	
+
+}

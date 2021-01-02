@@ -1,0 +1,26 @@
+package codechef;
+import java.util.*;
+public class Special {
+	public static void main(String[] args) {
+		Scanner sc=new Scanner(System.in);
+		int t=sc.nextInt();
+		for(int i=0;i<t;i++)
+		{
+			String str=sc.next();
+			int k1=0,k2=0;
+			for(int j=0;j<str.length();j++)
+			{
+				if(str.charAt(j)=='1')
+					k1++;
+				else
+					k2++;
+					
+			}
+			if(k2==k1*k1)
+				System.out.println(k2);
+			else
+				System.out.println("1");
+		}
+	}
+
+}

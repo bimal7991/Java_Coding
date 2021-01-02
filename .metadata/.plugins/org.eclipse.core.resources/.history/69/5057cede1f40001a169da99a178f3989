@@ -1,0 +1,72 @@
+package codechef;
+import java.util.*;
+public class BFRIEND {
+ public static void main(String[] args) {
+	Scanner sc=new Scanner(System.in);
+	int T=sc.nextInt();
+	for(int t=0;t<T;t++)
+	{
+		int N=sc.nextInt();long a=sc.nextLong(),b=sc.nextLong(),c=sc.nextLong();
+		long arr[]=new long[N];
+		int flag=0;
+		for(int n=0;n<N;n++)
+		{
+			arr[n]=sc.nextLong();
+			if(arr[n]>=Math.min(a, b) && arr[n]<=Math.max(a, b))
+			{
+				flag=1;
+			}
+		}
+		if(flag==1)
+		{
+			long ans=Math.max(a, b)-Math.min(a, b)+c;
+			System.out.println(c);
+		}
+		else
+		{
+			long max=Long.MIN_VALUE,min=Long.MAX_VALUE;
+			if(a>b)
+			{
+				for(int i=0;i<N;i++)
+				{
+					if(arr[i]>a && arr[i]<min)
+						min=arr[i];
+				}
+				for(int i=0;i<N;i++)
+				{
+					if(arr[i]<b && arr[i]>max)
+						max=arr[i];
+				}
+				long ans1=Long.MAX_VALUE,ans2=Long.MAX_VALUE;
+				if(min!=Long.MAX_VALUE)
+				 ans1=(min-b)+(min-a)+c;
+				if(max!=Long.MIN_VALUE)
+				 ans2=(b-max)+(a-max)+c;
+				System.out.println(Math.min(ans2, ans1));
+			}
+			if(b>a)
+			{
+				for(int i=0;i<N;i++)
+				{
+					if(arr[i]>b && arr[i]<min)
+						min=arr[i];
+				}
+				for(int i=0;i<N;i++)
+				{
+					if(arr[i]<a && arr[i]>max)
+						max=arr[i];
+				}
+			
+			long ans1=Long.MAX_VALUE,ans2=Long.MAX_VALUE;
+			if(min!=Long.MAX_VALUE)
+			 ans1=(min-b)+(min-a)+c;
+			if(max!=Long.MIN_VALUE)
+			 ans2=(b-max)+(a-max)+c;
+				System.out.println(Math.min(ans2, ans1));
+			}
+			}
+			
+		}
+	}
+}
+

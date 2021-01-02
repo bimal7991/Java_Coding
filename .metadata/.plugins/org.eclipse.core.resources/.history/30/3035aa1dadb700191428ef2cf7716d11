@@ -1,0 +1,24 @@
+package codechef;
+import java.util.*;
+public class Zombie_cave {
+	public static void main(String[] args) {
+		Scanner sc=new Scanner(System.in);
+		int t=sc.nextInt();
+		for(int j=0;j<t;j++)
+		{
+			int n=sc.nextInt();
+			int arr[]=new int[n];
+			int zom[]=new int[n];
+			for(int i=1;i<=n;i++)
+				arr[i]=sc.nextInt();
+			for(int i=1;i<=n;i++)
+				zom[i]=sc.nextInt();
+			
+			for(int i=1;i<=n;i++)
+			     System.out.println(arr[i]);
+			
+			
+		}
+	}
+
+}

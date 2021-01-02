@@ -1,0 +1,102 @@
+package codechef;
+import java.util.*;
+public class STRNO {
+   public static void main(String[] args) {
+	Scanner sc=new Scanner(System.in);
+	 int countprime[]=new int[1000000+1];
+	 boolean prime[] = new boolean[1000000+1]; 
+     for(int i=0;i<1000000;i++) 
+         prime[i] = true; 
+       
+     for(int p = 2; p*p <=1000000; p++) 
+     { 
+        
+         if(prime[p] == true) 
+         { 
+             
+             for(int i = p*p; i <= 1000000; i += p) 
+                 prime[i] = false; 
+         } 
+     } 
+     int count=0;
+     for(int i = 2; i <= 1000000; i++) 
+     { 
+         if(prime[i] == true) 
+         {
+        	 count++;
+         }
+         countprime[i]=count;
+     } 
+//	for(int i=0;i<100;i++)
+//		System.out.print(arr[i]+" ");
+     
+     int countdivisor[]=new int[1000000+1];
+     for(int i = 1; i <= 1000000; i++) 
+     { 
+         countdivisor[i]=printDivisors(i);
+     }  
+	
+	
+	
+	
+	
+	int T=sc.nextInt();
+	while(T-->0)
+	{
+	  int X=sc.nextInt();
+	  int K=sc.nextInt();
+//	  if(Math.pow(2, K)<=X)
+//	  {
+//		  System.out.println(1);
+//	  }
+//	  else
+//	  {
+//		  System.out.println(0);
+//	  }
+	  int flag=0;
+	 for(int i=1;i<=1000000;i++)
+	 {
+		 if(countprime[i]==K && countdivisor[i]==X)
+		 {
+           flag=1;
+           break;
+	     }
+	 }
+	 if(flag==1)
+		 System.out.println("1");
+	 else
+		 System.out.println("0");
+	  
+	}
+ }
+   static int printDivisors(int n) 
+   { 
+       // Vector to store half of the divisors 
+       Vector<Integer> v = new Vector<>(); 
+       for (int i=1; i<=Math.sqrt(n); i++) 
+       { 
+           if (n%i==0) 
+           { 
+               if (n/i == i) // check if divisors are equal 
+                  v.add(i);
+               else
+               { 
+                    v.add(i);
+      
+                   // push the second divisor in the vector 
+                   v.add(n/i); 
+               } 
+           } 
+       } 
+      
+       // The vector will be printed in reverse 
+      
+//       for (int i=v.size()-1; i>=0; i--) 
+//            System.out.printf("%d ", v.get(i)); 
+       return v.size();
+   } 
+   
+   
+   
+   
+}

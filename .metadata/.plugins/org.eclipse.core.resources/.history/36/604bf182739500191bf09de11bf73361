@@ -1,0 +1,76 @@
+package codechef;
+
+import java.util.Scanner;
+
+public class Match {
+	public static void main(String[] args) {
+		Scanner sc=new Scanner(System.in);
+		int d,n1=0,n2=0,a,b,c,temp;
+		int arr[]=new int[3];
+		
+		a=sc.nextInt();
+		b=sc.nextInt();
+		c=sc.nextInt();
+		d=sc.nextInt();
+		
+		if( a>b ){
+			
+			  temp = a;
+			
+			      a = b;
+		
+			      b = temp;}
+			
+			   if( b>c ){
+			
+			      temp = b;
+			
+			      b = c;
+			
+			      c = temp;}
+			
+			   if( a>b ){
+			
+			      temp = a;
+			
+			      a = b;
+			
+			 b = temp;
+		
+			   }
+
+		
+		
+		
+		if(Math.abs(arr[1]-arr[0])>=d)
+		{
+			if(Math.abs(arr[2]-arr[1])<d)
+				System.out.println(d-(arr[2]-arr[1]));
+		}
+		else if(Math.abs(arr[2]-arr[1])>=d)		
+		{
+			if(Math.abs(arr[1]-arr[0])<d)
+				System.out.println(d-(arr[1]-arr[0]));
+		}
+		else
+		{
+			if(Math.abs(arr[1]-arr[0])<d)
+			{
+				a=d-(arr[1]-arr[0]);
+			}
+			if(Math.abs(arr[2]-arr[1])<d)
+			{
+			  b=d-(arr[2]-arr[1]);	
+			}
+			if(a>b)
+				System.out.println(a);
+			else
+				System.out.println(b);
+				
+		
+		}
+		
+		
+	}
+
+}

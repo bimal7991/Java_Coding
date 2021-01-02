@@ -1,0 +1,53 @@
+package codechef;
+import java.util.*;
+public class SORTVS {
+  public static void main(String[] args) {
+	Scanner sc=new Scanner(System.in);
+	int T=sc.nextInt();
+	while(T-->0)
+	{
+		int N=sc.nextInt(),M=sc.nextInt();
+		int arr[]=new int[N];
+		for(int i=0;i<N;i++)
+		{
+			arr[i]=sc.nextInt();
+		}
+		int X[]=new int[M];
+		int Y[]=new int[M];
+		
+		for(int i=0;i<M;i++)
+		{
+			X[i]=sc.nextInt();
+			Y[i]=sc.nextInt();
+		}
+		int ans=quicksort(arr);
+		
+		
+		
+	}
+}
+
+private static int quicksort(int[] arr) {
+	// TODO Auto-generated method stub
+	int n = arr.length; 
+	int count=0;  
+    // One by one move boundary of unsorted subarray 
+    for (int i = 0; i < n-1; i++) 
+    { 
+        // Find the minimum element in unsorted array 
+        int min_idx = i; 
+        for (int j = i+1; j < n; j++) 
+            if (arr[j] < arr[min_idx]) 
+                min_idx = j; 
+
+        // Swap the found minimum element with the first 
+        // element 
+        int temp = arr[min_idx]; 
+        arr[min_idx] = arr[i]; 
+        arr[i] = temp; 
+        count++;
+    } 
+	
+	return count;
+}
+}

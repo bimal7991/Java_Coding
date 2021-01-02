@@ -1,0 +1,64 @@
+package codechef;
+import java.time.DayOfWeek;
+import java.util.*;
+public class LONGCOOK {
+  public static void main(String[] args) {
+	 Scanner sc=new Scanner(System.in);
+	 int T=sc.nextInt();
+	 while(T-->0)
+	 {
+		 int m1=sc.nextInt(),y1=sc.nextInt(),m2=sc.nextInt(),y2=sc.nextInt();
+		 int count=0;
+		 
+		 
+		 for(int i=y1;i<=y2;i++)
+		 {
+			 
+			 
+			 if(i==y1)
+			 {
+					int day=dayofweek(1,2,i);
+					if((day==6 && (dayofweek(16,2,y1)==0 || dayofweek(15,2,y1)==0 ) ) || (day==0 && dayofweek(15,2,y1)==0))
+					{
+					  count++;	
+					}
+					
+				 
+			 }
+			 else if(i==y2)
+			 {
+				 
+					 int day=dayofweek(1,2,i);
+						if((day==6 && (dayofweek(16,2,y2)==0 || dayofweek(15,2,y2)==0 )) || (day==0 && dayofweek(15,2,y2)==0) )
+						{
+						  count++;	
+						}
+					 
+				 
+			 }
+			 else
+			 {
+				 int day=dayofweek(1,2,i);
+				 if((day==6 && (dayofweek(16,2,i)==0 || dayofweek(15,2,i)==0 ) ) || (day==0 && dayofweek(15,2,i)==0))
+					{
+					  count++;	
+					}
+				 
+				 
+			 }
+		 }
+		 
+		 System.out.println(count);
+		 
+		 
+	 }
+}
+  static int dayofweek(int d, int m, int y)  
+  {  
+	  int t[] = { 0, 3, 2, 5, 0, 3, 5, 1, 4, 6, 2, 4 }; 
+	    y -= (m < 3) ? 1 : 0; 
+	    return ( y + y/4 - y/100 + y/400 + t[m-1] + d) % 7; 
+  }  
+ 
+  
+}

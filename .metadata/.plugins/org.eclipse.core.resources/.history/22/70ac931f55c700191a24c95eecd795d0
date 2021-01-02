@@ -1,0 +1,30 @@
+
+import java.util.*;
+public class Kick {
+	public static void main(String[] args) {
+		Scanner sc=new Scanner(System.in);
+		int t=sc.nextInt();
+       for(int T=0;T<t;T++)
+       {
+    	   int a=sc.nextInt(),b=sc.nextInt(),n=sc.nextInt(),n1=0;
+    	   if(n==0)
+    		   System.out.println(a);
+    	   else if(n==1)
+    		   System.out.println(b);
+    	   else
+    	   {
+    		   for(int i=2;i<=n;i++)
+    		   {
+    			  n1=a^b;
+    			  a=b;
+    			  b=n1;
+    		   }
+    		   System.out.println(n1);
+    	   }
+    		   
+    	    		   
+       }
+		
+
+}
+}

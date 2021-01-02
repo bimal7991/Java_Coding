@@ -1,0 +1,99 @@
+
+
+import java.util.ArrayList;
+import java.util.HashMap;
+import java.util.Scanner;
+
+public class Codevita1{
+	public static void main(String[] args) {
+		int i,j,n1,n2;
+		Scanner sc=new Scanner(System.in);
+		n1=sc.nextInt();
+		n2=sc.nextInt();
+		ArrayList<Integer> arr = new ArrayList<Integer>();
+		HashMap<Integer,Integer> hm = new HashMap<Integer,Integer>(); 
+		while (n1 < n2) {
+            boolean flag = false;
+            for( i = 2; i <=n1 /2; ++i) {
+                
+                if(n1 % i == 0) {
+                    flag = true;
+                    break;
+                }
+            }
+            if (!flag)
+            {
+            	System.out.print(n1 + " ");
+               arr.add(n1);
+               
+            }
+            ++n1;
+        }
+		
+		int count=0;
+		
+		int small=Integer.MAX_VALUE;
+		int big=Integer.MIN_VALUE;
+		for( i=0;i<arr.size();i++)  
+		{
+		  for(j=0;j<arr.size();j++) {
+			  
+			 if(i==j)
+				 continue;
+			 
+				  int p1 = arr.get(i);
+				  int p2 = arr.get(j);
+				  //System.out.println(p1);
+				 // System.out.println(p2);
+				 //int  sum=p1+p2;
+				//  if(sum%2==0 || sum%3==0 || sum%9==0 )
+				//	  continue;
+				  String concat = Integer.toString(p1) + Integer.toString(p2);
+				  int combined = Integer.parseInt(concat);
+				  
+				 
+				  System.out.print(combined+" ");
+				  boolean flag = false;
+				  int k=2;
+				  while(k <= combined/2)
+			        {
+			            // condition for nonprime number
+			            if(combined % k == 0)
+			            {
+			                flag = true;
+			                break;
+			            }
+			            ++k;
+			        }
+			        if (!flag)
+			        {
+			        	if(combined<small)
+							  small=combined;
+						  if(combined>big)
+							  big=combined;
+						 hm.put(combined, count);
+			        	count++;
+			            
+			        }
+			  
+			  
+		  }		  
+		}
+		int len=hm.size();
+	
+	System.out.println(len);
+	//System.out.println(len);
+		long t1=small,t2=big;
+		long sum = t1+t2;
+		for ( i = 1; i <len-1; ++i)
+        {
+			System.out.print(t1 + " + ");
+            sum = t1 + t2;
+            t1 = t2;
+            t2 = sum;
+        }
+		System.out.println(sum);
+		
+	}
+
+}

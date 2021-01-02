@@ -1,0 +1,78 @@
+package codechef;
+import java.util.*;
+public class SORTVS {
+  public static void main(String[] args) {
+	Scanner sc=new Scanner(System.in);
+	int T=sc.nextInt();
+	while(T-->0)
+	{
+		int N=sc.nextInt(),M=sc.nextInt();
+		int arr[]=new int[N+1];
+		int hash[]=new int[N+1];
+		for(int i=1;i<=N;i++)
+		{
+			arr[i]=sc.nextInt();
+			hash[arr[i]]=i;
+		}
+		int X[]=new int[M+1];
+		int Y[]=new int[M+1];
+		
+		for(int i=1;i<=M;i++)
+		{
+			X[i]=sc.nextInt();
+			
+			Y[i]=sc.nextInt();
+		}
+		if(M==0)
+		{
+		int ans=quicksort(arr);
+		System.out.println(ans);
+		}
+		else
+		{
+			
+			Vector<Vector<Integer>> graph = null;
+			 for(int i=1;i<=M;i++)
+			 {
+				 int v1=X[i];
+				 int v2=Y[i];
+			    graph[v1].add(v2);
+			    
+			 }
+			 
+			 System.out.println(graph);
+		}
+		
+		
+		
+	}
+}
+
+private static int quicksort(int[] arr) {
+	// TODO Auto-generated method stub
+	int n = arr.length; 
+	int count=0;  
+    // One by one move boundary of unsorted subarray 
+    for (int i = 0; i < n-1; i++) 
+    { 
+        // Find the minimum element in unsorted array 
+    	if(arr[i]==i+1)
+    		continue;
+        int min_idx = i; 
+        for (int j = i+1; j < n; j++) 
+            if (arr[j] < arr[min_idx]) 
+            {
+                min_idx = j; 
+            }
+
+        // Swap the found minimum element with the first 
+        // element 
+        int temp = arr[min_idx]; 
+        arr[min_idx] = arr[i]; 
+        arr[i] = temp; 
+        count++;
+    } 
+	
+	return count;
+}
+}

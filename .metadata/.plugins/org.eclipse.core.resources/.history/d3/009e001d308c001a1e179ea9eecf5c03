@@ -1,0 +1,61 @@
+package codechef;
+
+import java.util.*;
+
+public class CHANDF {
+	public static void main(String[] args) {
+		Scanner sc = new Scanner(System.in);
+		int T = sc.nextInt();
+		while (T-- > 0) {
+			long x = sc.nextLong(), y = sc.nextLong(), l = sc.nextLong(), r = sc.nextLong();
+			long max = 0;
+			
+			if(x==0 || y==0)
+				System.out.println(0);
+			else
+			{
+			    long ans=x|y;
+			    
+			    if(r>=ans)
+			    	System.out.println(ans);
+			    else
+			    {
+			    	long ans2=r;
+			    	if(r-l<=1000)
+			    	{
+			    	for(long i=r;i>=l;i--)
+			    	{
+			    		long val=(x&i)*(y&i);
+			    		if(val>=max)
+			    		{
+			    			max=val;
+			    			ans2=i;
+			    		}
+			    		
+			    	}
+			    	}
+			    	else
+			    	{
+			    		for(long i=r;i>=r-1000;i--)
+				    	{
+				    		long val=(x&i)*(y&i);
+				    		if(val>=max)
+				    		{
+				    			max=val;
+				    			ans2=i;
+				    		}
+				    		
+				    	}
+			    	}
+			    	System.out.println(ans2);
+			    }
+			
+			
+			     
+			}
+			 
+
+		}
+	}
+
+}

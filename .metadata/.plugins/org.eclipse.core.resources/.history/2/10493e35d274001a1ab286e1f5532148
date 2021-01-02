@@ -1,0 +1,88 @@
+package codechef;
+import java.util.*;
+public class MULTHREE {
+	public static void main(String[] args) {
+		Scanner sc=new Scanner(System.in);
+		int T=sc.nextInt();
+		while(T-->0)
+		{
+			long k=sc.nextLong();
+			int d0=sc.nextInt();
+			int d1=sc.nextInt();
+			int arr[]=new int[20];
+			arr[0]=d0;
+			arr[1]=d1;
+			long sum=d0+d1;
+			if(k>20)
+			{
+				for(int i=2;i<20;i++)
+				{
+				   	arr[i]=(int)sum%10;
+				   	sum=sum+arr[i];
+				}
+			
+			int beg=0,end=0,flag=0;
+			for(int i=2;i<20;i++)
+			{
+				for(int j=i+1;j<20;j++)
+				{
+					if(arr[i]==arr[j])
+					{
+						beg=i;
+						end=j;
+						flag=1;
+						break;
+					}
+				}
+				if(flag==1)
+					break;
+			}
+			int gap=end-beg;
+			long actk=k-2;
+			long actvalue=actk/gap;
+			int remv=(int)actk%gap;
+			int calc=0;
+			for(int i=beg;i<end;i++)
+			{
+				calc=calc+arr[i];
+			}
+			int remc=0;
+			for(int i=beg;i<beg+remv;i++)
+				remc=remc+arr[i];
+			for(int i=2;i<beg;i++)
+				remc=remc+arr[i];
+			
+			long add=d0+d1+(calc*actvalue)+remc;
+			if(add%3==0)
+			{
+				System.out.println("YES");
+			}
+			else
+				System.out.println("NO");
+			
+			
+			
+			
+		}
+			else
+			{
+				for(int i=2;i<k;i++)
+				{
+				   	arr[i]=(int)sum%10;
+				   	sum=sum+arr[i];
+				}
+				int val=0;
+				for(int i=0;i<k;i++)
+				{
+					val=val+arr[i];
+				}
+				if(val%3==0)
+					System.out.println("YES");
+			    else
+				    System.out.println("NO");
+					
+			}
+	}
+	}
+
+}

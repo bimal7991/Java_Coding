@@ -1,0 +1,49 @@
+import java.util.ArrayList;
+import java.util.Arrays;
+import java.util.Collections;
+import java.util.Scanner;
+
+public class Circular {
+ public static void main(String[] args) {
+	
+	Scanner sc=new Scanner(System.in);
+	int t;
+	t=sc.nextInt();
+	ArrayList<Integer> arr=new ArrayList<Integer>();
+	for(int i=0;i<t;i++)
+	{
+		int n=sc.nextInt();
+		int sum=0,penal=0;
+		for(int j=0;j<n;j++)
+		{
+			int m=sc.nextInt();
+		   arr.add(m);
+		}
+		
+		while(arr.size()>2)
+		{
+		Collections.sort(arr);
+		System.out.println(arr);
+		 int a=arr.get(0);
+		 int b=arr.get(1);
+		 sum=a+b;
+		 System.out.println(sum);
+		 System.out.println(a);
+		 System.out.println(b);
+		 penal=penal+sum;
+		 
+		 arr.remove(0);
+		 arr.add(sum,1);
+		 
+		 //arr.stream().mapToInt(Integer::intValue).toArray(); 
+		 
+		 //System.out.println(arr.size());
+		}
+		
+		System.out.println(penal);
+		
+	}
+	 
+ }
+ 
+}

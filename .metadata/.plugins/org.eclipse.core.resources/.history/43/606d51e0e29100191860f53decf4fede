@@ -1,0 +1,32 @@
+package codechef;
+import java.util.*;
+import java.util.Scanner;
+
+public class Split {
+	public static void main(String[] args) {
+		
+		try {
+		Scanner sc=new Scanner(System.in);
+		int n=sc.nextInt();
+		int l=sc.nextInt();
+		String s=Integer.toString(l);
+		int mid=n/2;
+		
+		/*while(s.charAt(mid+1)=='0')
+		{
+			mid++;
+			if(s.charAt(mid+1)!='0')
+				break;
+		}*/
+		
+		String n1=s.substring(0, mid+1);
+		String n2=s.substring(mid+1, n);
+		int sum=Integer.parseInt(n1)+Integer.parseInt(n2);	
+		System.out.println(sum);
+		}
+		catch (Exception e) {
+			// TODO: handle exception
+		}
+	}
+
+}

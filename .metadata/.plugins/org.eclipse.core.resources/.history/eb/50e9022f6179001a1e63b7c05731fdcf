@@ -1,0 +1,75 @@
+package codechef;
+import java.util.*;
+public class SQRDSUB2 {
+     public static void main(String[] args) {
+    	 Scanner sc=new Scanner(System.in);
+ 		int T=sc.nextInt();
+ 		while(T-->0)
+ 		{
+ 			int N=sc.nextInt();
+ 			int arr[]=new int[N];
+ 			for(int i=0;i<N;i++)
+ 				arr[i]=sc.nextInt();
+ 			
+ 			for(int i=0;i<N;i++)
+			{
+				if(arr[i]<0)
+					arr[i]=-arr[i];
+					
+			}
+ 			
+ 			
+ 			
+ 			ArrayList<Integer> hash=new ArrayList<Integer>();
+ 			for(int i=0;i<N;i++)
+ 			{
+ 				if(arr[i]%2==0)
+ 					hash.add(i);
+ 			}
+ 			System.out.println(hash);
+ 			
+ 			int k=0,count=0;
+ 			for(int i=0;i<N;i++)
+ 			{
+ 				if(hash.get(k)<i && k<hash.size())
+ 					k++;
+ 				
+ 				
+ 				if(k<hash.size() && hash.get(k)>=i)
+ 				{
+ 					if(arr[hash.get(k)]%2==0 && arr[hash.get(k)]%4!=0 && arr[hash.get(k)]!=0)
+ 					{
+ 					   	
+ 						if(k+1<hash.size() && arr[hash.get(k+1)]%2==0)
+ 						{
+ 							count=count+(hash.get(k+1)-hash.get(k));
+ 						}
+ 						else if(k+1==hash.size())
+ 						{
+ 							if(hash.get(k)==i)
+ 							{
+ 								count=count+(N-hash.get(k));
+ 							}
+ 							else
+ 							count=count+(hash.get(k)-i);
+ 						}
+ 						
+ 						
+ 					}
+ 				}
+ 				//System.out.println(count);
+ 			}
+ 			
+ 			
+ 			
+ 			
+ 			
+ 			
+ 			
+ 			System.out.println(count);
+ 			
+ 			
+ 			
+ 		}
+	}
+}

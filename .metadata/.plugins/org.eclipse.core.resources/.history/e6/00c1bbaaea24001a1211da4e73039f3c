@@ -1,0 +1,99 @@
+package codechef;
+
+import java.io.ObjectInputStream.GetField;
+import java.util.ArrayList;
+import java.util.Scanner;
+
+public class TCS_Xplore {
+    public static void main(String args[] ) throws Exception {
+        /* Do not alter code in main method */
+       Shirt[] shirts = new Shirt[5];
+        
+        Scanner sc = new Scanner(System.in);
+        
+        for(int i = 0;i<5;i++)
+        {
+            int tag = sc.nextInt();sc.nextLine();
+            String brand = sc.nextLine();
+            double price = sc.nextDouble();sc.nextLine();
+            char g = sc.nextLine().charAt(0);
+            shirts[i] = new Shirt(tag,brand,price,g);
+        }
+        
+        
+       
+        double price = sc.nextDouble();
+        
+        for(Shirt s: shirts)
+        {
+            System.out.println(getDiscountPrice(s));            
+        }
+        
+        Shirt[] result = getShirtWithMoreThanSpecificPrice(shirts,price);
+        
+        for(Shirt s: result)
+        {
+            System.out.println(s.getTag()+" "+s.getPrice()+ " " + s.getBrand());
+        }
+    }
+
+    public static Shirt[] getShirtWithMoreThanSpecificPrice(Shirt []shirts,double price)
+    {
+    	ArrayList< Shirt> list=new ArrayList<Shirt>();
+    	
+   	for(Shirt s:shirts)
+   	{
+   
+   		if(s.price>price)
+   			list.add(s);
+   	}
+   	return (Shirt[]) list;
+   			
+   	
+    }
+    public static double getDiscountPrice(Shirt s)
+    {
+        int r;
+      if(s.gen=='m')
+         r=10;
+       else if(s.gen=='f')
+        r=20;
+        else 
+        r=30;
+        double dis=r*s.price/100;
+        return (double)s.price-dis;
+
+    }
+    
+    /* implement your methods here*/
+}
+
+class Shirt
+{
+    //define the class as per details shared in the question
+     int tag;
+     String brand;
+     double price;
+     char gen;
+    public Shirt(int tag,String brand,double price,char gen)
+     {
+         this.tag=tag;
+         this.brand=brand;
+         this.price=price;
+         this.gen=gen;
+     }
+    
+    
+    public int  getTag()
+    {
+    	return tag;
+    }
+    public double getPrice()
+    {
+    	return price;
+    }
+    public String getBrand()
+    {
+    	return brand;
+    }
+}

@@ -1,0 +1,26 @@
+package codechef;
+import java.util.*;
+public class First {
+ public static void main(String[] args) {
+	int t;
+	Scanner sc=new Scanner(System.in);
+	t=sc.nextInt();
+	for(int i=0;i<t;i++)
+	{
+		long n=sc.nextInt();
+		long k=1,x=0,y=0,count=0;
+		for(k=1;k<n;k++)
+		{
+			if(k*k>(k*(k-1)*(2*k-1)/6))
+				count++;
+			else
+				continue;
+			
+		}
+		System.out.println(count+1);
+		
+		
+	}
+	
+}
+}

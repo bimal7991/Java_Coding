@@ -1,0 +1,11 @@
+package spring.demo;
+
+public class Myapp {
+
+	public static void main(String[] args) {
+		// TODO Auto-generated method stub
+       Baseball coach=new Baseball();
+       System.out.println(coach.getdaily());
+	}
+
+}

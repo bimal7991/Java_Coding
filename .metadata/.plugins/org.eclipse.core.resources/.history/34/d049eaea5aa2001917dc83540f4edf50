@@ -1,0 +1,40 @@
+import java.util.Scanner;
+import java.util.*;
+public class Stealing {
+public static void main(String[] args) {
+	Scanner sc=new Scanner(System.in);
+	int t=sc.nextInt();
+	for(int j=0;j<t;j++)
+	{
+		int n=sc.nextInt();
+		int arr[]=new int[n],sum=0;
+		for(int i=0;i<n;i++)
+		{
+			arr[i]=sc.nextInt();
+			sum=sum+arr[i];
+			
+		}
+		int avg= sum/n;
+		int mod=sum%n;
+		if(mod!=0)
+		{
+			System.out.println("Impossible");
+			break;
+		}
+		boolean flag=false;
+		for(int i=0;i<n;i++)
+		{
+			
+			if(arr[i]==avg)
+			{
+				System.out.println(i+1);
+				flag=true;
+				break;
+			}
+				
+		}
+		if(flag==false)
+			System.out.println("Impossible");
+	}
+}
+}

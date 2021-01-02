@@ -1,0 +1,122 @@
+package codechef;
+import java.io.BufferedReader; 
+import java.io.IOException; 
+import java.io.InputStreamReader; 
+import java.util.Scanner; 
+import java.util.StringTokenizer;
+import java.util.*;
+public class ENGXOR {
+	
+	static class FastReader 
+    { 
+        BufferedReader br; 
+        StringTokenizer st; 
+  
+        public FastReader() 
+        { 
+            br = new BufferedReader(new
+                     InputStreamReader(System.in)); 
+        } 
+  
+        String next() 
+        { 
+            while (st == null || !st.hasMoreElements()) 
+            { 
+                try
+                { 
+                    st = new StringTokenizer(br.readLine()); 
+                } 
+                catch (IOException  e) 
+                { 
+                    e.printStackTrace(); 
+                } 
+            } 
+            return st.nextToken(); 
+        } 
+  
+        int nextInt() 
+        { 
+            return Integer.parseInt(next()); 
+        } 
+  
+        long nextLong() 
+        { 
+            return Long.parseLong(next()); 
+        } 
+  
+        double nextDouble() 
+        { 
+            return Double.parseDouble(next()); 
+        } 
+  
+        String nextLine() 
+        { 
+            String str = ""; 
+            try
+            { 
+                str = br.readLine(); 
+            } 
+            catch (IOException e) 
+            { 
+                e.printStackTrace(); 
+            } 
+            return str; 
+        } 
+    } 
+  
+	
+	public static void main(String[] args) {
+		Scanner sc=new Scanner(System.in);
+		int T=sc.nextInt();
+		while(T-->0)
+		{
+			int N=sc.nextInt(),Q=sc.nextInt();
+			int A[]=new int[N];
+			int even=0,odd=0;
+			for(int i=0;i<N;i++)
+			{
+				A[i]=sc.nextInt();
+			}
+			for(int i=0;i<N;i++)
+			{
+				if(countSetBitsRec(A[i])%2==0)
+					even++;
+				else
+					odd++;
+				
+			}
+			//System.out.println("even="+even+" odd="+odd);
+			for(int i=0;i<Q;i++)
+			{
+				int p=sc.nextInt();
+				if(countSetBitsRec(p)%2==0)
+				{
+					System.out.println(even+" "+odd);
+				}
+				else
+				{
+					System.out.println(odd+" "+even);	
+				}
+			}
+			
+			
+		}
+	}
+	static int[] num_to_bits = new int[] { 0, 1, 1, 2, 1, 2, 2,3, 1, 2, 2, 3, 2, 3, 3, 4 };
+	static int countSetBitsRec(int num) 
+    { 
+        int nibble = 0; 
+        if (0 == num) 
+            return num_to_bits[0]; 
+  
+        // Find last nibble 
+        nibble = num & 0xf; 
+  
+        // Use pre-stored values to find count 
+        // in last nibble plus recursively add 
+        // remaining nibbles. 
+        return num_to_bits[nibble] + countSetBitsRec(num >> 4); 
+    } 
+	
+
+}

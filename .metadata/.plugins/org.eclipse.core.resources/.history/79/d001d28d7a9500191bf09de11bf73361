@@ -1,0 +1,46 @@
+package codechef;
+import java.util.*;
+public class Two {
+	public static void main(String[] args) {
+		Scanner sc=new Scanner(System.in);
+		int n=sc.nextInt();
+		for(int i=0;i<n;i++)
+		{
+			String s1=sc.next();
+			String s2=sc.next();
+			int j,k,count=0;
+			j=0;k=0;
+			while(k<s2.length())
+			{
+				if(s1.charAt(j)==s2.charAt(k))
+				{
+					j++;
+					k++; 
+					count++;
+					
+				}
+					
+				else
+				{
+				   if(s2.charAt(k)==s1.charAt(j-1) && j>=1)	
+				   {
+					k++;
+					
+				   }
+				   else
+					   break;
+				}
+				
+				
+			}
+			if(count==s1.length())
+				System.out.println("YES");
+			else
+				System.out.println("NO");
+			
+			
+		}
+		
+	}
+
+}

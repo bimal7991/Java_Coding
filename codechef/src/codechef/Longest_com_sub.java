@@ -1,0 +1,49 @@
+package codechef;
+
+
+import java.util.*;
+import java.lang.*;
+import java.io.*;
+
+public class Longest_com_sub{
+	public static void main (String[] args) {
+	    Scanner sc=new Scanner(System.in);
+	    int t=sc.nextInt();
+	    for(int i=0;i<t;i++)
+	    {
+	        int n=sc.nextInt(),m=sc.nextInt();
+	        String s1=sc.next(),s2=sc.next();
+	        int ans=longest(s1,s2,n,m);
+	        System.out.println(ans);
+	    
+	    
+		
+	}
+	}
+	static int longest(String s1,String s2,int n,int m)
+	{
+	    int arr[][]=new int[n+1][m+1];
+	    for(int i=0;i<n+1;i++)
+	    {
+	        for(int j=0;j<m+1;j++)
+	        	
+	        arr[i][j]=0;
+	    }
+	    
+	    for(int i=1;i<n+1;i++)
+	    {
+	        for(int j=1;j<m+1;j++)
+	        {
+	            if(s1.charAt(i-1)==s2.charAt(j-1))
+	            {
+	                arr[i][j]=arr[i-1][j-1]+1;
+	            }
+	            else
+	            {
+	                arr[i][j]=Math.max(arr[i-1][j],arr[i][j-1]);
+	            }
+	        }
+	    }
+	    return arr[n][m];
+	}
+}

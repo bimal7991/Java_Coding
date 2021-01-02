@@ -1,0 +1,73 @@
+package codechef;
+import java.util.*;
+public class Sequence2 {
+	public static void main(String[] args) {
+		Scanner sc=new Scanner(System.in);
+		int T=sc.nextInt();
+		for(int t=0;t<T;t++)
+		{
+			int n=sc.nextInt(),k=sc.nextInt();
+			int arr[]=new int[n];
+			int freq[]=new int[100];
+			for(int i=0;i<n;i++)
+			{
+				arr[i]=sc.nextInt();
+				freq[arr[i]]++;
+			}
+			Arrays.parallelSort(arr);
+			int sum=0;
+			for(int i=0;i<k-1;i++)
+
+			{
+				if(arr[i]!=arr[i+1])
+					sum=sum+freq[arr[i]];
+			}
+			sum=sum+freq[arr[k-1]]; 
+			System.out.println(sum);
+			int arr1[]=new int[sum];
+			for(int i=0;i<sum;i++)
+			{
+				arr1[i]=arr[i];
+			}
+			int count=0;
+			for(int i=0;i<sum-1;i++)
+			{
+				if(arr1[i]!=arr1[i+1])
+					count++;
+			}
+			count=count+1;
+			System.out.println(count);
+			int min[]=new int[count];
+			int seq[]=new int[count];
+			int a=0;
+			int j=0;
+			for(int i=0;i<k-1;i++)
+			{
+			    if(arr[i]!=arr[i+1])
+			    {			    
+			    	min[j++]=freq[arr[i]];
+			    }
+			    	
+			}
+			
+		
+			for(int i=0;i<sum-1;i++)
+			{
+				if(arr[i]!=arr[i+1])
+			    {			    
+			    	min[j++]=freq[arr[i]];
+			    }
+			    	
+			}
+			
+			
+			for(int i=0;i<count;i++)
+			{
+				System.out.println(min[i]+" "+seq[i]);
+			}
+			
+            
+
+		}
+	}
+}

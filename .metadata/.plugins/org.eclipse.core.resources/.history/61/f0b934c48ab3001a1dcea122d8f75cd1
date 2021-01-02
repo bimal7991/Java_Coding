@@ -1,0 +1,35 @@
+package codechef;
+import java.util.*;
+public class Lazy_propgation {
+
+	static int arr[]=new int[100001];
+	static int st[][]=new int[400004][3];
+	public static void main(String[] args) {
+		Scanner sc=new Scanner(System.in);
+		int n=sc.nextInt(),q=sc.nextInt();
+        buildTree(1,1,n);
+
+
+	}
+	private static void buildTree(int si, int ss, int se) {
+		// TODO Auto-generated method stub
+		
+		if(ss==se)
+		{
+			st[si][0]=1;
+			st[si][1]=0;
+			st[si][2]=0;
+			return;
+		}
+		
+		int mid=(ss+se)/2;
+		buildTree(2*si, mid, se);
+		buildTree(2*si+1, mid+1, se);
+		
+		st[si][0]=st[2*si][0]+st[2*si+1][0];
+		st[si][1]=st[2*si][1]+st[2*si+1][1];
+		st[si][2]=st[2*si][2]+st[2*si+1][2];
+		
+		
+	}
+}

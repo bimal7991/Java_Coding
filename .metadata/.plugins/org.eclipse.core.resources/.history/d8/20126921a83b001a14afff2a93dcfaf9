@@ -1,0 +1,36 @@
+package codechef;
+import java.math.BigInteger;
+import java.util.*;
+public class RGAND {
+   public static void main(String[] args) {
+         Scanner sc=new Scanner(System.in);
+         int t=sc.nextInt();
+         for(int i=0;i<t;i++)
+         {
+        	 long L=sc.nextLong();
+        	 long R=sc.nextLong();
+        	 long m=0;
+        	 if(countBits(L)==countBits(R))
+        	 {
+        		 m=Math.max(L, R)-Math.min(L, R)+1;
+        	 }
+        	 else
+        	 {
+        		 m=(long)Math.pow(2, countBits(L))-L;
+        	 }
+        	long ans=L&(L+1);
+        	System.out.println(ans*m%1000000007);
+        	
+        	 
+         }
+ }
+   static int countBits(long number) 
+   {  
+         
+       // log function in base 2  
+       // take only integer part 
+       return (int)(Math.log(number) /  
+                    Math.log(2) + 1); 
+   } 
+    
+}

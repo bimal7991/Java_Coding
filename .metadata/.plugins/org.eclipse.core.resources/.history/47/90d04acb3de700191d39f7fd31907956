@@ -1,0 +1,38 @@
+package codechef;
+import java.util.*;
+public class Matrix_odd {
+  public static void main(String[] args) {
+	Scanner sc=new Scanner(System.in);
+	int t=sc.nextInt();
+	for(int i=0;i<t;i++)
+	{
+		int n=sc.nextInt(),m=sc.nextInt(),q=sc.nextInt();
+		int arr[][]=new int[n][m];
+		for(int j=0;j<q;j++)
+		{
+			int r=sc.nextInt();
+			int c=sc.nextInt();
+		     for(int k=0;k<m;k++)
+		     {
+		    	 arr[r-1][k]=arr[r-1][k]+1;
+		     }
+		     for(int k=0;k<n;k++)
+		     {
+		    	 arr[k][c-1]=arr[k][c-1]+1;
+		     
+		     }
+		}
+		int count=0;
+		for(int j=0;j<n;j++)
+		{
+			for(int k=0;k<n;k++)
+			{
+				if(arr[j][k]%2!=0)
+					count++;
+			}
+		}
+		System.out.println(count);
+		
+	}
+}
+}

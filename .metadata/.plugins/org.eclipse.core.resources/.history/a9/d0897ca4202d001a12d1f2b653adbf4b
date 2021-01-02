@@ -1,0 +1,64 @@
+package codechef;
+import java.util.*;
+public class Brackets {
+	
+  public static void main(String[] args) {
+	Scanner sc=new Scanner(System.in);
+	int n=sc.nextInt();
+	int arr[]=new int[n];
+	for(int i=0;i<n;i++)
+	{
+		arr[i]=sc.nextInt();
+		
+	}
+	int count1=0,max=0,ind=0;
+	for(int i=0;i<n;i++)
+	{
+	    if(arr[i]==1)
+	    {
+	    	count1++;	
+	    }
+	    if(arr[i]==2)
+	    {
+	    	if(count1>max)
+	    	{
+	    		max=count1;
+	    		ind=i;
+	    	}
+	    	count1--;
+	    }
+		
+	}
+	int count=0,ind2=0,max2=0,len=0,maxind=0;
+	for(int i=0;i<n;i++)
+	{
+		if(arr[i]==1)
+		{
+			if(count==0)
+				ind2=i;
+			len++;
+			count++;
+		}
+		else
+		{
+		   count--;
+		   len++;
+		   if(len>max2)
+			{
+				maxind=ind2;
+				max2=len;
+				if(count==0)
+					len=0;
+			}
+		}
+		
+		
+	}
+	
+	
+	System.out.print(max+" "+ind);
+	System.out.print(max2+" "+maxind);
+}
+
+
+}

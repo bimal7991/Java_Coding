@@ -1,0 +1,33 @@
+package codechef;
+import java.util.*;
+public class Algorithm {
+	public static void main(String[] args) {
+		Scanner sc=new Scanner (System.in);
+		int t=sc.nextInt();
+		for(int T=0;T<t;T++)
+		{
+			String s=sc.next();
+			int count=0;
+			int nlen=0;
+			for(int i=0;i<s.length()-1;i++)
+			{
+				if(s.charAt(i)==s.charAt(i+1))
+				{
+					count++;
+				}
+				else
+				{
+				   nlen=nlen+count+1+1;
+				   count=0;
+				}
+			}
+			System.out.println(nlen+" "+s.length());
+			if(nlen<s.length())
+				System.out.println("YES");
+			else
+				System.out.println("NO");
+		}
+	}
+	
+
+}

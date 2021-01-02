@@ -1,0 +1,64 @@
+package codechef;
+import java.util.*;
+public class TCS {
+    public static void main(String[] args) {
+		Scanner sc=new Scanner(System.in);
+		int n=sc.nextInt();
+		int arr1[]=new int[n];
+		int arr2[]=new int[n];
+		for(int i=0;i<n;i++)
+		{
+			arr1[i]=sc.nextInt();
+		}
+		for(int i=0;i<n;i++)
+		{
+			arr2[i]=sc.nextInt();
+		}
+		int q=sc.nextInt();
+		for(int i=0;i<q;i++)
+		{
+			int l1=sc.nextInt(),h1=sc.nextInt(),l2=sc.nextInt(),h2=sc.nextInt();
+	        HashMap<Integer,Integer> ans=new HashMap<Integer,Integer>();
+	        int k=0;
+			for(int j=0;j<n;j++)
+			{
+				if(j>=l1-1 && j<h1)
+					continue;
+				else
+				{
+					if(!ans.containsKey(arr1[j]))
+					   ans.put(arr1[j],k++);
+				}
+			}
+			for(int j=0;j<n;j++)
+			{
+				if(j>=l2-1 && j<h2)
+					continue;
+				else
+				{
+					if(!ans.containsKey(arr2[j]))
+						 ans.put(arr1[j],k++);
+				}
+			}
+			int count=0;
+			for(int j=l1-1;j<h1;j++)
+			{
+				if(ans.containsKey(arr1[j]))
+				{
+					ans.remove(arr1[j]);
+				}
+					
+			}
+			for(int j=l2-1;j<h2;j++)
+			{
+				if(ans.containsKey(arr1[j]))
+					ans.remove(arr2[j]);
+			
+			}
+			System.out.println(ans.size());
+			
+			
+		}
+		
+	}
+}

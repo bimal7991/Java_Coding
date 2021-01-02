@@ -1,0 +1,190 @@
+package codechef;
+
+
+import java.util.ArrayList;
+import java.util.Scanner;
+import java.util.*;
+ class CHEFRAIL {
+  public static void main(String[] args) {
+	Scanner sc=new Scanner(System.in);
+	int T=sc.nextInt();
+	 while(T-->0)
+	 {
+		 int N=sc.nextInt();
+		 int M=sc.nextInt();
+		 int X[]=new int[N];
+		 int Y[]=new int[M];
+		 
+		 int pos=0,neg=0,x=0,y=0;
+		 for(int i=0;i<N;i++)
+		 {
+			 X[i]=sc.nextInt();
+			 if(X[i]<0)
+			 {
+				 neg++;
+			 }
+			 else if(X[i]>0)
+			 {
+				 pos++;
+			 }
+			 else
+			 {
+				 x=1;
+			 }
+			
+		 }
+		 int xpos[]=new int[pos];
+		 int xneg[]=new int[neg];
+		 int j=0,k=0;
+		 for(int i=0;i<N;i++)
+		 {
+			if(X[i]<0)
+			{
+				xneg[j++]=X[i];
+			}
+			else if(X[i]>0)
+			{
+				xpos[k++]=X[i];
+			}
+			
+		 }
+		 
+		 
+		 pos=0;neg=0;
+		 for(int i=0;i<M;i++)
+		 {
+			 Y[i]=sc.nextInt();
+			 if(Y[i]<0)
+			 {
+				 neg++;
+			 }
+			 else if(Y[i]>0)
+			 {
+				 pos++;
+			 }
+			 else
+				 y=1;
+		 }
+		 int ypos[]=new int[pos];
+		 int yneg[]=new int[neg];
+		  j=0;k=0;
+		 for(int i=0;i<M;i++)
+		 {
+			if(Y[i]<0)
+			{
+				yneg[j++]=Y[i];
+			}
+			else if(Y[i]>0)
+			{
+				ypos[k++]=Y[i];
+			}
+		 }
+		 int count=0;
+		 ArrayList<Integer> arr=new ArrayList<Integer>();
+		 int i=0;
+		  for(j=0;j<ypos.length;j++)
+			 { 
+				 for(k=0;k<yneg.length;k++)
+				 {
+				   if(isPerfectSquare(ypos[j]*-yneg[k]))	 
+					 arr.add(ypos[j]*-yneg[k]);
+				 }
+				 
+		     }
+		  int barr2[]=new int[arr.size()];
+			 for( i=0;i<arr.size();i++)
+			 {
+				 barr2[i]=arr.get(i);
+			 }
+		  
+		  Arrays.sort(barr2);
+		  
+		  
+		  for(i=0;i<xpos.length;i++)
+		  {
+			  if((binarySearch(barr2, 0, arr.size()-1, xpos[i]*xpos[i]))!=-1)
+					 count++;
+		  }
+		  
+		 for( i=0;i<xneg.length;i++)
+		 {
+			 if((binarySearch(barr2, 0, arr.size()-1, xneg[i]*xneg[i]))!=-1)
+				 count++;
+		 }
+		ArrayList<Integer> arr2=new ArrayList<Integer>();
+		 i=0;
+		 for(j=0;j<xpos.length;j++)
+		 { 
+			 for(k=0;k<xneg.length;k++)
+			 {
+				 
+				 if(isPerfectSquare(xpos[j]*-xneg[k]))	 
+				 arr2.add(xpos[j]*-xneg[k]);
+			 } 
+	     }
+		 
+		//System.out.println(arr);
+		 //System.out.println(arr2);
+		 int barr[]=new int[arr2.size()];
+		 for( i=0;i<arr2.size();i++)
+		 {
+			 barr[i]=arr2.get(i);
+		 }
+		 
+		 Arrays.sort(barr);
+		 
+		 for(i=0;i<yneg.length;i++)
+		 {
+			 if((binarySearch(barr, 0, arr2.size()-1, yneg[i]*yneg[i]))!=-1)
+				 count++;
+		 }
+		 for(i=0;i<ypos.length;i++)
+		 {
+			 if((binarySearch(barr, 0, arr2.size()-1, ypos[i]*ypos[i]))!=-1)
+				 count++;	 
+		 }
+		 if(x==1 || y==1)
+		 {
+			 count=count+(xpos.length+xneg.length)*(ypos.length+yneg.length);
+		 }
+		 System.out.println(count);
+		 
+		 }
+		 
+	 
+}
+
+  static boolean isPerfectSquare(double x)  
+  {  
+      // Find floating point value of 
+      // square root of x. 
+      double sr = Math.sqrt(x); 
+      // If square root is an integer 
+      return ((sr - Math.floor(sr)) == 0);	 
+  } 
+ static int binarySearch(int arr[], int l, int r, int x) 
+  { 
+      if (r >= l) { 
+          int mid = l + (r - l) / 2; 
+
+          // If the element is present at the 
+          // middle itself 
+          if (arr[mid] == x) 
+              return mid; 
+
+          // If element is smaller than mid, then 
+          // it can only be present in left subarray 
+          if (arr[mid] > x) 
+              return binarySearch(arr, l, mid - 1, x); 
+
+          // Else the element can only be present 
+          // in right subarray 
+          return binarySearch(arr, mid + 1, r, x); 
+      } 
+
+      // We reach here when element is not present 
+      // in array 
+      return -1; 
+  } 
+ 
+}

@@ -1,0 +1,65 @@
+package codechef;
+import java.util.*;
+public class MXMLCM {
+	public static void main(String[] args) {
+		Scanner sc=new Scanner(System.in);
+		int T=sc.nextInt();
+		while(T-->0)
+		{
+			int n=sc.nextInt(),m=sc.nextInt();
+			int arr[]=new int[n],freq[]=new int[m+1];
+			for(int i=0;i<n;i++)
+				arr[i]=sc.nextInt();
+			
+			for(int i=0;i<n;i++)
+			{
+				int count2=0;
+				while (arr[i]%2==0) 
+		        { 
+		            //System.out.print(2 + " "); 
+		            arr[i] /= 2; 
+		            count2++;
+		            
+		        } 
+				if(count2>freq[2])
+					freq[2]=count2;
+		  
+		        // n must be odd at this point.  So we can 
+		        // skip one element (Note i = i +2) 
+		        for (int j = 3; j <= Math.sqrt(arr[i]); j+= 2) 
+		        { 
+		            // While i divides n, print i and divide n 
+		        	int count=0;
+		            while (arr[i]%j == 0) 
+		            { 
+		                System.out.print(arr[i] + " "); 
+		                arr[i] /= j; 
+		                count++;
+		            } 
+		            if(count>freq[j])
+		            	freq[j]=count;
+		            	
+		        } 
+		  
+		        // This condition is to handle the case whien 
+		        // n is a prime number greater than 2 
+		        if (arr[i] > 2) 
+		        {
+		        	if(freq[arr[i]]==0)
+		        		freq[arr[i]]=1;
+		        }
+		        	
+		           // System.out.print(n); 
+				
+				
+			}
+			for(int i=0;i<=m;i++)
+				if(freq[i]>0)
+			System.out.println(i+" "+freq[i]);
+			
+			
+		}
+	}
+	
+
+}
